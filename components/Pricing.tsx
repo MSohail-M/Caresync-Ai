@@ -7,15 +7,16 @@ import TiltCard from './TiltCard'
 const plans = [
   {
     name: 'Starter',
-    price: { monthly: 149, annual: 119 },
+    price: { monthly: 1799, annual: 1439 },
     subtitle: 'Perfect for solo practitioners',
     accent: '#3B8EF0',
     featured: false,
     features: [
+      '3,000 minutes / month included',
+      'One-time agent setup: $4,000',
       'Missed call recovery via SMS',
       'FAQ & hours answering',
       'Call transcription & logs',
-      'Up to 500 calls/month',
       'Email support',
     ],
     cta: 'Get Started',
