@@ -27,11 +27,11 @@ export default function Nav() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-          className={`flex items-center gap-1 px-2 py-2 rounded-full transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-            scrolled
-              ? 'bg-white/95 border border-[#0F172A]/[0.08] backdrop-blur-2xl shadow-[0_4px_32px_rgba(15,23,42,0.1)]'
-              : 'bg-white/[0.7] border border-[#0F172A]/[0.06] backdrop-blur-2xl shadow-[0_2px_16px_rgba(15,23,42,0.06)]'
-          }`}
+          className="flex items-center gap-1 px-2 py-2 rounded-full transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+          style={scrolled
+            ? { background: 'rgba(5,11,24,0.92)', border: '1px solid rgba(255,255,255,0.1)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }
+            : { background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }
+          }
         >
           {/* Logo */}
           <div className="flex items-center gap-2 px-3 py-1.5 mr-2">
@@ -39,7 +39,7 @@ export default function Nav() {
               <span className="absolute inset-0 rounded-full bg-[#10B981]" />
               <span className="absolute inset-0 rounded-full bg-[#10B981] animate-pulse-ring" />
             </div>
-            <span className="text-sm font-bold text-[#0F172A] tracking-tight">CareSync AI</span>
+            <span className="text-sm font-bold text-[#F8FAFC] tracking-tight">CareSync AI</span>
           </div>
 
           {/* Desktop Links */}
@@ -48,7 +48,7 @@ export default function Nav() {
               <a
                 key={link}
                 href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}
-                className="px-4 py-2 rounded-full text-sm font-medium text-[#64748B] hover:text-[#0F172A] hover:bg-[#0F172A]/[0.05] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                className="px-4 py-2 rounded-full text-sm font-medium text-[rgba(248,250,252,0.6)] hover:text-[#F8FAFC] hover:bg-white/[0.07] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
               >
                 {link}
               </a>
@@ -58,7 +58,7 @@ export default function Nav() {
           {/* CTA */}
           <a
             href="#demo"
-            className="hidden md:flex items-center gap-2 ml-2 pl-4 pr-2 py-2 rounded-full bg-[#3B8EF0] hover:bg-[#2d7de0] text-white text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group active:scale-[0.98] shadow-[0_2px_12px_rgba(59,142,240,0.35)]"
+            className="hidden md:flex items-center gap-2 ml-2 pl-4 pr-2 py-2 rounded-full bg-[#3B8EF0] hover:bg-[#2d7de0] text-white text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group active:scale-[0.98] shadow-[0_2px_16px_rgba(59,142,240,0.45)]"
           >
             Book a Demo
             <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[1px] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
@@ -74,13 +74,13 @@ export default function Nav() {
             className="md:hidden relative w-10 h-10 rounded-full flex items-center justify-center"
             aria-label="Toggle menu"
           >
-            <span className={`absolute w-4 h-[1.5px] bg-[#0F172A] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${menuOpen ? 'rotate-45' : '-translate-y-1.5'}`} />
-            <span className={`absolute w-4 h-[1.5px] bg-[#0F172A] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${menuOpen ? '-rotate-45' : 'translate-y-1.5'}`} />
+            <span className={`absolute w-4 h-[1.5px] bg-[#F8FAFC] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${menuOpen ? 'rotate-45' : '-translate-y-1.5'}`} />
+            <span className={`absolute w-4 h-[1.5px] bg-[#F8FAFC] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${menuOpen ? '-rotate-45' : 'translate-y-1.5'}`} />
           </button>
         </motion.nav>
       </div>
 
-      {/* Mobile Full-Screen Menu */}
+      {/* Mobile Full-Screen Overlay */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -88,7 +88,8 @@ export default function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
-            className="fixed inset-0 z-40 bg-white/97 backdrop-blur-3xl flex flex-col items-center justify-center gap-2"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-2"
+            style={{ background: 'rgba(5,11,24,0.96)', backdropFilter: 'blur(48px)', WebkitBackdropFilter: 'blur(48px)' }}
           >
             {links.map((link, i) => (
               <motion.a
@@ -99,7 +100,7 @@ export default function Nav() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 16 }}
                 transition={{ duration: 0.5, delay: i * 0.07, ease: [0.32, 0.72, 0, 1] }}
-                className="text-3xl font-bold text-[#0F172A] hover:text-[#3B8EF0] transition-colors duration-300 py-3"
+                className="text-3xl font-bold text-[#F8FAFC] hover:text-[#3B8EF0] transition-colors duration-300 py-3"
               >
                 {link}
               </motion.a>
@@ -111,7 +112,7 @@ export default function Nav() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 16 }}
               transition={{ duration: 0.5, delay: links.length * 0.07, ease: [0.32, 0.72, 0, 1] }}
-              className="mt-6 flex items-center gap-2 px-6 py-3 rounded-full bg-[#3B8EF0] text-white text-lg font-semibold shadow-[0_4px_20px_rgba(59,142,240,0.3)]"
+              className="mt-6 flex items-center gap-2 px-6 py-3 rounded-full bg-[#3B8EF0] text-white text-lg font-semibold shadow-[0_4px_24px_rgba(59,142,240,0.4)]"
             >
               Book a Demo
               <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
