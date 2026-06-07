@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import SmoothScroll from '@/components/SmoothScroll'
 
 export const metadata: Metadata = {
   title: 'CareSync AI — AI Front Desk for Dental & Primary Care Clinics',
@@ -69,7 +70,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#050B18] text-[#F8FAFC] antialiased overflow-x-hidden">
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   )
