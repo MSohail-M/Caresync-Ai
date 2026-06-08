@@ -125,6 +125,7 @@ export default function ChatbotPage() {
         Pointer-events: none so the close button (right side) still works.
         Positioned dynamically via the effect above.
       */}
+      {/* Branding overlay — covers Retell logo, shows CareSync logo instead */}
       <div
         ref={overlayRef}
         style={{
@@ -132,20 +133,32 @@ export default function ChatbotPage() {
           zIndex: 40,
           display: 'none',
           alignItems: 'center',
-          gap: 8,
-          paddingLeft: 16,
+          gap: 10,
+          paddingLeft: 14,
           background: '#0A1628',
           borderBottom: '1px solid rgba(255,255,255,0.08)',
           pointerEvents: 'none',
           userSelect: 'none',
         }}
       >
-        <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#10B981', display: 'inline-block' }} />
-        <span style={{ color: '#F8FAFC', fontWeight: 700, fontSize: 14, fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+        {/* CareSync infinity logo SVG */}
+        <svg width="30" height="20" viewBox="0 0 70 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="csG" x1="0" y1="0" x2="70" y2="44" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#27AE60"/>
+              <stop offset="50%" stopColor="#16A085"/>
+              <stop offset="100%" stopColor="#1B6FA4"/>
+            </linearGradient>
+          </defs>
+          {/* Back ring – blue */}
+          <ellipse cx="22" cy="22" rx="18" ry="13" stroke="#1B6FA4" strokeWidth="4" fill="none" opacity="0.7"/>
+          <ellipse cx="48" cy="22" rx="18" ry="13" stroke="#1B6FA4" strokeWidth="4" fill="none" opacity="0.7"/>
+          {/* Front infinity – gradient */}
+          <path d="M35 22 C31 14 23 8 17 8 C9 8 4 14 4 22 C4 30 9 36 17 36 C23 36 31 30 35 22 Z" stroke="url(#csG)" strokeWidth="4.5" fill="none"/>
+          <path d="M35 22 C39 14 47 8 53 8 C61 8 66 14 66 22 C66 30 61 36 53 36 C47 36 39 30 35 22 Z" stroke="url(#csG)" strokeWidth="4.5" fill="none"/>
+        </svg>
+        <span style={{ color: '#F8FAFC', fontWeight: 700, fontSize: 14, fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: '-0.01em' }}>
           CareSync AI
-        </span>
-        <span style={{ color: 'rgba(248,250,252,0.4)', fontSize: 12, fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-          · Clinic Assistant
         </span>
       </div>
 
