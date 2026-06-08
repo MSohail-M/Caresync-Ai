@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
+import { useRef } from 'react'
 import TiltCard from './TiltCard'
 
 const problems = [
@@ -107,9 +108,15 @@ const problems = [
 
 export default function Problems() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
+  const rawY  = useTransform(scrollYProgress, [0, 1], [60, -60])
+  const rawY2 = useTransform(scrollYProgress, [0, 1], [-40, 40])
+  const imgY  = useSpring(rawY,  { stiffness: 60, damping: 18 })
+  const imgY2 = useSpring(rawY2, { stiffness: 60, damping: 18 })
 
   return (
-    <section className="py-24 md:py-32 bg-white relative" id="use-cases">
+    <section ref={sectionRef} className="py-24 md:py-32 bg-white relative" id="use-cases">
       {/* Subtle background image */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <img
@@ -159,6 +166,48 @@ export default function Problems() {
             Clinics Lose Patients Every Day to the Same{' '}
             <span className="font-serif italic text-[#EF4444]">6 Problems</span>
           </motion.h2>
+        </div>
+
+        {/* ── 3D floating images ── */}
+        <div className="relative h-0 overflow-visible pointer-events-none select-none">
+          {/* Left floating image — stressed receptionist */}
+          <motion.div
+            style={{ y: imgY }}
+            className="absolute -left-4 lg:-left-16 -top-8 w-[180px] lg:w-[220px] z-10 hidden lg:block"
+          >
+            <div className="p-1.5 rounded-[1.5rem]" style={{ background: 'rgba(15,23,42,0.06)', boxShadow: '0 0 0 1px rgba(15,23,42,0.08), 0 24px 60px rgba(239,68,68,0.08)' }}>
+              <div className="rounded-[calc(1.5rem-6px)] overflow-hidden relative">
+                <img
+                  src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&q=80&auto=format&fit=crop"
+                  alt="Overwhelmed healthcare staff"
+                  className="w-full h-[200px] object-cover object-center"
+                />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 40%, rgba(239,68,68,0.15) 100%)' }} />
+              </div>
+            </div>
+            <div className="absolute -bottom-2 -right-2 px-2.5 py-1.5 rounded-full text-[10px] font-semibold" style={{ background: 'rgba(239,68,68,0.12)', border: '1px solid rgba(239,68,68,0.25)', color: '#EF4444' }}>
+              ↓ 30% calls missed
+            </div>
+          </motion.div>
+
+          {/* Right floating image — full waiting room */}
+          <motion.div
+            style={{ y: imgY2 }}
+            className="absolute -right-4 lg:-right-16 -top-16 w-[160px] lg:w-[200px] z-10 hidden lg:block"
+          >
+            <div className="p-1.5 rounded-[1.5rem]" style={{ background: 'rgba(15,23,42,0.06)', boxShadow: '0 0 0 1px rgba(15,23,42,0.08), 0 24px 60px rgba(245,158,11,0.08)' }}>
+              <div className="rounded-[calc(1.5rem-6px)] overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&q=80&auto=format&fit=crop"
+                  alt="Busy clinic waiting room"
+                  className="w-full h-[180px] object-cover object-center"
+                />
+              </div>
+            </div>
+            <div className="absolute -bottom-2 -left-2 px-2.5 py-1.5 rounded-full text-[10px] font-semibold" style={{ background: 'rgba(245,158,11,0.12)', border: '1px solid rgba(245,158,11,0.25)', color: '#D97706' }}>
+              Patients waiting
+            </div>
+          </motion.div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

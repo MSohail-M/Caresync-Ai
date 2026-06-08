@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 
 const trustCards = [
   {
@@ -76,11 +77,35 @@ const trustCards = [
 ]
 
 export default function Trust() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
+  const rawY = useTransform(scrollYProgress, [0, 1], [50, -50])
+  const imgY = useSpring(rawY, { stiffness: 60, damping: 18 })
+
   return (
-    <section className="py-24 md:py-32 bg-white relative overflow-hidden" id="trust">
+    <section ref={sectionRef} className="py-24 md:py-32 bg-white relative overflow-hidden" id="trust">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px]" style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.06) 0%, transparent 70%)' }} />
       </div>
+
+      {/* 3D floating doctor image — right side */}
+      <motion.div
+        style={{ y: imgY }}
+        className="absolute right-4 lg:right-12 top-1/2 -translate-y-1/2 w-[180px] lg:w-[220px] pointer-events-none hidden xl:block"
+      >
+        <div className="p-1.5 rounded-[1.75rem]" style={{ background: 'rgba(15,23,42,0.05)', boxShadow: '0 0 0 1px rgba(16,185,129,0.12), 0 24px 60px rgba(16,185,129,0.08)' }}>
+          <div className="rounded-[calc(1.75rem-6px)] overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80&auto=format&fit=crop"
+              alt="Healthcare professional"
+              className="w-full h-[260px] object-cover object-center"
+            />
+          </div>
+        </div>
+        <div className="absolute -top-2 -left-2 px-2.5 py-1.5 rounded-full text-[10px] font-semibold" style={{ background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.25)', color: '#10B981', animation: 'float 4s ease-in-out infinite' }}>
+          ✓ HIPAA-aware
+        </div>
+      </motion.div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6">
