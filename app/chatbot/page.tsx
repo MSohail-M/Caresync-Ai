@@ -5,73 +5,77 @@ import { motion } from 'framer-motion'
 import Script from 'next/script'
 import Nav from '@/components/Nav'
 
-// Always does a fresh DOM lookup — never uses a stale reference
-function getInput(): HTMLElement | null {
-  // Try open shadow DOM first (most common in Retell)
-  const host = document.querySelector('retell-chat') as (HTMLElement & { shadowRoot: ShadowRoot | null }) | null
-  if (host?.shadowRoot) {
-    const el = host.shadowRoot.querySelector<HTMLElement>('input, textarea')
-    if (el) return el
-  }
-  // Fallback: regular DOM child
-  return document.querySelector<HTMLElement>('retell-chat input, retell-chat textarea')
-}
-
-function focusInput() {
-  const el = getInput()
-  if (el && document.contains(el)) {
-    el.focus()
-    // Some widgets need the click event too
-    el.dispatchEvent(new MouseEvent('click', { bubbles: true }))
-  }
-}
-
 export default function ChatbotPage() {
 
   useEffect(() => {
     let alive = true
+    // The actual live input element captured from a real keydown event.
+    // composedPath() pierces closed shadow DOM boundaries — nothing else does.
+    let lastInput: HTMLElement | null = null
 
-    // ── Strategy 1: On Enter, retry focus at 4 increasing delays ──────────
-    // The widget may take varying time to clear + re-render the input.
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Enter') {
-        ;[80, 180, 320, 500, 800].forEach(ms => {
-          setTimeout(() => { if (alive) focusInput() }, ms)
-        })
+    const captureAndRefocus = (e: KeyboardEvent) => {
+      // Walk the composed path to find the input the user is actually typing in
+      const path = e.composedPath() as EventTarget[]
+      const found = path.find(
+        t => t instanceof HTMLInputElement || t instanceof HTMLTextAreaElement
+      ) as HTMLElement | undefined
+
+      // Always update our ref to the freshest connected input
+      if (found?.isConnected) lastInput = found
+
+      // After Enter: refocus at multiple delays — widget may take time to re-render
+      if (e.key === 'Enter' && lastInput) {
+        const captured = lastInput
+        ;[80, 200, 380, 600, 900, 1300].forEach(ms =>
+          setTimeout(() => {
+            if (!alive) return
+            // If original element still in DOM, reuse it
+            if (captured.isConnected) { captured.focus(); return }
+            // Otherwise use the freshest ref we have
+            if (lastInput?.isConnected) lastInput.focus()
+          }, ms)
+        )
       }
     }
-    document.addEventListener('keydown', onKeyDown, true)
 
-    // ── Strategy 2: Continuous focus monitor every 200ms ──────────────────
-    // If nothing at all has focus (active element is body or null),
-    // pull focus back to the chat input. This catches any other blur source.
-    const monitor = setInterval(() => {
+    // Capture phase so we get the event before anything else
+    document.addEventListener('keydown', captureAndRefocus, true)
+
+    // ── Fallback for initial page load (before first keystroke) ──────────
+    // Poll for the retell-chat host, then try open shadowRoot first,
+    // then simulate a click near the bottom of the widget where input lives.
+    const initPoll = setInterval(() => {
       if (!alive) return
-      const active = document.activeElement
-      const host = document.querySelector('retell-chat') as any
-      const shadowActive = host?.shadowRoot?.activeElement
+      const host = document.querySelector('retell-chat') as HTMLElement & { shadowRoot: ShadowRoot | null } | null
+      if (!host) return
+      clearInterval(initPoll)
 
-      // Only steal focus back when truly nothing is focused
-      if (!shadowActive && (!active || active === document.body)) {
-        focusInput()
+      const tryInitFocus = () => {
+        if (!alive) return
+        // Open shadow DOM — might work
+        const shadow = host.shadowRoot
+        if (shadow) {
+          const el = shadow.querySelector<HTMLElement>('input, textarea')
+          if (el) { el.focus(); return }
+        }
+        // Simulate a click at the bottom-center of the widget
+        // (that's where Retell puts the text input)
+        const rect = host.getBoundingClientRect()
+        if (rect.width === 0) return // not rendered yet
+        const x = rect.left + rect.width / 2
+        const y = rect.bottom - 50
+        const el = document.elementFromPoint(x, y) as HTMLElement | null
+        el?.click()
+        el?.focus()
       }
-    }, 200)
 
-    // ── Strategy 3: Initial focus — poll until widget renders ──────────────
-    const init = setInterval(() => {
-      if (!alive) return
-      const input = getInput()
-      if (input) {
-        clearInterval(init)
-        input.focus()
-      }
+      ;[600, 1200, 2000].forEach(ms => setTimeout(tryInitFocus, ms))
     }, 250)
 
     return () => {
       alive = false
-      document.removeEventListener('keydown', onKeyDown, true)
-      clearInterval(monitor)
-      clearInterval(init)
+      document.removeEventListener('keydown', captureAndRefocus, true)
+      clearInterval(initPoll)
     }
   }, [])
 
