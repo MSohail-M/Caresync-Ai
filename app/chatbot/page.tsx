@@ -5,79 +5,78 @@ import { motion } from 'framer-motion'
 import Script from 'next/script'
 import Nav from '@/components/Nav'
 
-// Finds the chat input inside Retell's shadow DOM or regular DOM
-function findChatInput(): HTMLElement | null {
-  // 1. Try shadow DOM (most likely)
+// Always does a fresh DOM lookup — never uses a stale reference
+function getInput(): HTMLElement | null {
+  // Try open shadow DOM first (most common in Retell)
   const host = document.querySelector('retell-chat') as (HTMLElement & { shadowRoot: ShadowRoot | null }) | null
   if (host?.shadowRoot) {
-    const el = host.shadowRoot.querySelector('input[type="text"], input:not([type]), textarea') as HTMLElement | null
+    const el = host.shadowRoot.querySelector<HTMLElement>('input, textarea')
     if (el) return el
   }
-  // 2. Fallback: regular DOM inside the custom element
-  return document.querySelector('retell-chat input, retell-chat textarea') as HTMLElement | null
+  // Fallback: regular DOM child
+  return document.querySelector<HTMLElement>('retell-chat input, retell-chat textarea')
+}
+
+function focusInput() {
+  const el = getInput()
+  if (el && document.contains(el)) {
+    el.focus()
+    // Some widgets need the click event too
+    el.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+  }
 }
 
 export default function ChatbotPage() {
 
   useEffect(() => {
-    let chatInput: HTMLElement | null = null
+    let alive = true
 
-    // Re-focus the chat input after a short delay
-    const refocus = (delay = 80) => {
-      setTimeout(() => {
-        if (!chatInput) chatInput = findChatInput()
-        chatInput?.focus()
-      }, delay)
-    }
-
-    // On every Enter keydown anywhere on the page, refocus the chat input
+    // ── Strategy 1: On Enter, retry focus at 4 increasing delays ──────────
+    // The widget may take varying time to clear + re-render the input.
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Enter') refocus(120)
-    }
-
-    // Poll until the widget mounts and the input is available
-    const poll = setInterval(() => {
-      const input = findChatInput()
-      if (input) {
-        chatInput = input
-        clearInterval(poll)
-
-        // Whenever the input loses focus, refocus it unless something
-        // outside the widget intentionally took focus (e.g. nav link)
-        const onBlur = () => {
-          // Only refocus if the newly focused element is the body or nothing
-          // (i.e. focus went nowhere — not to another interactive element)
-          setTimeout(() => {
-            const active = document.activeElement
-            const shadowActive = (document.querySelector('retell-chat') as any)?.shadowRoot?.activeElement
-            if (!shadowActive && (!active || active === document.body)) {
-              chatInput?.focus()
-            }
-          }, 60)
-        }
-
-        input.addEventListener('blur', onBlur)
-        // Clean up the blur listener on unmount
-        ;(input as any).__blurCleanup = () => input.removeEventListener('blur', onBlur)
-
-        // Initial focus
-        refocus(400)
+      if (e.key === 'Enter') {
+        ;[80, 180, 320, 500, 800].forEach(ms => {
+          setTimeout(() => { if (alive) focusInput() }, ms)
+        })
       }
-    }, 300)
-
+    }
     document.addEventListener('keydown', onKeyDown, true)
 
+    // ── Strategy 2: Continuous focus monitor every 200ms ──────────────────
+    // If nothing at all has focus (active element is body or null),
+    // pull focus back to the chat input. This catches any other blur source.
+    const monitor = setInterval(() => {
+      if (!alive) return
+      const active = document.activeElement
+      const host = document.querySelector('retell-chat') as any
+      const shadowActive = host?.shadowRoot?.activeElement
+
+      // Only steal focus back when truly nothing is focused
+      if (!shadowActive && (!active || active === document.body)) {
+        focusInput()
+      }
+    }, 200)
+
+    // ── Strategy 3: Initial focus — poll until widget renders ──────────────
+    const init = setInterval(() => {
+      if (!alive) return
+      const input = getInput()
+      if (input) {
+        clearInterval(init)
+        input.focus()
+      }
+    }, 250)
+
     return () => {
-      clearInterval(poll)
+      alive = false
       document.removeEventListener('keydown', onKeyDown, true)
-      const cleanup = (chatInput as any)?.__blurCleanup
-      if (typeof cleanup === 'function') cleanup()
+      clearInterval(monitor)
+      clearInterval(init)
     }
   }, [])
 
   return (
     <>
-      {/* ── Retell Chat Widget — exact embed from docs ── */}
       <Script
         id="retell-widget"
         src="https://dashboard.retellai.com/retell-widget-v2.js"
@@ -96,7 +95,6 @@ export default function ChatbotPage() {
         data-auto-open="true"
       />
 
-      {/* Force widget to be full-page below the nav */}
       <style>{`
         retell-chat {
           position: fixed !important;
@@ -118,7 +116,6 @@ export default function ChatbotPage() {
         className="min-h-[100dvh] relative overflow-hidden"
         style={{ background: 'linear-gradient(160deg, #050B18 0%, #030810 100%)' }}
       >
-        {/* Background atmosphere */}
         <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(59,142,240,0.15) 0%, transparent 65%)', filter: 'blur(80px)', animation: 'orb-drift 12s ease-in-out infinite' }} />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 65%)', filter: 'blur(100px)', animation: 'orb-drift 14s ease-in-out infinite 3s' }} />
         <div className="absolute bottom-0 left-0 right-0 h-[25%] overflow-hidden pointer-events-none">
@@ -128,7 +125,6 @@ export default function ChatbotPage() {
 
         <Nav />
 
-        {/* Slim header above the chat */}
         <div className="relative z-10 pt-28 pb-3 px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
