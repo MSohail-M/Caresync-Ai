@@ -1,120 +1,85 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Script from 'next/script'
 import Nav from '@/components/Nav'
 
-// ── Shadow DOM helpers ────────────────────────────────────────────────────────
-
-function getShadow(): ShadowRoot | null {
-  const host = document.querySelector('retell-chat') as (HTMLElement & { shadowRoot: ShadowRoot | null }) | null
-  return host?.shadowRoot ?? null
-}
-
-/** Inject a <style> sheet into the shadow root (only works if shadow is open) */
-function injectShadowCSS(css: string) {
-  const shadow = getShadow()
-  if (!shadow) return false
-  // Avoid duplicate injections
-  if (shadow.querySelector('#pcc-overrides')) return true
-  const s = document.createElement('style')
-  s.id = 'pcc-overrides'
-  s.textContent = css
-  shadow.appendChild(s)
-  return true
-}
-
-/** Click a button inside the shadow DOM that contains the given text */
-function clickShadowButton(text: string): boolean {
-  const shadow = getShadow()
-  if (!shadow) return false
-  const btns = Array.from(shadow.querySelectorAll('button, [role="button"], a'))
-  const match = btns.find(b => b.textContent?.toLowerCase().includes(text.toLowerCase())) as HTMLElement | undefined
-  if (match) { match.click(); return true }
-  return false
-}
-
-const HIDE_BRANDING_CSS = `
-  /* ── Hide Retell logo in header ── */
-  img[src*="retell" i],
-  img[alt*="retell" i],
-  svg[class*="logo" i],
-  [class*="retell-logo"],
-  [class*="logo"][class*="retell"],
-  header img, header svg { display: none !important; }
-
-  /* ── Hide "Powered by Retell" footer ── */
-  a[href*="retell.ai"],
-  [class*="powered"],
-  [class*="PoweredBy"],
-  footer, [class*="footer"] { display: none !important; }
-`
-
 export default function ChatbotPage() {
+  const lastActivityRef = useRef(0)
+  const overlayRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     let alive = true
-    let lastInput: HTMLElement | null = null
-    let brandingHidden = false
-    let inboxCleared = false
 
-    // ── 1. composedPath focus fix (Enter refocus) ─────────────────────────
-    const captureAndRefocus = (e: KeyboardEvent) => {
-      const path = e.composedPath() as EventTarget[]
-      const found = path.find(
-        t => t instanceof HTMLInputElement || t instanceof HTMLTextAreaElement
-      ) as HTMLElement | undefined
-      if (found?.isConnected) lastInput = found
+    // ── Track any user interaction inside / near the chat widget ──────────
+    const markActivity = () => { lastActivityRef.current = Date.now() }
 
-      if (e.key === 'Enter' && lastInput) {
-        const captured = lastInput
-        ;[80, 200, 380, 600, 900, 1300].forEach(ms =>
-          setTimeout(() => {
-            if (!alive) return
-            if (captured.isConnected) { captured.focus(); return }
-            if (lastInput?.isConnected) lastInput.focus()
-          }, ms)
-        )
-      }
-    }
-    document.addEventListener('keydown', captureAndRefocus, true)
+    // keydown anywhere → user was typing in chat
+    document.addEventListener('keydown', markActivity, true)
 
-    // ── 2. Main setup loop — runs until both goals achieved ───────────────
-    const setup = setInterval(() => {
-      if (!alive) return
+    // pointerdown on the widget area → user clicked in chat
+    const onPointer = (e: PointerEvent) => {
       const host = document.querySelector('retell-chat')
       if (!host) return
-
-      // Hide Retell branding (shadow CSS injection)
-      if (!brandingHidden) {
-        brandingHidden = injectShadowCSS(HIDE_BRANDING_CSS)
+      const r = host.getBoundingClientRect()
+      if (e.clientX >= r.left && e.clientX <= r.right &&
+          e.clientY >= r.top  && e.clientY <= r.bottom) {
+        markActivity()
       }
+    }
+    document.addEventListener('pointerdown', onPointer, true)
 
-      // Auto-click "Send New Message" to skip the inbox conversation list
-      if (!inboxCleared) {
-        const clicked = clickShadowButton('new message') || clickShadowButton('new chat') || clickShadowButton('start')
-        if (clicked) inboxCleared = true
+    // ── Refocus loop: if body has focus shortly after chat activity ────────
+    // Click at the bottom of the chat element where the input lives.
+    // Works with iframe-based widgets — no shadow DOM access needed.
+    const focusLoop = setInterval(() => {
+      if (!alive) return
+      const active = document.activeElement
+      if (active && active !== document.body && active !== document.documentElement) return
+      if (Date.now() - lastActivityRef.current > 900) return   // stale — don't steal focus
+
+      const host = document.querySelector('retell-chat')
+      if (!host) return
+      const r = host.getBoundingClientRect()
+      if (r.width === 0) return
+
+      // Click bottom-center of the widget panel — that's where the text input is
+      const target = document.elementFromPoint(r.left + r.width / 2, r.bottom - 36) as HTMLElement | null
+      if (target && target !== document.body && target !== document.documentElement) {
+        target.click()
+        lastActivityRef.current = 0   // reset so we don't loop infinitely
       }
+    }, 180)
 
-      // Initial focus
-      if (!lastInput) {
-        const shadow = getShadow()
-        const input = shadow?.querySelector<HTMLElement>('input, textarea')
-        if (input) { input.focus(); lastInput = input }
-      }
+    // ── Overlay positioning: cover Retell logo with our own branding ───────
+    // The widget panel header is ~56px tall. We read its position from
+    // getBoundingClientRect and reposition the overlay every 300ms.
+    const overlay = overlayRef.current
+    const positionOverlay = () => {
+      if (!overlay || !alive) return
+      const host = document.querySelector('retell-chat')
+      if (!host) return
+      const r = host.getBoundingClientRect()
+      if (r.width === 0) { overlay.style.display = 'none'; return }
 
-      if (brandingHidden && inboxCleared) clearInterval(setup)
-    }, 300)
-
-    // Stop trying after 15s
-    const killSetup = setTimeout(() => clearInterval(setup), 15000)
+      overlay.style.display     = 'flex'
+      overlay.style.top         = r.top + 'px'
+      overlay.style.left        = r.left + 'px'
+      overlay.style.width       = r.width + 'px'
+      // Cover just the logo zone — left 70% of the header, 56px tall
+      overlay.style.height      = '56px'
+      overlay.style.maxWidth    = '70%'
+    }
+    const posLoop = setInterval(positionOverlay, 300)
+    positionOverlay()
 
     return () => {
       alive = false
-      document.removeEventListener('keydown', captureAndRefocus, true)
-      clearInterval(setup)
-      clearTimeout(killSetup)
+      document.removeEventListener('keydown', markActivity, true)
+      document.removeEventListener('pointerdown', onPointer, true)
+      clearInterval(focusLoop)
+      clearInterval(posLoop)
     }
   }, [])
 
@@ -154,6 +119,35 @@ export default function ChatbotPage() {
           display: block !important;
         }
       `}</style>
+
+      {/*
+        Overlay that covers the Retell logo in the widget header.
+        Pointer-events: none so the close button (right side) still works.
+        Positioned dynamically via the effect above.
+      */}
+      <div
+        ref={overlayRef}
+        style={{
+          position: 'fixed',
+          zIndex: 40,
+          display: 'none',
+          alignItems: 'center',
+          gap: 8,
+          paddingLeft: 16,
+          background: '#0A1628',
+          borderBottom: '1px solid rgba(255,255,255,0.08)',
+          pointerEvents: 'none',
+          userSelect: 'none',
+        }}
+      >
+        <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#10B981', display: 'inline-block' }} />
+        <span style={{ color: '#F8FAFC', fontWeight: 700, fontSize: 14, fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          CareSync AI
+        </span>
+        <span style={{ color: 'rgba(248,250,252,0.4)', fontSize: 12, fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          · Clinic Assistant
+        </span>
+      </div>
 
       <div
         className="min-h-[100dvh] relative overflow-hidden"
