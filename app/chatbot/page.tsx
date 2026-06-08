@@ -5,77 +5,116 @@ import { motion } from 'framer-motion'
 import Script from 'next/script'
 import Nav from '@/components/Nav'
 
+// ── Shadow DOM helpers ────────────────────────────────────────────────────────
+
+function getShadow(): ShadowRoot | null {
+  const host = document.querySelector('retell-chat') as (HTMLElement & { shadowRoot: ShadowRoot | null }) | null
+  return host?.shadowRoot ?? null
+}
+
+/** Inject a <style> sheet into the shadow root (only works if shadow is open) */
+function injectShadowCSS(css: string) {
+  const shadow = getShadow()
+  if (!shadow) return false
+  // Avoid duplicate injections
+  if (shadow.querySelector('#pcc-overrides')) return true
+  const s = document.createElement('style')
+  s.id = 'pcc-overrides'
+  s.textContent = css
+  shadow.appendChild(s)
+  return true
+}
+
+/** Click a button inside the shadow DOM that contains the given text */
+function clickShadowButton(text: string): boolean {
+  const shadow = getShadow()
+  if (!shadow) return false
+  const btns = Array.from(shadow.querySelectorAll('button, [role="button"], a'))
+  const match = btns.find(b => b.textContent?.toLowerCase().includes(text.toLowerCase())) as HTMLElement | undefined
+  if (match) { match.click(); return true }
+  return false
+}
+
+const HIDE_BRANDING_CSS = `
+  /* ── Hide Retell logo in header ── */
+  img[src*="retell" i],
+  img[alt*="retell" i],
+  svg[class*="logo" i],
+  [class*="retell-logo"],
+  [class*="logo"][class*="retell"],
+  header img, header svg { display: none !important; }
+
+  /* ── Hide "Powered by Retell" footer ── */
+  a[href*="retell.ai"],
+  [class*="powered"],
+  [class*="PoweredBy"],
+  footer, [class*="footer"] { display: none !important; }
+`
+
 export default function ChatbotPage() {
 
   useEffect(() => {
     let alive = true
-    // The actual live input element captured from a real keydown event.
-    // composedPath() pierces closed shadow DOM boundaries — nothing else does.
     let lastInput: HTMLElement | null = null
+    let brandingHidden = false
+    let inboxCleared = false
 
+    // ── 1. composedPath focus fix (Enter refocus) ─────────────────────────
     const captureAndRefocus = (e: KeyboardEvent) => {
-      // Walk the composed path to find the input the user is actually typing in
       const path = e.composedPath() as EventTarget[]
       const found = path.find(
         t => t instanceof HTMLInputElement || t instanceof HTMLTextAreaElement
       ) as HTMLElement | undefined
-
-      // Always update our ref to the freshest connected input
       if (found?.isConnected) lastInput = found
 
-      // After Enter: refocus at multiple delays — widget may take time to re-render
       if (e.key === 'Enter' && lastInput) {
         const captured = lastInput
         ;[80, 200, 380, 600, 900, 1300].forEach(ms =>
           setTimeout(() => {
             if (!alive) return
-            // If original element still in DOM, reuse it
             if (captured.isConnected) { captured.focus(); return }
-            // Otherwise use the freshest ref we have
             if (lastInput?.isConnected) lastInput.focus()
           }, ms)
         )
       }
     }
-
-    // Capture phase so we get the event before anything else
     document.addEventListener('keydown', captureAndRefocus, true)
 
-    // ── Fallback for initial page load (before first keystroke) ──────────
-    // Poll for the retell-chat host, then try open shadowRoot first,
-    // then simulate a click near the bottom of the widget where input lives.
-    const initPoll = setInterval(() => {
+    // ── 2. Main setup loop — runs until both goals achieved ───────────────
+    const setup = setInterval(() => {
       if (!alive) return
-      const host = document.querySelector('retell-chat') as HTMLElement & { shadowRoot: ShadowRoot | null } | null
+      const host = document.querySelector('retell-chat')
       if (!host) return
-      clearInterval(initPoll)
 
-      const tryInitFocus = () => {
-        if (!alive) return
-        // Open shadow DOM — might work
-        const shadow = host.shadowRoot
-        if (shadow) {
-          const el = shadow.querySelector<HTMLElement>('input, textarea')
-          if (el) { el.focus(); return }
-        }
-        // Simulate a click at the bottom-center of the widget
-        // (that's where Retell puts the text input)
-        const rect = host.getBoundingClientRect()
-        if (rect.width === 0) return // not rendered yet
-        const x = rect.left + rect.width / 2
-        const y = rect.bottom - 50
-        const el = document.elementFromPoint(x, y) as HTMLElement | null
-        el?.click()
-        el?.focus()
+      // Hide Retell branding (shadow CSS injection)
+      if (!brandingHidden) {
+        brandingHidden = injectShadowCSS(HIDE_BRANDING_CSS)
       }
 
-      ;[600, 1200, 2000].forEach(ms => setTimeout(tryInitFocus, ms))
-    }, 250)
+      // Auto-click "Send New Message" to skip the inbox conversation list
+      if (!inboxCleared) {
+        const clicked = clickShadowButton('new message') || clickShadowButton('new chat') || clickShadowButton('start')
+        if (clicked) inboxCleared = true
+      }
+
+      // Initial focus
+      if (!lastInput) {
+        const shadow = getShadow()
+        const input = shadow?.querySelector<HTMLElement>('input, textarea')
+        if (input) { input.focus(); lastInput = input }
+      }
+
+      if (brandingHidden && inboxCleared) clearInterval(setup)
+    }, 300)
+
+    // Stop trying after 15s
+    const killSetup = setTimeout(() => clearInterval(setup), 15000)
 
     return () => {
       alive = false
       document.removeEventListener('keydown', captureAndRefocus, true)
-      clearInterval(initPoll)
+      clearInterval(setup)
+      clearTimeout(killSetup)
     }
   }, [])
 
