@@ -7,11 +7,60 @@
 :root { --ease-spring: cubic-bezier(0.32, 0.72, 0, 1); }
 html { scroll-behavior: smooth; }
 body {
-  background: #F8FAFC;
-  color: #0F172A;
+  background: #050B18;
+  color: #F8FAFC;
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+/* ============================================================
+   SCROLL SECTION TRANSITIONS
+   ============================================================ */
+
+/* Each section fades + slides up as it enters viewport */
+.section-enter {
+  opacity: 0;
+  transform: translateY(48px);
+  filter: blur(6px);
+  transition:
+    opacity 0.85s cubic-bezier(0.32, 0.72, 0, 1),
+    transform 0.85s cubic-bezier(0.32, 0.72, 0, 1),
+    filter 0.85s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.section-enter.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+}
+
+/* Staggered child reveals inside any section */
+.stagger-child {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.7s cubic-bezier(0.32, 0.72, 0, 1),
+    transform 0.7s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.is-visible .stagger-child:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: none; }
+.is-visible .stagger-child:nth-child(2) { transition-delay: 0.12s; opacity: 1; transform: none; }
+.is-visible .stagger-child:nth-child(3) { transition-delay: 0.19s; opacity: 1; transform: none; }
+.is-visible .stagger-child:nth-child(4) { transition-delay: 0.26s; opacity: 1; transform: none; }
+.is-visible .stagger-child:nth-child(5) { transition-delay: 0.33s; opacity: 1; transform: none; }
+.is-visible .stagger-child:nth-child(6) { transition-delay: 0.40s; opacity: 1; transform: none; }
+
+/* Section divider glow line */
+.section-glow-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(59,142,240,0.4) 30%, rgba(16,185,129,0.3) 70%, transparent 100%);
+  position: relative;
+}
+.section-glow-divider::after {
+  content: '';
+  position: absolute;
+  inset: -1px 20% -1px 20%;
+  background: linear-gradient(90deg, transparent, rgba(59,142,240,0.6), rgba(16,185,129,0.4), transparent);
+  filter: blur(4px);
 }
 
 ::selection { background: rgba(59,142,240,0.18); color: #0F172A; }
