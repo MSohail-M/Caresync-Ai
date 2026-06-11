@@ -116,7 +116,7 @@ export default function Trust() {
             transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#BBF7D0] bg-[#F0FDF4] mb-6">
-              <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#10B981]">Built for Healthcare</span>
+              <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#16A34A]">Built for Healthcare</span>
             </div>
           </motion.div>
           <motion.h2
@@ -127,7 +127,7 @@ export default function Trust() {
             className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight max-w-3xl mx-auto text-[#0F172A]"
           >
             Designed With Patient Privacy{' '}
-            <span className="font-serif italic text-[#10B981]">at the Core</span>
+            <span className="font-serif italic text-[#16A34A]">at the Core</span>
           </motion.h2>
         </div>
 
@@ -160,7 +160,7 @@ export default function Trust() {
               transition={{ duration: 0.6, delay: i * 0.07, ease: [0.32, 0.72, 0, 1] }}
               className="group"
             >
-              <div className="p-1.5 rounded-[2rem] bg-[#0F172A]/[0.04] ring-1 ring-[#0F172A]/[0.06] h-full group-hover:ring-[#10B981]/25 transition-all duration-700">
+              <div className="p-1.5 rounded-[2rem] bg-[#0F172A]/[0.04] ring-1 ring-[#0F172A]/[0.06] h-full group-hover:ring-[#16A34A]/25 transition-all duration-700">
                 <div
                   className="rounded-[calc(2rem-6px)] bg-white p-6 h-full shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_1px_3px_rgba(15,23,42,0.06)]"
                   style={{ borderTop: '2px solid #BBF7D0' }}

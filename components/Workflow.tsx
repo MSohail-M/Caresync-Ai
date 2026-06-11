@@ -7,14 +7,14 @@ const nodes = [
   {
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <path d="M5 7A2 2 0 017 5h2.5a2 2 0 011.93 1.48L12.4 10a2 2 0 01-.57 2L10.3 13.47A12 12 0 0014.53 17.7l1.47-1.53a2 2 0 012-.57l3.52.97A2 2 0 0123 18.5V21a2 2 0 01-2 2C10.955 23 5 17.045 5 9.5V7z" stroke="#3B8EF0" strokeWidth="1.2" strokeLinecap="round"/>
+        <path d="M5 7A2 2 0 017 5h2.5a2 2 0 011.93 1.48L12.4 10a2 2 0 01-.57 2L10.3 13.47A12 12 0 0014.53 17.7l1.47-1.53a2 2 0 012-.57l3.52.97A2 2 0 0123 18.5V21a2 2 0 01-2 2C10.955 23 5 17.045 5 9.5V7z" stroke="#22C55E" strokeWidth="1.2" strokeLinecap="round"/>
       </svg>
     ),
     label: 'Phone Call',
     desc: 'Patient dials clinic number',
-    color: '#3B8EF0',
-    bg: '#EFF6FF',
-    border: '#BFDBFE',
+    color: '#22C55E',
+    bg: '#F0FDF4',
+    border: '#86EFAC',
   },
   {
     icon: (
@@ -33,16 +33,16 @@ const nodes = [
   {
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <rect x="4" y="6" width="20" height="16" rx="3" stroke="#3B8EF0" strokeWidth="1.2"/>
-        <path d="M4 11h20" stroke="#3B8EF0" strokeWidth="1.2"/>
-        <path d="M9 16h2M13 16h2M17 16h2M9 19h6" stroke="#3B8EF0" strokeWidth="1.2" strokeLinecap="round"/>
+        <rect x="4" y="6" width="20" height="16" rx="3" stroke="#22C55E" strokeWidth="1.2"/>
+        <path d="M4 11h20" stroke="#22C55E" strokeWidth="1.2"/>
+        <path d="M9 16h2M13 16h2M17 16h2M9 19h6" stroke="#22C55E" strokeWidth="1.2" strokeLinecap="round"/>
       </svg>
     ),
     label: 'Automation Layer',
     desc: 'n8n / logic processing',
-    color: '#3B8EF0',
-    bg: '#EFF6FF',
-    border: '#BFDBFE',
+    color: '#22C55E',
+    bg: '#F0FDF4',
+    border: '#86EFAC',
   },
   {
     icon: (
@@ -61,15 +61,15 @@ const nodes = [
   {
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <path d="M5 5h18a2 2 0 012 2v11a2 2 0 01-2 2H8l-5 5V7a2 2 0 012-2z" stroke="#3B8EF0" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M10 12h8M10 16h4" stroke="#3B8EF0" strokeWidth="1.2" strokeLinecap="round"/>
+        <path d="M5 5h18a2 2 0 012 2v11a2 2 0 01-2 2H8l-5 5V7a2 2 0 012-2z" stroke="#22C55E" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M10 12h8M10 16h4" stroke="#22C55E" strokeWidth="1.2" strokeLinecap="round"/>
       </svg>
     ),
     label: 'SMS Confirmation',
     desc: 'Patient notified instantly',
-    color: '#3B8EF0',
-    bg: '#EFF6FF',
-    border: '#BFDBFE',
+    color: '#22C55E',
+    bg: '#F0FDF4',
+    border: '#86EFAC',
   },
 ]
 
@@ -93,8 +93,8 @@ export default function Workflow() {
             className="absolute inset-0 pointer-events-none"
             style={{
               backgroundImage: `
-                linear-gradient(rgba(59,142,240,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59,142,240,0.05) 1px, transparent 1px)
+                linear-gradient(rgba(34,197,94,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(34,197,94,0.05) 1px, transparent 1px)
               `,
               backgroundSize: '60px 60px',
               transform: 'perspective(600px) rotateX(55deg) scaleX(2.8)',
@@ -104,7 +104,7 @@ export default function Workflow() {
           />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, white 0%, transparent 25%)' }} />
         </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px]" style={{ background: 'radial-gradient(ellipse, rgba(59,142,240,0.05) 0%, transparent 70%)' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px]" style={{ background: 'radial-gradient(ellipse, rgba(34,197,94,0.05) 0%, transparent 70%)' }} />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -127,7 +127,7 @@ export default function Workflow() {
             className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight max-w-3xl mx-auto text-[#0F172A]"
           >
             Secure, Validated, and Connected to{' '}
-            <span className="font-serif italic text-[#3B8EF0]">Your Clinic Systems</span>
+            <span className="font-serif italic text-[#22C55E]">Your Clinic Systems</span>
           </motion.h2>
         </div>
 
@@ -143,7 +143,7 @@ export default function Workflow() {
             <div key={node.label} className="flex flex-col md:flex-row items-center flex-1">
               <div className="flex-1 w-full">
                 <TiltCard intensity={8} glowColor={`${node.color}15`} className="h-full">
-                  <div className="p-1.5 rounded-[1.75rem] bg-[#0F172A]/[0.04] ring-1 ring-[#0F172A]/[0.06] transition-all duration-500 hover:ring-[#3B8EF0]/20">
+                  <div className="p-1.5 rounded-[1.75rem] bg-[#0F172A]/[0.04] ring-1 ring-[#0F172A]/[0.06] transition-all duration-500 hover:ring-[#22C55E]/20">
                     <div className="rounded-[calc(1.75rem-6px)] bg-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_1px_3px_rgba(15,23,42,0.06)] p-5 flex flex-col items-center text-center gap-3">
                       <div
                         className="w-14 h-14 rounded-2xl flex items-center justify-center"
@@ -171,10 +171,10 @@ export default function Workflow() {
                   <div className="md:hidden w-px h-full bg-[#E2E8F0]" />
                   {/* Glowing traveling dot */}
                   <div
-                    className="absolute w-1.5 h-1.5 rounded-full bg-[#3B8EF0]"
+                    className="absolute w-1.5 h-1.5 rounded-full bg-[#22C55E]"
                     style={{
                       animation: `traveling-dot 2s ease-in-out infinite ${i * 0.4}s`,
-                      boxShadow: '0 0 8px rgba(59,142,240,0.8)',
+                      boxShadow: '0 0 8px rgba(34,197,94,0.8)',
                     }}
                   />
                   <svg className="absolute hidden md:block right-0" width="6" height="10" viewBox="0 0 6 10" fill="none">
@@ -203,7 +203,7 @@ export default function Workflow() {
                 </svg>
               </div>
               <p className="text-sm text-[#374151] leading-relaxed">
-                <span className="font-semibold text-[#10B981]">Safety first: </span>
+                <span className="font-semibold text-[#16A34A]">Safety first: </span>
                 AI does not take unsafe or unvalidated actions. Every booking is confirmed before completion. Human escalation is always available for clinical questions, emergencies, or sensitive requests.
               </p>
             </div>
@@ -223,7 +223,7 @@ export default function Workflow() {
             {integrations.map((integration) => (
               <span
                 key={integration}
-                className="px-3 py-1.5 rounded-full border border-[#E2E8F0] bg-[#F8FAFC] text-xs text-[#64748B] font-medium hover:border-[#3B8EF0]/30 hover:bg-[#EFF6FF] transition-all duration-300"
+                className="px-3 py-1.5 rounded-full border border-[#E2E8F0] bg-[#F8FAFC] text-xs text-[#64748B] font-medium hover:border-[#22C55E]/30 hover:bg-[#F0FDF4] transition-all duration-300"
               >
                 {integration}
               </span>

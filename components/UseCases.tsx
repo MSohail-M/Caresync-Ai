@@ -31,7 +31,7 @@ export default function UseCases() {
           alt=""
           className="w-full h-full object-cover object-center opacity-[0.05]"
         />
-        <div className="absolute top-1/3 left-0 w-[400px] h-[400px]" style={{ background: 'radial-gradient(circle, rgba(59,142,240,0.06) 0%, transparent 70%)' }} />
+        <div className="absolute top-1/3 left-0 w-[400px] h-[400px]" style={{ background: 'radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 70%)' }} />
         <div className="absolute bottom-1/3 right-0 w-[400px] h-[400px]" style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%)' }} />
       </div>
 
@@ -45,9 +45,9 @@ export default function UseCases() {
             className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-[#0F172A]"
           >
             Built for{' '}
-            <span className="font-serif italic text-[#3B8EF0]">Dental Offices</span>
+            <span className="font-serif italic text-[#22C55E]">Dental Offices</span>
             {' '}&{' '}
-            <span className="font-serif italic text-[#10B981]">Primary Care</span>
+            <span className="font-serif italic text-[#16A34A]">Primary Care</span>
           </motion.h2>
 
           {/* Tab toggle */}
@@ -62,7 +62,7 @@ export default function UseCases() {
               onClick={() => setActive('dental')}
               className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
                 active === 'dental'
-                  ? 'bg-[#3B8EF0] text-white shadow-[0_2px_12px_rgba(59,142,240,0.35)]'
+                  ? 'bg-[#22C55E] text-white shadow-[0_2px_12px_rgba(34,197,94,0.35)]'
                   : 'text-[#64748B] hover:text-[#0F172A]'
               }`}
             >
@@ -72,7 +72,7 @@ export default function UseCases() {
               onClick={() => setActive('primary')}
               className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
                 active === 'primary'
-                  ? 'bg-[#10B981] text-white shadow-[0_2px_12px_rgba(16,185,129,0.35)]'
+                  ? 'bg-[#16A34A] text-white shadow-[0_2px_12px_rgba(16,185,129,0.35)]'
                   : 'text-[#64748B] hover:text-[#0F172A]'
               }`}
             >
@@ -90,8 +90,8 @@ export default function UseCases() {
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
             >
-              <div className="p-1.5 rounded-[2rem] bg-[#0F172A]/[0.04] ring-1 ring-[#BFDBFE]">
-                <div className="rounded-[calc(2rem-6px)] bg-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_1px_3px_rgba(15,23,42,0.06)] p-8 md:p-12" style={{ borderTop: '2px solid #BFDBFE' }}>
+              <div className="p-1.5 rounded-[2rem] bg-[#0F172A]/[0.04] ring-1 ring-[#86EFAC]">
+                <div className="rounded-[calc(2rem-6px)] bg-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_1px_3px_rgba(15,23,42,0.06)] p-8 md:p-12" style={{ borderTop: '2px solid #86EFAC' }}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
                     <div>
                       <div className="text-4xl mb-4">🦷</div>
@@ -106,7 +106,7 @@ export default function UseCases() {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.5, delay: i * 0.1, ease: [0.32, 0.72, 0, 1] }}
-                            className="flex items-start gap-3 p-3 rounded-2xl bg-[#EFF6FF] border border-[#BFDBFE]"
+                            className="flex items-start gap-3 p-3 rounded-2xl bg-[#F0FDF4] border border-[#86EFAC]"
                           >
                             <span className="text-sm mt-0.5">{step.icon}</span>
                             <span className="text-sm text-[#374151] leading-relaxed">{step.text}</span>
@@ -115,8 +115,8 @@ export default function UseCases() {
                       </div>
                     </div>
                     <div className="flex flex-col gap-4">
-                      <div className="p-5 rounded-3xl bg-[#F0F7FF] border border-[#BFDBFE]">
-                        <div className="text-xs text-[#3B8EF0] uppercase tracking-widest font-semibold mb-3">Live Transcript Sample</div>
+                      <div className="p-5 rounded-3xl bg-[#F0FDF4] border border-[#86EFAC]">
+                        <div className="text-xs text-[#22C55E] uppercase tracking-widest font-semibold mb-3">Live Transcript Sample</div>
                         <div className="space-y-2">
                           {[
                             { side: 'patient', text: 'Hi, I need to book a cleaning for next week.' },
@@ -129,7 +129,7 @@ export default function UseCases() {
                                 className={`max-w-[85%] px-3 py-2 rounded-2xl text-xs leading-relaxed ${
                                   msg.side === 'ai'
                                     ? 'bg-[#F1F5F9] text-[#0F172A] rounded-tl-sm'
-                                    : 'bg-[#EFF6FF] text-[#1D4ED8] border border-[#BFDBFE] rounded-tr-sm'
+                                    : 'bg-[#F0FDF4] text-[#166534] border border-[#86EFAC] rounded-tr-sm'
                                 }`}
                               >
                                 {msg.text}
@@ -140,8 +140,8 @@ export default function UseCases() {
                       </div>
                       <div className="p-4 rounded-3xl bg-[#F0FDF4] border border-[#BBF7D0]">
                         <div className="flex items-center gap-2 mb-2">
-                          <div className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-                          <span className="text-xs text-[#10B981] font-semibold uppercase tracking-wide">Appointment Booked</span>
+                          <div className="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse" />
+                          <span className="text-xs text-[#16A34A] font-semibold uppercase tracking-wide">Appointment Booked</span>
                         </div>
                         <div className="text-sm text-[#0F172A] font-semibold">Alex Williams — Cleaning</div>
                         <div className="text-xs text-[#64748B] mt-0.5">Tuesday · 2:00 PM · Dr. Martinez</div>
@@ -187,12 +187,12 @@ export default function UseCases() {
                     </div>
                     <div className="flex flex-col gap-4">
                       <div className="p-5 rounded-3xl bg-[#F0FDF4] border border-[#BBF7D0]">
-                        <div className="text-xs text-[#10B981] uppercase tracking-widest font-semibold mb-3">Smart Routing Logic</div>
+                        <div className="text-xs text-[#16A34A] uppercase tracking-widest font-semibold mb-3">Smart Routing Logic</div>
                         <div className="space-y-2">
                           {[
                             { type: 'Routine Visit', action: 'Auto-book', color: '#10B981', bg: '#F0FDF4', border: '#BBF7D0' },
                             { type: 'Urgent / Same-day', action: 'Escalate to staff', color: '#D97706', bg: '#FFFBEB', border: '#FDE68A' },
-                            { type: 'Lab Results', action: 'Transfer to nurse', color: '#3B8EF0', bg: '#EFF6FF', border: '#BFDBFE' },
+                            { type: 'Lab Results', action: 'Transfer to nurse', color: '#22C55E', bg: '#F0FDF4', border: '#86EFAC' },
                             { type: 'Emergency', action: 'Immediate handoff', color: '#EF4444', bg: '#FEF2F2', border: '#FECACA' },
                           ].map((route, i) => (
                             <div key={i} className="flex items-center justify-between px-3 py-2 rounded-xl" style={{ background: route.bg, border: `1px solid ${route.border}` }}>
@@ -204,10 +204,10 @@ export default function UseCases() {
                           ))}
                         </div>
                       </div>
-                      <div className="p-4 rounded-3xl bg-[#EFF6FF] border border-[#BFDBFE]">
+                      <div className="p-4 rounded-3xl bg-[#F0FDF4] border border-[#86EFAC]">
                         <div className="flex items-center gap-2 mb-2">
-                          <div className="w-2 h-2 rounded-full bg-[#3B8EF0] animate-pulse" />
-                          <span className="text-xs text-[#3B8EF0] font-semibold uppercase tracking-wide">Reminder Sent</span>
+                          <div className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse" />
+                          <span className="text-xs text-[#22C55E] font-semibold uppercase tracking-wide">Reminder Sent</span>
                         </div>
                         <div className="text-xs text-[#374151] leading-relaxed">
                           "Your appointment with Dr. Johnson is tomorrow at 10:30 AM. Reply 1 to confirm, 2 to cancel."

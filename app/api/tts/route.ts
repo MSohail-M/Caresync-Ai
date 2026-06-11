@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-// Sarah – professional female AI receptionist voice
-const AI_VOICE_ID = 'EXAVITQu4vr4xnSDxMaL'
-// Adam – male patient voice (free ElevenLabs voice)
-const PATIENT_VOICE_ID = 'pNInz6obpgDQGcFmaJgB'
+// Bella – warm, bright, professional American female (AI receptionist)
+const AI_VOICE_ID = 'hpp4J3VqNfWAUOO0d1Us'
+// Roger – easy-going, casual American male (patient caller)
+const PATIENT_VOICE_ID = 'CwhRBWXzGAHq8TQ4Fs17'
 
 export async function POST(request: NextRequest) {
   const { text, speaker } = await request.json() as { text: string; speaker: string }
@@ -28,9 +28,9 @@ export async function POST(request: NextRequest) {
         text,
         model_id: 'eleven_turbo_v2_5',
         voice_settings: {
-          stability: 0.48,
-          similarity_boost: 0.78,
-          style: 0.0,
+          stability: 0.42,          // lower = more expressive, natural cadence
+          similarity_boost: 0.85,   // stays true to the chosen voice
+          style: 0.15,              // slight style boost for personality
           use_speaker_boost: true,
         },
       }),

@@ -11,7 +11,7 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="relative border-t border-white/[0.06] py-16 overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 100%, rgba(59,142,240,0.03) 0%, transparent 60%)' }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 100%, rgba(34,197,94,0.03) 0%, transparent 60%)' }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
@@ -19,8 +19,8 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-3">
               <div className="relative w-2 h-2">
-                <span className="absolute inset-0 rounded-full bg-[#10B981]" />
-                <span className="absolute inset-0 rounded-full bg-[#10B981] animate-pulse" />
+                <span className="absolute inset-0 rounded-full bg-[#16A34A]" />
+                <span className="absolute inset-0 rounded-full bg-[#16A34A] animate-pulse" />
               </div>
               <span className="text-base font-bold text-[#F8FAFC]">CareSync AI</span>
             </div>

@@ -194,9 +194,9 @@ export default function Demo() {
   }, [stopDemo, triggerDemo])
 
   return (
-    <section className="py-24 md:py-32 relative bg-[#F0F7FF]" id="demo">
+    <section className="py-24 md:py-32 relative bg-[#F0FDF4]" id="demo">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px]" style={{ background: 'radial-gradient(ellipse, rgba(59,142,240,0.07) 0%, transparent 70%)' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px]" style={{ background: 'radial-gradient(ellipse, rgba(34,197,94,0.07) 0%, transparent 70%)' }} />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -207,8 +207,8 @@ export default function Demo() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#BFDBFE] bg-[#EFF6FF] mb-6">
-              <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#3B8EF0]">Hear It Live</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#86EFAC] bg-[#F0FDF4] mb-6">
+              <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#22C55E]">Hear It Live</span>
             </div>
           </motion.div>
           <motion.h2
@@ -219,7 +219,7 @@ export default function Demo() {
             className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-[#0F172A]"
           >
             Listen to CareSync AI Handle{' '}
-            <span className="font-serif italic text-[#3B8EF0]">a Real Booking</span>
+            <span className="font-serif italic text-[#22C55E]">a Real Booking</span>
           </motion.h2>
 
           <motion.div
@@ -232,7 +232,7 @@ export default function Demo() {
             <button
               onClick={triggerDemo}
               disabled={isPlaying && isLoading}
-              className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#3B8EF0] hover:bg-[#2d7de0] disabled:opacity-70 text-white font-semibold text-base transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shadow-[0_4px_24px_rgba(59,142,240,0.45)]"
+              className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#22C55E] hover:bg-[#16A34A] disabled:opacity-70 text-white font-semibold text-base transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shadow-[0_4px_24px_rgba(34,197,94,0.45)]"
             >
               <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                 {isLoading ? (
@@ -255,8 +255,8 @@ export default function Demo() {
             {useElevenLabs && (
               <div className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full border border-[#E2E8F0] bg-white text-xs text-[#64748B] shadow-sm">
                 <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-                  <circle cx="5.5" cy="5.5" r="4.5" stroke="#3B8EF0" strokeWidth="1"/>
-                  <path d="M3.5 5.5c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z" fill="#3B8EF0"/>
+                  <circle cx="5.5" cy="5.5" r="4.5" stroke="#22C55E" strokeWidth="1"/>
+                  <path d="M3.5 5.5c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z" fill="#22C55E"/>
                 </svg>
                 ElevenLabs · Sarah (AI) + Adam (Patient)
               </div>
@@ -270,13 +270,13 @@ export default function Demo() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
         >
-          <div className="p-1.5 rounded-[2rem] bg-[#0F172A]/[0.04] ring-1 ring-[#0F172A]/[0.06]" style={{ boxShadow: '0 8px 60px rgba(59,142,240,0.1)' }}>
+          <div className="p-1.5 rounded-[2rem] bg-[#0F172A]/[0.04] ring-1 ring-[#0F172A]/[0.06]" style={{ boxShadow: '0 8px 60px rgba(34,197,94,0.1)' }}>
             <div className="rounded-[calc(2rem-6px)] bg-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_1px_3px_rgba(15,23,42,0.06)] overflow-hidden">
 
               {/* Top bar */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-[#E2E8F0]">
                 <div className="flex items-center gap-2">
-                  <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${isPlaying ? 'bg-[#10B981] animate-pulse' : 'bg-[#CBD5E1]'}`} />
+                  <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${isPlaying ? 'bg-[#16A34A] animate-pulse' : 'bg-[#CBD5E1]'}`} />
                   <span className="text-xs font-semibold text-[#64748B] uppercase tracking-widest">
                     {isLoading ? 'Loading...' : isPlaying ? 'Now Playing' : showBooking ? 'Completed' : 'Ready'}
                   </span>
@@ -299,7 +299,7 @@ export default function Demo() {
                       style={{
                         height: `${bar.height * 48}px`,
                         background: aiSpeaking
-                          ? `rgba(59,142,240,${0.4 + bar.height * 0.6})`
+                          ? `rgba(34,197,94,${0.4 + bar.height * 0.6})`
                           : isPlaying
                           ? `rgba(16,185,129,${0.2 + bar.height * 0.35})`
                           : `rgba(15,23,42,${0.05 + bar.height * 0.07})`,
@@ -332,9 +332,9 @@ export default function Demo() {
                       <div
                         className="w-6 h-6 rounded-full shrink-0 flex items-center justify-center text-[10px] font-bold mt-0.5"
                         style={{
-                          background: msg.speaker === 'ai' ? '#EFF6FF' : '#F1F5F9',
-                          color: msg.speaker === 'ai' ? '#3B8EF0' : '#64748B',
-                          border: `1px solid ${msg.speaker === 'ai' ? '#BFDBFE' : '#E2E8F0'}`,
+                          background: msg.speaker === 'ai' ? '#F0FDF4' : '#F1F5F9',
+                          color: msg.speaker === 'ai' ? '#22C55E' : '#64748B',
+                          border: `1px solid ${msg.speaker === 'ai' ? '#86EFAC' : '#E2E8F0'}`,
                         }}
                       >
                         {msg.speaker === 'ai' ? 'AI' : 'P'}
@@ -342,7 +342,7 @@ export default function Demo() {
                       <div
                         className={`max-w-[78%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
                           msg.speaker === 'ai'
-                            ? 'bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] rounded-tl-sm'
+                            ? 'bg-[#F0FDF4] border border-[#86EFAC] text-[#166534] rounded-tl-sm'
                             : 'bg-[#F1F5F9] border border-[#E2E8F0] text-[#374151] rounded-tr-sm'
                         }`}
                       >
@@ -381,7 +381,7 @@ export default function Demo() {
                         <div className="w-5 h-5 rounded-full bg-white border border-[#BBF7D0] flex items-center justify-center">
                           <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#10B981" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                         </div>
-                        <span className="text-xs font-semibold text-[#10B981] uppercase tracking-wide">Appointment Confirmed</span>
+                        <span className="text-xs font-semibold text-[#16A34A] uppercase tracking-wide">Appointment Confirmed</span>
                         <span className="ml-auto text-[10px] text-[#94A3B8]">SMS Sent ✓</span>
                       </div>
                       <div className="flex flex-wrap gap-x-4 gap-y-1">

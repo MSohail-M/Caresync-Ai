@@ -9,7 +9,7 @@ const plans = [
     name: 'Starter',
     price: { monthly: 1799, annual: 1439 },
     subtitle: 'Perfect for solo practitioners',
-    accent: '#3B8EF0',
+    accent: '#22C55E',
     featured: false,
     features: [
       '3,000 minutes / month included',
@@ -26,7 +26,7 @@ const plans = [
     name: 'Growth',
     price: { monthly: 399, annual: 319 },
     subtitle: 'For growing clinics',
-    accent: '#3B8EF0',
+    accent: '#22C55E',
     featured: true,
     badge: 'Most Popular',
     features: [
@@ -73,8 +73,8 @@ export default function Pricing() {
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(59,142,240,0.04) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(59,142,240,0.04) 1px, transparent 1px)
+              linear-gradient(rgba(34,197,94,0.04) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(34,197,94,0.04) 1px, transparent 1px)
             `,
             backgroundSize: '60px 60px',
             transform: 'perspective(600px) rotateX(55deg) scaleX(2.8)',
@@ -84,7 +84,7 @@ export default function Pricing() {
           }}
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #F8FAFC 0%, transparent 20%, transparent 80%, #F8FAFC 100%)' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px]" style={{ background: 'radial-gradient(ellipse, rgba(59,142,240,0.05) 0%, transparent 70%)' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px]" style={{ background: 'radial-gradient(ellipse, rgba(34,197,94,0.05) 0%, transparent 70%)' }} />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -107,7 +107,7 @@ export default function Pricing() {
             className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-8 text-[#0F172A]"
           >
             Start Small, Scale With{' '}
-            <span className="font-serif italic text-[#3B8EF0]">Your Clinic</span>
+            <span className="font-serif italic text-[#22C55E]">Your Clinic</span>
           </motion.h2>
 
           {/* Toggle */}
@@ -133,7 +133,7 @@ export default function Pricing() {
               }`}
             >
               Annual
-              <span className="px-1.5 py-0.5 rounded-full bg-[#F0FDF4] border border-[#BBF7D0] text-[#10B981] text-[10px] font-semibold">Save 20%</span>
+              <span className="px-1.5 py-0.5 rounded-full bg-[#F0FDF4] border border-[#BBF7D0] text-[#16A34A] text-[10px] font-semibold">Save 20%</span>
             </button>
           </motion.div>
         </div>
@@ -150,14 +150,14 @@ export default function Pricing() {
             >
               <TiltCard
                 intensity={plan.featured ? 8 : 12}
-                glowColor={plan.featured ? 'rgba(59,142,240,0.15)' : 'rgba(59,142,240,0.08)'}
+                glowColor={plan.featured ? 'rgba(34,197,94,0.15)' : 'rgba(34,197,94,0.08)'}
                 className="h-full"
               >
                 <div
                   className="p-1.5 rounded-[2rem] h-full flex flex-col transition-all duration-700 relative overflow-hidden"
                   style={plan.featured ? {
-                    background: 'rgba(59,142,240,0.06)',
-                    boxShadow: '0 0 60px rgba(59,142,240,0.2), 0 20px 60px rgba(59,142,240,0.1)',
+                    background: 'rgba(34,197,94,0.06)',
+                    boxShadow: '0 0 60px rgba(34,197,94,0.2), 0 20px 60px rgba(34,197,94,0.1)',
                   } : {
                     background: 'rgba(15,23,42,0.04)',
                     boxShadow: '0 0 0 1px rgba(15,23,42,0.06)',
@@ -168,7 +168,7 @@ export default function Pricing() {
                     <div
                       className="absolute inset-0 rounded-[2rem] pointer-events-none"
                       style={{
-                        background: 'linear-gradient(90deg, transparent, rgba(59,142,240,0.4), rgba(16,185,129,0.3), transparent)',
+                        background: 'linear-gradient(90deg, transparent, rgba(34,197,94,0.4), rgba(16,185,129,0.3), transparent)',
                         backgroundSize: '200% 100%',
                         animation: 'border-beam 3s linear infinite',
                         WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
@@ -183,11 +183,11 @@ export default function Pricing() {
                     className="rounded-[calc(2rem-6px)] p-7 h-full flex flex-col shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_1px_3px_rgba(15,23,42,0.06)]"
                     style={{
                       background: plan.featured
-                        ? 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)'
+                        ? 'linear-gradient(135deg, #F0FDF4 0%, #BBF7D0 100%)'
                         : plan.name === 'Enterprise'
                         ? 'linear-gradient(135deg, #F0FDF4 0%, #F8FAFC 60%)'
                         : '#FFFFFF',
-                      borderTop: plan.featured ? '2px solid #BFDBFE' : plan.name === 'Enterprise' ? '2px solid #BBF7D0' : '2px solid #E2E8F0',
+                      borderTop: plan.featured ? '2px solid #86EFAC' : plan.name === 'Enterprise' ? '2px solid #BBF7D0' : '2px solid #E2E8F0',
                     }}
                   >
                     {/* Badge */}
@@ -196,10 +196,10 @@ export default function Pricing() {
                         <span
                           className="px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wide text-white"
                           style={{
-                            background: 'linear-gradient(135deg, #3B8EF0 0%, #10B981 100%)',
+                            background: 'linear-gradient(135deg, #22C55E 0%, #10B981 100%)',
                             backgroundSize: '200% 200%',
                             animation: 'gradient-shift 3s ease infinite',
-                            boxShadow: '0 2px 12px rgba(59,142,240,0.35)',
+                            boxShadow: '0 2px 12px rgba(34,197,94,0.35)',
                           }}
                         >
                           {plan.badge}
@@ -260,9 +260,9 @@ export default function Pricing() {
                       href="#demo"
                       className={`group flex items-center justify-center gap-2 py-3 rounded-full font-semibold text-sm transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] ${
                         plan.ctaStyle === 'filled'
-                          ? 'bg-[#3B8EF0] hover:bg-[#2d7de0] text-white shadow-[0_0_20px_rgba(59,142,240,0.3)]'
+                          ? 'bg-[#22C55E] hover:bg-[#16A34A] text-white shadow-[0_0_20px_rgba(34,197,94,0.3)]'
                           : plan.ctaStyle === 'green'
-                          ? 'bg-[#10B981]/15 hover:bg-[#10B981]/25 text-[#10B981] border border-[#10B981]/25'
+                          ? 'bg-[#16A34A]/15 hover:bg-[#16A34A]/25 text-[#16A34A] border border-[#16A34A]/25'
                           : 'border border-[#E2E8F0] bg-[#F8FAFC] hover:bg-white text-[#374151]'
                       }`}
                     >
