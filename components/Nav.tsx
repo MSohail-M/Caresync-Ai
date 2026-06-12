@@ -39,10 +39,19 @@ export default function Nav() {
         >
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 px-3 py-1.5 mr-2">
-            <div className="relative w-2 h-2">
-              <span className="absolute inset-0 rounded-full bg-[#0284C7]" />
-              <span className="absolute inset-0 rounded-full bg-[#0284C7] animate-pulse-ring" />
-            </div>
+            <svg width="30" height="20" viewBox="0 0 70 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="navLogoG" x1="0" y1="0" x2="70" y2="44" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stopColor="#27AE60"/>
+                  <stop offset="50%" stopColor="#16A085"/>
+                  <stop offset="100%" stopColor="#1B6FA4"/>
+                </linearGradient>
+              </defs>
+              <ellipse cx="22" cy="22" rx="18" ry="13" stroke="#1B6FA4" strokeWidth="4" fill="none" opacity="0.7"/>
+              <ellipse cx="48" cy="22" rx="18" ry="13" stroke="#1B6FA4" strokeWidth="4" fill="none" opacity="0.7"/>
+              <path d="M35 22 C31 14 23 8 17 8 C9 8 4 14 4 22 C4 30 9 36 17 36 C23 36 31 30 35 22 Z" stroke="url(#navLogoG)" strokeWidth="4.5" fill="none"/>
+              <path d="M35 22 C39 14 47 8 53 8 C61 8 66 14 66 22 C66 30 61 36 53 36 C47 36 39 30 35 22 Z" stroke="url(#navLogoG)" strokeWidth="4.5" fill="none"/>
+            </svg>
             <span className="text-sm font-bold text-[#F8FAFC] tracking-tight">CareSync AI</span>
           </Link>
 

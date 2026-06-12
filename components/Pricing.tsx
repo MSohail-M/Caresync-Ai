@@ -24,13 +24,14 @@ const plans = [
   },
   {
     name: 'Growth',
-    price: { monthly: 399, annual: 319 },
+    price: { monthly: 2999, annual: 2399 },
     subtitle: 'For growing clinics',
     accent: '#0EA5E9',
     featured: true,
     badge: 'Most Popular',
     features: [
       'Everything in Starter',
+      'One-time setup: $3,999',
       'Live appointment booking',
       'Rescheduling & cancellation',
       'SMS reminders & confirmations',
