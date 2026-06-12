@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-const links = ['Features', 'How It Works', 'Use Cases', 'Pricing']
+const links = ['Features', 'How It Works', 'Use Cases']
 
 export default function Nav() {
   const [scrolled, setScrolled]   = useState(false)
@@ -72,26 +72,6 @@ export default function Nav() {
 
           {/* Desktop CTAs */}
           <div className="hidden md:flex items-center gap-2 ml-2">
-            {/* Chatbot button */}
-            <Link
-              href="/chatbot"
-              className={`flex items-center gap-2 pl-4 pr-2 py-2 rounded-full text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group active:scale-[0.98] ${
-                isChatbot
-                  ? 'bg-[#0284C7] text-white shadow-[0_2px_16px_rgba(56,189,248,0.45)]'
-                  : 'border border-white/10 bg-white/[0.06] text-[rgba(248,250,252,0.85)] hover:bg-white/[0.12] hover:border-white/20'
-              }`}
-            >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M2 2h10a1 1 0 011 1v6a1 1 0 01-1 1H5l-3 3V3a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              Chatbot
-              <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[1px] transition-transform duration-500">
-                <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
-                  <path d="M1.5 7.5L7.5 1.5M7.5 1.5H3M7.5 1.5V6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </span>
-            </Link>
-
             {/* Book a Demo */}
             {!isChatbot && (
               <a
@@ -146,26 +126,6 @@ export default function Nav() {
               </motion.a>
             ))}
 
-            {/* Chatbot link in mobile */}
-            <motion.div
-              initial={{ opacity: 0, y: 32 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 16 }}
-              transition={{ duration: 0.5, delay: (isChatbot ? 0 : links.length) * 0.07, ease: [0.32, 0.72, 0, 1] }}
-              className="mt-2"
-            >
-              <Link
-                href="/chatbot"
-                onClick={() => setMenuOpen(false)}
-                className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 bg-white/[0.06] text-white text-lg font-semibold"
-              >
-                <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 2h10a1 1 0 011 1v6a1 1 0 01-1 1H5l-3 3V3a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                Chatbot
-              </Link>
-            </motion.div>
-
             {!isChatbot && (
               <motion.a
                 href="/calendar"
@@ -173,7 +133,7 @@ export default function Nav() {
                 initial={{ opacity: 0, y: 32 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 16 }}
-                transition={{ duration: 0.5, delay: (links.length + 1) * 0.07, ease: [0.32, 0.72, 0, 1] }}
+                transition={{ duration: 0.5, delay: links.length * 0.07, ease: [0.32, 0.72, 0, 1] }}
                 className="mt-2 flex items-center gap-2 px-6 py-3 rounded-full bg-[#0EA5E9] text-white text-lg font-semibold shadow-[0_4px_24px_rgba(14,165,233,0.4)]"
               >
                 Book a Demo

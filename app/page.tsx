@@ -9,7 +9,6 @@ import UseCases from '@/components/UseCases'
 import ROI from '@/components/ROI'
 import Demo from '@/components/Demo'
 import Trust from '@/components/Trust'
-import Pricing from '@/components/Pricing'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 
@@ -40,7 +39,6 @@ export default function Home() {
         <Divider />
         <Trust />
         <Divider />
-        <Pricing />
         <CTA />
         <Footer />
       </main>
