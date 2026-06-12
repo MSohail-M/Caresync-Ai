@@ -4,12 +4,12 @@ import { useRef, useState } from 'react'
 import { motion, useScroll, AnimatePresence, useMotionValueEvent } from 'framer-motion'
 
 const steps = [
-  { id:'ring',   icon:'📞', title:'Patient Calls',         desc:'A patient dials your clinic number at any hour of the day or night.',                                       color:'#22C55E', angle: -90  },
-  { id:'ai',     icon:'🤖', title:'AI Answers Naturally',  desc:'CareSync AI picks up within 2 rings with a warm, clinic-trained voice. No hold music.',                    color:'#4ADE80', angle: -30  },
-  { id:'verify', icon:'✅', title:'Patient Verified',      desc:"AI collects name, DOB, and phone to confirm the patient's identity — instantly.",                           color:'#16A34A', angle:  30  },
-  { id:'book',   icon:'📅', title:'Appointment Booked',    desc:'AI checks real-time availability and books directly into your calendar. No staff needed.',                  color:'#22C55E', angle:  90  },
-  { id:'sms',    icon:'💬', title:'Confirmation SMS Sent', desc:'Patient gets an instant text with appointment details, address, and prep instructions.',                    color:'#4ADE80', angle: 150  },
-  { id:'log',    icon:'📋', title:'Everything Logged',     desc:'Every call is transcribed, summarized, and logged in your dashboard for staff review.',                    color:'#16A34A', angle: 210  },
+  { id:'ring',   icon:'📞', title:'Patient Calls',         desc:'A patient dials your clinic number at any hour of the day or night.',                                       color:'#0EA5E9', angle: -90  },
+  { id:'ai',     icon:'🤖', title:'AI Answers Naturally',  desc:'CareSync AI picks up within 2 rings with a warm, clinic-trained voice. No hold music.',                    color:'#38BDF8', angle: -30  },
+  { id:'verify', icon:'✅', title:'Patient Verified',      desc:"AI collects name, DOB, and phone to confirm the patient's identity — instantly.",                           color:'#0284C7', angle:  30  },
+  { id:'book',   icon:'📅', title:'Appointment Booked',    desc:'AI checks real-time availability and books directly into your calendar. No staff needed.',                  color:'#0EA5E9', angle:  90  },
+  { id:'sms',    icon:'💬', title:'Confirmation SMS Sent', desc:'Patient gets an instant text with appointment details, address, and prep instructions.',                    color:'#38BDF8', angle: 150  },
+  { id:'log',    icon:'📋', title:'Everything Logged',     desc:'Every call is transcribed, summarized, and logged in your dashboard for staff review.',                    color:'#0284C7', angle: 210  },
 ]
 
 // Phone screen content per step
@@ -18,8 +18,8 @@ const phonePanels: Record<string, React.ReactNode> = {
     <div className="flex flex-col items-center pt-6 px-3">
       <div className="text-[9px] text-[rgba(248,250,252,0.4)] uppercase tracking-widest mb-2">Incoming Call</div>
       <div className="relative flex items-center justify-center w-14 h-14 my-3">
-        <span className="absolute inset-0 rounded-full border border-[#22C55E]/30 animate-pulse-ring" />
-        <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg" style={{background:'rgba(34,197,94,0.12)',border:'1px solid rgba(34,197,94,0.2)'}}>👩‍⚕️</div>
+        <span className="absolute inset-0 rounded-full border border-[#0EA5E9]/30 animate-pulse-ring" />
+        <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg" style={{background:'rgba(14,165,233,0.12)',border:'1px solid rgba(14,165,233,0.2)'}}>👩‍⚕️</div>
       </div>
       <div className="text-sm font-bold text-[#F8FAFC] mb-0.5">Maria Chen</div>
       <div className="text-xs text-[rgba(248,250,252,0.4)]">Calling your clinic...</div>
@@ -27,11 +27,11 @@ const phonePanels: Record<string, React.ReactNode> = {
   ),
   ai: (
     <div className="flex flex-col items-center pt-5 px-3">
-      <div className="text-[9px] text-[#22C55E] uppercase tracking-widest font-semibold mb-2">AI Answering</div>
-      <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg mb-3" style={{background:'rgba(34,197,94,0.1)',border:'1px solid rgba(34,197,94,0.18)'}}>🤖</div>
+      <div className="text-[9px] text-[#0EA5E9] uppercase tracking-widest font-semibold mb-2">AI Answering</div>
+      <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg mb-3" style={{background:'rgba(14,165,233,0.1)',border:'1px solid rgba(14,165,233,0.18)'}}>🤖</div>
       <div className="flex items-center gap-0.5 h-8">
         {[0.4,0.8,1,0.7,0.5,0.9,0.6].map((h,i)=>(
-          <div key={i} className="w-1 rounded-full" style={{height:`${h*28}px`,background:`rgba(34,197,94,${0.4+h*0.6})`,animation:`waveform ${0.6+i*0.08}s ease-in-out infinite ${i*0.1}s`}}/>
+          <div key={i} className="w-1 rounded-full" style={{height:`${h*28}px`,background:`rgba(14,165,233,${0.4+h*0.6})`,animation:`waveform ${0.6+i*0.08}s ease-in-out infinite ${i*0.1}s`}}/>
         ))}
       </div>
       <div className="text-[10px] text-[rgba(248,250,252,0.4)] mt-2 text-center">&ldquo;How can I help?&rdquo;</div>
@@ -39,10 +39,10 @@ const phonePanels: Record<string, React.ReactNode> = {
   ),
   verify: (
     <div className="flex flex-col pt-4 gap-1.5 px-3">
-      <div className="text-[9px] text-[#16A34A] uppercase tracking-widest font-semibold mb-1">Verifying</div>
+      <div className="text-[9px] text-[#0284C7] uppercase tracking-widest font-semibold mb-1">Verifying</div>
       {['Maria Chen','Apr 12, 1988','✓ Confirmed'].map((item,i)=>(
-        <div key={i} className="flex items-center gap-1.5 px-2 py-1.5 rounded-xl" style={{background:'rgba(22,163,74,0.08)',border:'1px solid rgba(22,163,74,0.15)'}}>
-          <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2" stroke="#16A34A" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        <div key={i} className="flex items-center gap-1.5 px-2 py-1.5 rounded-xl" style={{background:'rgba(2,132,199,0.08)',border:'1px solid rgba(2,132,199,0.15)'}}>
+          <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2" stroke="#0284C7" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
           <span className="text-[10px] text-[rgba(248,250,252,0.7)]">{item}</span>
         </div>
       ))}
@@ -50,21 +50,21 @@ const phonePanels: Record<string, React.ReactNode> = {
   ),
   book: (
     <div className="flex flex-col pt-4 px-3">
-      <div className="text-[9px] text-[#22C55E] uppercase tracking-widest font-semibold mb-2">Booking...</div>
-      <div className="p-2.5 rounded-xl" style={{background:'rgba(34,197,94,0.08)',border:'1px solid rgba(34,197,94,0.15)'}}>
+      <div className="text-[9px] text-[#0EA5E9] uppercase tracking-widest font-semibold mb-2">Booking...</div>
+      <div className="p-2.5 rounded-xl" style={{background:'rgba(14,165,233,0.08)',border:'1px solid rgba(14,165,233,0.15)'}}>
         <div className="text-[9px] text-[rgba(248,250,252,0.35)] mb-1.5 uppercase tracking-widest">New Appointment</div>
         <div className="text-xs font-semibold text-[#F8FAFC]">Dr. Johnson</div>
         <div className="text-[10px] text-[rgba(248,250,252,0.5)] mt-0.5">March 15 · 10:30 AM</div>
         <div className="mt-1.5 flex items-center gap-1">
-          <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#22C55E" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          <span className="text-[9px] text-[#22C55E] font-semibold">Confirmed</span>
+          <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#0EA5E9" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <span className="text-[9px] text-[#0EA5E9] font-semibold">Confirmed</span>
         </div>
       </div>
     </div>
   ),
   sms: (
     <div className="flex flex-col pt-4 px-3">
-      <div className="text-[9px] text-[#4ADE80] uppercase tracking-widest font-semibold mb-2">SMS Sent ✓</div>
+      <div className="text-[9px] text-[#38BDF8] uppercase tracking-widest font-semibold mb-2">SMS Sent ✓</div>
       <div className="p-2.5 rounded-xl" style={{background:'rgba(255,255,255,0.04)',border:'1px solid rgba(255,255,255,0.07)'}}>
         <div className="text-[9px] text-[rgba(248,250,252,0.35)] mb-1.5">To: Maria · (555) 012-3456</div>
         <div className="text-[10px] text-[rgba(248,250,252,0.65)] leading-relaxed">✓ Appt: Dr. Johnson, Mar 15, 10:30 AM. Reply CANCEL to cancel.</div>
@@ -76,7 +76,7 @@ const phonePanels: Record<string, React.ReactNode> = {
       <div className="text-[9px] text-[rgba(248,250,252,0.35)] uppercase tracking-widest font-semibold mb-1">Call Log</div>
       {[{t:'10:14',a:'Answered'},{t:'10:15',a:'Verified'},{t:'10:16',a:'Booked'},{t:'10:16',a:'SMS sent'}].map((r,i)=>(
         <div key={i} className="flex items-center gap-1.5 px-2 py-1.5 rounded-xl" style={{background:'rgba(255,255,255,0.04)',border:'1px solid rgba(255,255,255,0.05)'}}>
-          <div className="w-1.5 h-1.5 rounded-full bg-[#16A34A]"/>
+          <div className="w-1.5 h-1.5 rounded-full bg-[#0284C7]"/>
           <span className="text-[9px] text-[rgba(248,250,252,0.3)] w-10 shrink-0">{r.t}</span>
           <span className="text-[10px] text-[rgba(248,250,252,0.6)]">{r.a}</span>
         </div>
@@ -86,7 +86,12 @@ const phonePanels: Record<string, React.ReactNode> = {
 }
 
 // Orbit radius responsive values (in px — we'll use CSS vars)
-const ORBIT_R = 200  // desktop orbit radius
+// Oval orbit: wider horizontally than tall
+const ORBIT_RX = 230  // horizontal radius
+const ORBIT_RY = 150  // vertical radius
+const ORBIT_PAD = 240
+const ORBIT_W = ORBIT_RX * 2 + ORBIT_PAD
+const ORBIT_H = ORBIT_RY * 2 + ORBIT_PAD
 
 export default function ScrollStory() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -104,7 +109,7 @@ export default function ScrollStory() {
     <section
       ref={containerRef}
       className="relative"
-      style={{ height: `${steps.length * 100}vh`, background: '#040D06' }}
+      style={{ height: `${steps.length * 100}vh`, background: '#050A18' }}
       id="how-it-works"
     >
       {/* ══ STICKY ORBIT VIEWPORT ══ */}
@@ -112,7 +117,7 @@ export default function ScrollStory() {
 
         {/* Background glow */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full" style={{background:'radial-gradient(circle, rgba(34,197,94,0.07) 0%, transparent 65%)',filter:'blur(60px)'}}/>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full" style={{background:'radial-gradient(circle, rgba(14,165,233,0.07) 0%, transparent 65%)',filter:'blur(60px)'}}/>
           <div className="ray-layer-a opacity-60"/>
           <div className="spotlight-glow opacity-40"/>
         </div>
@@ -125,43 +130,44 @@ export default function ScrollStory() {
           transition={{ duration:0.7 }}
           className="relative z-10 text-center mb-8 px-4"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(34,197,94,0.2)] bg-[rgba(34,197,94,0.06)] mb-4">
-            <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#22C55E]">How It Works</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(14,165,233,0.2)] bg-[rgba(14,165,233,0.06)] mb-4">
+            <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#0EA5E9]">How It Works</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-[#F8FAFC] tracking-tight">
             From First Ring to{' '}
-            <span className="font-serif italic text-gradient-green">Booked Appointment</span>
+            <span className="font-serif italic text-gradient-blue">Booked Appointment</span>
           </h2>
         </motion.div>
 
         {/* ══ ORBIT SYSTEM ══ */}
-        <div className="relative flex items-center justify-center" style={{ width: ORBIT_R * 2 + 240, height: ORBIT_R * 2 + 240 }}>
+        <div className="relative flex items-center justify-center" style={{ width: ORBIT_W, height: ORBIT_H }}>
 
-          {/* Orbit ring — dashed circle */}
+          {/* Orbit ring — dashed oval */}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none"
-            viewBox={`0 0 ${ORBIT_R*2+240} ${ORBIT_R*2+240}`}
+            viewBox={`0 0 ${ORBIT_W} ${ORBIT_H}`}
           >
-            <circle
-              cx={(ORBIT_R*2+240)/2}
-              cy={(ORBIT_R*2+240)/2}
-              r={ORBIT_R}
+            <ellipse
+              cx={ORBIT_W/2}
+              cy={ORBIT_H/2}
+              rx={ORBIT_RX}
+              ry={ORBIT_RY}
               fill="none"
-              stroke="rgba(34,197,94,0.12)"
+              stroke="rgba(14,165,233,0.12)"
               strokeWidth="1"
               strokeDasharray="6 8"
             />
             {/* Rotating glow dot on the orbit ring */}
             {steps.map((s, i) => {
               const rad = ((s.angle - 90) * Math.PI) / 180
-              const cx = (ORBIT_R*2+240)/2 + ORBIT_R * Math.cos(rad)
-              const cy = (ORBIT_R*2+240)/2 + ORBIT_R * Math.sin(rad)
+              const cx = ORBIT_W/2 + ORBIT_RX * Math.cos(rad)
+              const cy = ORBIT_H/2 + ORBIT_RY * Math.sin(rad)
               const isActive = i === activeIdx
               return (
                 <circle
                   key={i}
                   cx={cx} cy={cy} r={isActive ? 6 : 3}
-                  fill={isActive ? s.color : 'rgba(34,197,94,0.25)'}
+                  fill={isActive ? s.color : 'rgba(14,165,233,0.25)'}
                   style={{ filter: isActive ? `drop-shadow(0 0 8px ${s.color})` : 'none', transition: 'all 0.5s ease' }}
                 />
               )
@@ -170,11 +176,11 @@ export default function ScrollStory() {
             {(() => {
               const s = steps[activeIdx]
               const rad = ((s.angle - 90) * Math.PI) / 180
-              const cx = (ORBIT_R*2+240)/2 + ORBIT_R * Math.cos(rad)
-              const cy = (ORBIT_R*2+240)/2 + ORBIT_R * Math.sin(rad)
+              const cx = ORBIT_W/2 + ORBIT_RX * Math.cos(rad)
+              const cy = ORBIT_H/2 + ORBIT_RY * Math.sin(rad)
               return (
                 <line
-                  x1={(ORBIT_R*2+240)/2} y1={(ORBIT_R*2+240)/2}
+                  x1={ORBIT_W/2} y1={ORBIT_H/2}
                   x2={cx} y2={cy}
                   stroke={`${s.color}30`}
                   strokeWidth="1"
@@ -186,14 +192,25 @@ export default function ScrollStory() {
 
           {/* CENTER: Phone mockup */}
           <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex:5 }}>
-            <div className="p-1.5 rounded-[2rem]" style={{ background:'rgba(34,197,94,0.05)', boxShadow:`0 0 0 1px rgba(34,197,94,0.15), 0 20px 60px rgba(34,197,94,0.1), 0 40px 80px rgba(0,0,0,0.5)` }}>
-              <div className="rounded-[calc(2rem-6px)] bg-[#071209] overflow-hidden shadow-[inset_0_1px_1px_rgba(74,222,128,0.08)]" style={{ width:180, minHeight:300 }}>
+            <div className="p-1.5 rounded-[2rem]" style={{ background:'rgba(14,165,233,0.05)', boxShadow:`0 0 0 1px rgba(14,165,233,0.15), 0 20px 60px rgba(14,165,233,0.1), 0 40px 80px rgba(0,0,0,0.5)` }}>
+              <div className="rounded-[calc(2rem-6px)] bg-[#0A1628] overflow-hidden shadow-[inset_0_1px_1px_rgba(56,189,248,0.08)]" style={{ width:180, minHeight:300 }}>
                 {/* Speaker */}
                 <div className="flex justify-center pt-3 pb-1">
                   <div className="w-10 h-0.5 rounded-full bg-[rgba(255,255,255,0.1)]"/>
                 </div>
                 {/* Screen */}
                 <div className="relative" style={{ minHeight:250 }}>
+                  {/* AI receptionist model — center of phone */}
+                  <div className="absolute inset-0 pointer-events-none">
+                    <img
+                      src="/Gemini_Generated_Image_a1e9r2a1e9r2a1e9.png"
+                      alt=""
+                      className="w-full h-full object-cover object-top opacity-35"
+                    />
+                    <div className="absolute inset-0" style={{
+                      background: 'linear-gradient(to bottom, rgba(10,22,40,0.35) 0%, rgba(10,22,40,0.85) 55%, #0A1628 100%)',
+                    }} />
+                  </div>
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={active.id}
@@ -218,8 +235,8 @@ export default function ScrollStory() {
           {/* ORBIT STEP CARDS — positioned around the ring */}
           {steps.map((s, i) => {
             const rad    = ((s.angle - 90) * Math.PI) / 180
-            const cx     = (ORBIT_R*2+240)/2 + ORBIT_R * Math.cos(rad)
-            const cy     = (ORBIT_R*2+240)/2 + ORBIT_R * Math.sin(rad)
+            const cx     = ORBIT_W/2 + ORBIT_RX * Math.cos(rad)
+            const cy     = ORBIT_H/2 + ORBIT_RY * Math.sin(rad)
             const isActive = i === activeIdx
             // Card anchor: shift so card centers on the orbit point
             const cardW  = 164
@@ -251,7 +268,7 @@ export default function ScrollStory() {
                     boxShadow:  isActive ? `0 0 0 1px ${s.color}35, 0 8px 24px ${s.color}20` : '0 0 0 1px rgba(255,255,255,0.06)',
                   }}
                 >
-                  <div className="rounded-[calc(1rem-4px)] bg-[#071209] px-3 py-2.5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+                  <div className="rounded-[calc(1rem-4px)] bg-[#0A1628] px-3 py-2.5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-base leading-none">{s.icon}</span>
                       <span
@@ -301,7 +318,7 @@ export default function ScrollStory() {
         {/* Mobile fallback: linear steps (shown below orbit on small screens) */}
         <div className="lg:hidden w-full max-w-sm mx-auto px-4 mt-6">
           <div className="p-1.5 rounded-2xl" style={{background:`${active.color}10`,boxShadow:`0 0 0 1px ${active.color}25`}}>
-            <div className="rounded-[calc(1rem)] bg-[#071209] px-4 py-3">
+            <div className="rounded-[calc(1rem)] bg-[#0A1628] px-4 py-3">
               <div className="flex items-center gap-2 mb-1.5">
                 <span className="text-xl">{active.icon}</span>
                 <span className="text-sm font-bold" style={{color:active.color}}>{activeIdx+1}. {active.title}</span>

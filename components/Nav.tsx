@@ -40,8 +40,8 @@ export default function Nav() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 px-3 py-1.5 mr-2">
             <div className="relative w-2 h-2">
-              <span className="absolute inset-0 rounded-full bg-[#16A34A]" />
-              <span className="absolute inset-0 rounded-full bg-[#16A34A] animate-pulse-ring" />
+              <span className="absolute inset-0 rounded-full bg-[#0284C7]" />
+              <span className="absolute inset-0 rounded-full bg-[#0284C7] animate-pulse-ring" />
             </div>
             <span className="text-sm font-bold text-[#F8FAFC] tracking-tight">CareSync AI</span>
           </Link>
@@ -68,7 +68,7 @@ export default function Nav() {
               href="/chatbot"
               className={`flex items-center gap-2 pl-4 pr-2 py-2 rounded-full text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group active:scale-[0.98] ${
                 isChatbot
-                  ? 'bg-[#16A34A] text-white shadow-[0_2px_16px_rgba(16,185,129,0.45)]'
+                  ? 'bg-[#0284C7] text-white shadow-[0_2px_16px_rgba(56,189,248,0.45)]'
                   : 'border border-white/10 bg-white/[0.06] text-[rgba(248,250,252,0.85)] hover:bg-white/[0.12] hover:border-white/20'
               }`}
             >
@@ -86,8 +86,8 @@ export default function Nav() {
             {/* Book a Demo */}
             {!isChatbot && (
               <a
-                href="#demo"
-                className="flex items-center gap-2 pl-4 pr-2 py-2 rounded-full bg-[#22C55E] hover:bg-[#16A34A] text-white text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group active:scale-[0.98] shadow-[0_2px_16px_rgba(34,197,94,0.45)]"
+                href="/calendar"
+                className="flex items-center gap-2 pl-4 pr-2 py-2 rounded-full bg-[#0EA5E9] hover:bg-[#0284C7] text-white text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group active:scale-[0.98] shadow-[0_2px_16px_rgba(14,165,233,0.45)]"
               >
                 Book a Demo
                 <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[1px] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
@@ -131,7 +131,7 @@ export default function Nav() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 16 }}
                 transition={{ duration: 0.5, delay: i * 0.07, ease: [0.32, 0.72, 0, 1] }}
-                className="text-3xl font-bold text-[#F8FAFC] hover:text-[#22C55E] transition-colors duration-300 py-3"
+                className="text-3xl font-bold text-[#F8FAFC] hover:text-[#0EA5E9] transition-colors duration-300 py-3"
               >
                 {link}
               </motion.a>
@@ -159,13 +159,13 @@ export default function Nav() {
 
             {!isChatbot && (
               <motion.a
-                href="#demo"
+                href="/calendar"
                 onClick={() => setMenuOpen(false)}
                 initial={{ opacity: 0, y: 32 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 16 }}
                 transition={{ duration: 0.5, delay: (links.length + 1) * 0.07, ease: [0.32, 0.72, 0, 1] }}
-                className="mt-2 flex items-center gap-2 px-6 py-3 rounded-full bg-[#22C55E] text-white text-lg font-semibold shadow-[0_4px_24px_rgba(34,197,94,0.4)]"
+                className="mt-2 flex items-center gap-2 px-6 py-3 rounded-full bg-[#0EA5E9] text-white text-lg font-semibold shadow-[0_4px_24px_rgba(14,165,233,0.4)]"
               >
                 Book a Demo
                 <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">

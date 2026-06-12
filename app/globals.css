@@ -7,13 +7,13 @@
 /* ── CSS Custom Properties ─────────────────────────────── */
 :root {
   --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
-  /* Green palette */
-  --green-light:  #4ADE80;   /* lime — highlights */
-  --green-mid:    #22C55E;   /* bright green — primary CTA */
-  --green-dark:   #16A34A;   /* forest — secondary */
-  --green-deeper: #166534;   /* deep forest */
-  --bg-base:      #040D06;   /* near-black green */
-  --bg-card:      #071209;   /* dark green card */
+  /* Electric blue palette */
+  --green-light:  #38BDF8;   /* sky blue — highlights */
+  --green-mid:    #0EA5E9;   /* electric blue — primary CTA */
+  --green-dark:   #0284C7;   /* deep blue — secondary */
+  --green-deeper: #0369A1;   /* deeper blue */
+  --bg-base:      #050A18;   /* near-black navy */
+  --bg-card:      #0A1628;   /* dark navy card */
 }
 
 html { scroll-behavior: smooth; }
@@ -25,10 +25,10 @@ body {
   overflow-x: hidden;
 }
 
-::selection { background: rgba(74,222,128,0.22); color: #040D06; }
+::selection { background: rgba(56,189,248,0.25); color: #050A18; }
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(34,197,94,0.35); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: rgba(14,165,233,0.35); border-radius: 2px; }
 
 /* ═══════════════════════════════════════════════════════════
    KEYFRAMES
@@ -133,8 +133,8 @@ body {
     90deg,
     transparent        0px,
     transparent        54px,
-    rgba(34,197,94,0.038) 55px,
-    rgba(34,197,94,0.038) 60px
+    rgba(14,165,233,0.038) 55px,
+    rgba(14,165,233,0.038) 60px
   );
   animation: ray-drift-a 22s linear infinite;
   will-change: background-position;
@@ -149,18 +149,18 @@ body {
     90deg,
     transparent           0px,
     transparent           84px,
-    rgba(74,222,128,0.022) 85px,
-    rgba(74,222,128,0.022) 90px,
+    rgba(56,189,248,0.022) 85px,
+    rgba(56,189,248,0.022) 90px,
     transparent           91px,
     transparent          144px,
-    rgba(22,163,74,0.015) 145px,
-    rgba(22,163,74,0.015) 150px
+    rgba(2,132,199,0.015) 145px,
+    rgba(2,132,199,0.015) 150px
   );
   animation: ray-drift-b 38s linear infinite;
   will-change: background-position;
 }
 
-/* Bottom spotlight — the signature Pelmatech glow */
+/* Bottom spotlight — electric blue glow */
 .spotlight-glow {
   position: absolute;
   bottom: -5%;
@@ -171,9 +171,9 @@ body {
   pointer-events: none;
   background: radial-gradient(
     ellipse 75% 70% at 50% 100%,
-    rgba(34,197,94,0.28)  0%,
-    rgba(22,163,74,0.12) 30%,
-    rgba(16,163,74,0.04) 55%,
+    rgba(14,165,233,0.28) 0%,
+    rgba(2,132,199,0.12) 30%,
+    rgba(14,165,233,0.04) 55%,
     transparent          70%
   );
   filter: blur(18px);
@@ -185,9 +185,9 @@ body {
    UTILITY CLASSES
    ═══════════════════════════════════════════════════════════ */
 
-/* Gradient text — light-green → dark-green */
-.text-gradient-green {
-  background: linear-gradient(135deg, #4ADE80 0%, #22C55E 45%, #16A34A 100%);
+/* Gradient text — sky-blue → electric-blue */
+.text-gradient-blue {
+  background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 45%, #0284C7 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -196,21 +196,21 @@ body {
 }
 
 /* Keep old name as alias */
-.text-gradient-blue { @apply text-gradient-green; }
+.text-gradient-green { @apply text-gradient-blue; }
 
 .text-gradient-green-static {
-  background: linear-gradient(135deg, #4ADE80 0%, #22C55E 40%, #16A34A 100%);
+  background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 40%, #0284C7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Perspective grid — green tint */
+/* Perspective grid — electric blue tint */
 .perspective-grid {
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(34,197,94,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34,197,94,0.07) 1px, transparent 1px);
+    linear-gradient(rgba(14,165,233,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14,165,233,0.07) 1px, transparent 1px);
   background-size: 60px 60px;
   transform: perspective(600px) rotateX(55deg) scaleX(2.8);
   transform-origin: 50% 0%;
@@ -222,8 +222,8 @@ body {
 .perspective-grid-dark {
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(34,197,94,0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34,197,94,0.12) 1px, transparent 1px);
+    linear-gradient(rgba(14,165,233,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14,165,233,0.12) 1px, transparent 1px);
   background-size: 60px 60px;
   transform: perspective(600px) rotateX(55deg) scaleX(2.8);
   transform-origin: 50% 0%;
@@ -236,7 +236,7 @@ body {
 .shimmer-card::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(74,222,128,0.25) 50%, transparent 60%);
+  background: linear-gradient(105deg, transparent 40%, rgba(56,189,248,0.25) 50%, transparent 60%);
   transform: translateX(-100%) skewX(-12deg);
   border-radius: inherit;
   pointer-events: none;
@@ -261,14 +261,14 @@ body {
 }
 .section-enter.is-visible { opacity: 1; transform: translateY(0); filter: blur(0); }
 
-/* Green glow divider between sections */
+/* Electric blue glow divider between sections */
 .section-glow-divider {
   height: 1px;
   background: linear-gradient(
     90deg,
     transparent        0%,
-    rgba(34,197,94,0.45) 30%,
-    rgba(74,222,128,0.3) 70%,
+    rgba(14,165,233,0.45) 30%,
+    rgba(56,189,248,0.3) 70%,
     transparent        100%
   );
   position: relative;
@@ -277,8 +277,130 @@ body {
   content: '';
   position: absolute;
   inset: -1px 15% -1px 15%;
-  background: linear-gradient(90deg, transparent, rgba(74,222,128,0.6), rgba(34,197,94,0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(56,189,248,0.6), rgba(14,165,233,0.4), transparent);
   filter: blur(4px);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PREMIUM DARK NEON ADDITIONS
+   ═══════════════════════════════════════════════════════════ */
+
+/* Concentric voice wave rings — emanate from Casey */
+@keyframes voice-ring {
+  0%   { transform: scale(0.8);  opacity: 0.7; }
+  100% { transform: scale(3.0);  opacity: 0;   }
+}
+
+/* Neon pulse on elements */
+@keyframes neon-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(14,165,233,0.4), 0 0 20px rgba(14,165,233,0.15); }
+  50%       { box-shadow: 0 0 20px rgba(14,165,233,0.7), 0 0 50px rgba(14,165,233,0.3); }
+}
+
+/* Data particle flowing along paths */
+@keyframes data-flow {
+  0%   { stroke-dashoffset: 300; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { stroke-dashoffset: 0;   opacity: 0; }
+}
+
+/* Isometric layer float — used in exploded stack */
+@keyframes iso-float {
+  0%, 100% { transform: translateZ(0px);  }
+  50%       { transform: translateZ(12px); }
+}
+
+/* Neon glow ring around elements */
+.neon-ring {
+  box-shadow: 0 0 12px rgba(14,165,233,0.5), 0 0 32px rgba(14,165,233,0.2), 0 0 60px rgba(14,165,233,0.08);
+  border: 1px solid rgba(14,165,233,0.3);
+}
+
+/* Voice wave ring */
+.voice-ring {
+  position: absolute;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(14,165,233,0.4);
+  animation: voice-ring 3s ease-out infinite;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FROSTED GLASS FLOATING CARDS (Pelmatech-style)
+   ═══════════════════════════════════════════════════════════ */
+
+/* Outer wrapper — soft halo + border */
+.glass-float-card {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.28), inset 0 1px 1px rgba(255,255,255,0.14);
+}
+
+/* Inner panel — slightly lighter glass, content sits here */
+.glass-float-card__inner {
+  background: rgba(255,255,255,0.04);
+  border-radius: calc(1.25rem - 5px);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Schedule-row pill (time / value badge) */
+.glass-pill {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Schedule-row container — icon + label + pill */
+.glass-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.85rem;
+  background: rgba(255,255,255,0.045);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DASHBOARD-STYLE FLOATING CARDS (solid light / accent on dark)
+   ═══════════════════════════════════════════════════════════ */
+
+/* Solid off-white dashboard card */
+.float-card-light {
+  background: #F8FAFC;
+  border-radius: 1.25rem;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.18);
+  color: #0A1628;
+}
+
+/* Solid electric-blue accent card */
+.float-card-accent {
+  background: linear-gradient(150deg, #38BDF8 0%, #0EA5E9 55%, #0284C7 100%);
+  border-radius: 1.25rem;
+  box-shadow: 0 24px 48px rgba(14,165,233,0.35), 0 4px 16px rgba(0,0,0,0.2);
+  color: #F8FAFC;
+}
+
+/* Small solid white pill (e.g. "Live", "Ready") */
+.float-pill-light {
+  background: #F8FAFC;
+  border-radius: 9999px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  color: #0A1628;
+}
+
+/* Small circular dial / ring badge */
+.float-ring-dial {
+  background: #F8FAFC;
+  border-radius: 9999px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
 }
 
 /* ═══════════════════════════════════════════════════════════

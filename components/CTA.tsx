@@ -26,7 +26,7 @@ export default function CTA() {
       <div
         className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(34,197,94,0.18) 0%, transparent 65%)',
+          background: 'radial-gradient(circle, rgba(14,165,233,0.18) 0%, transparent 65%)',
           filter: 'blur(80px)',
           animation: 'orb-drift 10s ease-in-out infinite',
         }}
@@ -34,7 +34,7 @@ export default function CTA() {
       <div
         className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(16,185,129,0.14) 0%, transparent 65%)',
+          background: 'radial-gradient(circle, rgba(56,189,248,0.14) 0%, transparent 65%)',
           filter: 'blur(100px)',
           animation: 'orb-drift 13s ease-in-out infinite 3s',
         }}
@@ -43,7 +43,7 @@ export default function CTA() {
       {/* Center radial glow */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(34,197,94,0.14) 0%, rgba(16,185,129,0.07) 40%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse, rgba(14,165,233,0.14) 0%, rgba(56,189,248,0.07) 40%, transparent 70%)' }}
       />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -54,14 +54,14 @@ export default function CTA() {
           transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
         >
           {/* Glass card wrapping the CTA content */}
-          <TiltCard intensity={4} glowColor="rgba(34,197,94,0.10)" className="w-full">
+          <TiltCard intensity={4} glowColor="rgba(14,165,233,0.10)" className="w-full">
             <div
               className="bg-white/[0.04] border border-white/[0.06] rounded-[3rem] p-10 md:p-16"
               style={{ boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.08), 0 32px 80px rgba(0,0,0,0.3)' }}
             >
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.04] mb-8">
-                <span className="relative w-1.5 h-1.5 rounded-full bg-[#16A34A]">
-                  <span className="absolute inset-0 rounded-full bg-[#16A34A] animate-pulse" />
+                <span className="relative w-1.5 h-1.5 rounded-full bg-[#0284C7]">
+                  <span className="absolute inset-0 rounded-full bg-[#0284C7] animate-pulse" />
                 </span>
                 <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-[rgba(248,250,252,0.65)]">
                   Ready to transform your clinic?
@@ -79,8 +79,8 @@ export default function CTA() {
 
               <div className="flex flex-wrap gap-4 justify-center mb-8">
                 <a
-                  href="#demo"
-                  className="group flex items-center gap-2 px-8 py-4 rounded-full bg-[#22C55E] hover:bg-[#16A34A] text-white font-semibold text-base transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shadow-[0_0_50px_rgba(34,197,94,0.4)]"
+                  href="/calendar"
+                  className="group flex items-center gap-2 px-8 py-4 rounded-full bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-semibold text-base transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shadow-[0_0_50px_rgba(14,165,233,0.4)]"
                 >
                   Book a Free Demo
                   <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[1px] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
@@ -103,7 +103,7 @@ export default function CTA() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3, ease: [0.32, 0.72, 0, 1] }}
-                className="inline-flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/[0.06] border border-white/[0.08] mb-8"
+                className="float-card-light inline-flex items-center gap-3 px-4 py-3 mb-8"
                 style={{ animation: 'float 5s ease-in-out infinite' }}
               >
                 {/* Avatar circles */}
@@ -111,9 +111,9 @@ export default function CTA() {
                   {['JM', 'SP', 'KC'].map((initials, i) => (
                     <div
                       key={initials}
-                      className="w-7 h-7 rounded-full border-2 border-white/10 flex items-center justify-center text-[9px] font-bold text-white"
+                      className="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-[9px] font-bold text-white"
                       style={{
-                        background: i === 0 ? '#22C55E' : i === 1 ? '#10B981' : '#4ADE80',
+                        background: i === 0 ? '#0EA5E9' : i === 1 ? '#38BDF8' : '#38BDF8',
                       }}
                     >
                       {initials}
@@ -121,8 +121,8 @@ export default function CTA() {
                   ))}
                 </div>
                 <div className="text-left">
-                  <div className="text-xs font-semibold text-[#F8FAFC]">Join 500+ Clinics</div>
-                  <div className="text-[10px] text-[rgba(248,250,252,0.5)]">Already using CareSync AI</div>
+                  <div className="text-xs font-semibold text-[#0A1628]">Join 500+ Clinics</div>
+                  <div className="text-[10px] text-[#64748B]">Already using CareSync AI</div>
                 </div>
               </motion.div>
 
@@ -143,7 +143,7 @@ export default function CTA() {
                     key={chip.label}
                     className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.04]"
                   >
-                    <span className="text-[#16A34A] text-xs font-bold">{chip.icon}</span>
+                    <span className="text-[#0284C7] text-xs font-bold">{chip.icon}</span>
                     <span className="text-xs text-[rgba(248,250,252,0.6)] font-medium">{chip.label}</span>
                   </div>
                 ))}
