@@ -1,6 +1,7 @@
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
 import ScrollStory from '@/components/ScrollStory'
+import Demo from '@/components/Demo'
 import FrontDeskComparison from '@/components/FrontDeskComparison'
 import EHRAutomation from '@/components/EHRAutomation'
 import Demo from '@/components/Demo'
@@ -24,6 +25,7 @@ export default function Home() {
       <Hero />
       <Divider />
       <ScrollStory />
+      <Demo />
       <Divider />
       <FrontDeskComparison />
       <Divider />

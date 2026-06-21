@@ -185,11 +185,7 @@ export default function Demo() {
   }, [stopDemo, triggerDemo])
 
   return (
-    <section className="py-24 md:py-32 relative" id="demo" style={{ background: '#050A18' }}>
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="ray-layer-a opacity-30" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px]" style={{ background: 'radial-gradient(ellipse, rgba(14,165,233,0.07) 0%, transparent 70%)' }} />
-      </div>
+    <section className="pb-24 pt-4 relative" id="demo" style={{ background: '#050A18' }}>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
