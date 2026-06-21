@@ -1,47 +1,42 @@
-import SmoothScroll from '@/components/SmoothScroll'
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
 import ScrollStory from '@/components/ScrollStory'
-import Problems from '@/components/Problems'
-import Solution from '@/components/Solution'
-import Workflow from '@/components/Workflow'
-import UseCases from '@/components/UseCases'
-import ROI from '@/components/ROI'
+import FrontDeskComparison from '@/components/FrontDeskComparison'
+import EHRAutomation from '@/components/EHRAutomation'
 import Demo from '@/components/Demo'
+import ROI from '@/components/ROI'
 import Trust from '@/components/Trust'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 
 function Divider() {
-  return <div className="section-glow-divider" />
+  return (
+    <div className="relative h-px mx-auto max-w-5xl">
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+    </div>
+  )
 }
 
 export default function Home() {
   return (
-    <SmoothScroll>
-      <main>
-        <Nav />
-        <Hero />
-        <Divider />
-        <ScrollStory />
-        <Divider />
-        <Problems />
-        <Divider />
-        <Solution />
-        <Divider />
-        <Workflow />
-        <Divider />
-        <UseCases />
-        <Divider />
-        <ROI />
-        <Divider />
-        <Demo />
-        <Divider />
-        <Trust />
-        <Divider />
-        <CTA />
-        <Footer />
-      </main>
-    </SmoothScroll>
+    <main>
+      <Nav />
+      <Hero />
+      <Divider />
+      <ScrollStory />
+      <Divider />
+      <FrontDeskComparison />
+      <Divider />
+      <EHRAutomation />
+      <Divider />
+      <Demo />
+      <Divider />
+      <ROI />
+      <Divider />
+      <Trust />
+      <Divider />
+      <CTA />
+      <Footer />
+    </main>
   )
 }

@@ -1,180 +1,199 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
+import { motion } from 'framer-motion'
 
-const trustCards = [
+/* ── Icons ──────────────────────────────────────────────── */
+const ShieldIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    <polyline points="9 12 11 14 15 10"/>
+  </svg>
+)
+const UsersIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+    <circle cx="9" cy="7" r="4"/>
+    <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+  </svg>
+)
+const FileTextIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <polyline points="9 15 11 17 15 13"/>
+  </svg>
+)
+const PhoneForwardIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="19 1 23 5 19 9"/>
+    <line x1="15" y1="5" x2="23" y2="5"/>
+    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.003 1.19 2 2 0 012 .003h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/>
+  </svg>
+)
+const LockIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+    <path d="M7 11V7a5 5 0 0110 0v4"/>
+    <circle cx="12" cy="16" r="1" fill="currentColor"/>
+  </svg>
+)
+const DatabaseIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <ellipse cx="12" cy="5" rx="9" ry="3"/>
+    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+    <path d="M12 12v6"/>
+  </svg>
+)
+
+const trustItems = [
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <path d="M10 2L3 5v5c0 4.418 3.13 7 7 7s7-2.582 7-7V5L10 2z" stroke="#10B981" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M7 10l2 2 4-4" stroke="#10B981" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
+    Icon: ShieldIcon,
     title: 'HIPAA-Aware Workflow Design',
-    desc: 'Built following HIPAA privacy principles for patient data handling at every step',
-    color: '#10B981',
+    desc: 'Built following HIPAA privacy principles. Patient data handled with minimum necessary access at every touchpoint.',
+    color: '#059669',
+    glow: 'rgba(5,150,105,0.1)',
   },
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <circle cx="10" cy="7" r="3.5" stroke="#10B981" strokeWidth="1.2"/>
-        <path d="M4 17c0-3.314 2.686-6 6-6" stroke="#10B981" strokeWidth="1.2" strokeLinecap="round"/>
-        <path d="M13 14h4M15 12v4" stroke="#10B981" strokeWidth="1.2" strokeLinecap="round"/>
-      </svg>
-    ),
-    title: 'Role-Based Access',
-    desc: 'Staff see only what they need. Admin controls who accesses call logs and transcripts.',
-    color: '#10B981',
+    Icon: UsersIcon,
+    title: 'Role-Based Access Control',
+    desc: 'Staff see only what they need. Admins control exactly who can access call logs, transcripts, and patient data.',
+    color: '#0891B2',
+    glow: 'rgba(8,145,178,0.1)',
   },
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <path d="M4 5h12M4 9h8M4 13h6" stroke="#10B981" strokeWidth="1.2" strokeLinecap="round"/>
-        <circle cx="15.5" cy="14.5" r="3" stroke="#10B981" strokeWidth="1.2"/>
-        <path d="M14 14.5l1 1 2-2" stroke="#10B981" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
-    title: 'Audit Logs',
-    desc: 'Every interaction is logged with timestamps, caller ID, and outcomes for compliance review',
-    color: '#10B981',
+    Icon: FileTextIcon,
+    title: 'Full Audit Logs',
+    desc: 'Every interaction timestamped with caller ID and outcome. Compliance-ready exports available on demand.',
+    color: '#059669',
+    glow: 'rgba(5,150,105,0.1)',
   },
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <path d="M18 14v-1a4 4 0 00-4-4H6a4 4 0 00-4 4v1" stroke="#10B981" strokeWidth="1.2" strokeLinecap="round"/>
-        <circle cx="10" cy="6" r="3" stroke="#10B981" strokeWidth="1.2"/>
-        <path d="M13 17l2 2 4-4" stroke="#10B981" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
-    title: 'Human Handoff Always Available',
-    desc: 'Clinical questions, emergencies, and complaints route to real staff instantly — no exceptions',
-    color: '#10B981',
+    Icon: PhoneForwardIcon,
+    title: 'Human Handoff, Always',
+    desc: 'Emergencies, clinical questions, and complaints route to real staff instantly. No exceptions, no dead ends.',
+    color: '#0891B2',
+    glow: 'rgba(8,145,178,0.1)',
   },
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <circle cx="10" cy="10" r="7" stroke="#10B981" strokeWidth="1.2"/>
-        <path d="M10 6v4M10 14v.5" stroke="#10B981" strokeWidth="1.2" strokeLinecap="round"/>
-      </svg>
-    ),
+    Icon: LockIcon,
     title: 'Data Minimization',
-    desc: 'We collect only the minimum patient data needed to complete a booking — nothing more',
-    color: '#10B981',
+    desc: 'We collect only what is required to complete a booking. Nothing stored beyond operational necessity.',
+    color: '#059669',
+    glow: 'rgba(5,150,105,0.1)',
   },
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <rect x="3" y="8" width="14" height="10" rx="2" stroke="#10B981" strokeWidth="1.2"/>
-        <path d="M7 8V6a3 3 0 016 0v2" stroke="#10B981" strokeWidth="1.2" strokeLinecap="round"/>
-        <circle cx="10" cy="13" r="1.5" fill="#10B981"/>
-      </svg>
-    ),
-    title: 'Secure API & Webhook Logic',
-    desc: 'All integrations use encrypted channels with authenticated webhooks and token validation',
-    color: '#10B981',
+    Icon: DatabaseIcon,
+    title: 'Encrypted API Channels',
+    desc: 'All integrations use TLS-encrypted connections with authenticated webhooks and rotating token validation.',
+    color: '#0891B2',
+    glow: 'rgba(8,145,178,0.1)',
   },
 ]
 
-export default function Trust() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
-  const rawY = useTransform(scrollYProgress, [0, 1], [50, -50])
-  const imgY = useSpring(rawY, { stiffness: 60, damping: 18 })
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07 } },
+}
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+}
 
+export default function Trust() {
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 bg-white relative overflow-hidden" id="trust">
+    <section className="relative py-24 px-4 overflow-hidden bg-[#050A18]" id="trust">
+      {/* Ambient bg */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px]" style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.06) 0%, transparent 70%)' }} />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] opacity-20"
+          style={{ background: 'radial-gradient(ellipse, #059669 0%, transparent 70%)' }} />
       </div>
 
-      {/* 3D floating doctor image — right side */}
-      <motion.div
-        style={{ y: imgY }}
-        className="absolute right-4 lg:right-12 top-1/2 -translate-y-1/2 w-[180px] lg:w-[220px] pointer-events-none hidden xl:block"
-      >
-        <div className="p-1.5 rounded-[1.75rem]" style={{ background: 'rgba(15,23,42,0.05)', boxShadow: '0 0 0 1px rgba(16,185,129,0.12), 0 24px 60px rgba(16,185,129,0.08)' }}>
-          <div className="rounded-[calc(1.75rem-6px)] overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80&auto=format&fit=crop"
-              alt="Healthcare professional"
-              className="w-full h-[260px] object-cover object-center"
-            />
-          </div>
-        </div>
-        <div className="absolute -top-2 -left-2 px-2.5 py-1.5 rounded-full text-[10px] font-semibold" style={{ background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.25)', color: '#10B981', animation: 'float 4s ease-in-out infinite' }}>
-          ✓ HIPAA-aware
-        </div>
-      </motion.div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-6">
+      <div className="relative max-w-[1200px] mx-auto">
+        {/* Header — left aligned, asymmetric */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 items-end mb-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#BBF7D0] bg-[#F0FDF4] mb-6">
-              <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#16A34A]">Built for Healthcare</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-4">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="text-[11px] font-semibold text-emerald-400 tracking-widest uppercase">Built for Healthcare</span>
             </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-none">
+              Patient privacy<br />
+              <span className="text-emerald-400">at the core.</span>
+            </h2>
           </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+
+          {/* HIPAA disclaimer — right side */}
+          <motion.div
+            initial={{ opacity: 0, x: 16 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight max-w-3xl mx-auto text-[#0F172A]"
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-start gap-2 max-w-xs p-3 rounded-xl border border-amber-500/20 bg-amber-500/[0.04]"
           >
-            Designed With Patient Privacy{' '}
-            <span className="font-serif italic text-[#16A34A]">at the Core</span>
-          </motion.h2>
+            <svg className="shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <circle cx="7" cy="7" r="6" stroke="#D97706" strokeWidth="1"/>
+              <path d="M7 4.5v3M7 9.5v.5" stroke="#D97706" strokeWidth="1.2" strokeLinecap="round"/>
+            </svg>
+            <p className="text-[11px] text-amber-400/80 leading-snug">
+              CareSync AI is designed with HIPAA-aware workflows. We do not claim formal HIPAA certification.
+            </p>
+          </motion.div>
         </div>
 
-        {/* Disclaimer pill */}
+        {/* Trust grid — asymmetric 2-col on md, 3-col on lg */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
-          className="flex justify-center mb-14"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-60px' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#FDE68A] bg-[#FFFBEB]">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <circle cx="6" cy="6" r="5" stroke="#D97706" strokeWidth="1.2"/>
-              <path d="M6 4v3M6 8.5v.5" stroke="#D97706" strokeWidth="1.2" strokeLinecap="round"/>
-            </svg>
-            <span className="text-[11px] text-[#D97706] font-medium">
-              Note: CareSync AI is designed with HIPAA-aware workflows. We do not claim HIPAA certification.
-            </span>
-          </div>
-        </motion.div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {trustCards.map((card, i) => (
-            <motion.div
-              key={card.title}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.07, ease: [0.32, 0.72, 0, 1] }}
-              className="group"
-            >
-              <div className="p-1.5 rounded-[2rem] bg-[#0F172A]/[0.04] ring-1 ring-[#0F172A]/[0.06] h-full group-hover:ring-[#16A34A]/25 transition-all duration-700">
+          {trustItems.map(({ Icon, title, desc, color, glow }) => (
+            <motion.div key={title} variants={item}>
+              <div
+                className="group h-full flex gap-4 p-5 rounded-2xl border border-white/[0.06] bg-[#0A1628]/60 hover:border-white/10 transition-all duration-300"
+                style={{ boxShadow: `inset 0 1px 0 rgba(255,255,255,0.04)` }}
+              >
                 <div
-                  className="rounded-[calc(2rem-6px)] bg-white p-6 h-full shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_1px_3px_rgba(15,23,42,0.06)]"
-                  style={{ borderTop: '2px solid #BBF7D0' }}
+                  className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center mt-0.5 transition-colors duration-300"
+                  style={{ background: glow, color }}
                 >
-                  <div className="w-10 h-10 rounded-2xl bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center mb-4">
-                    {card.icon}
-                  </div>
-                  <h3 className="text-sm font-semibold text-[#0F172A] mb-2 leading-tight">{card.title}</h3>
-                  <p className="text-xs text-[#64748B] leading-relaxed">{card.desc}</p>
+                  <Icon />
+                </div>
+                <div>
+                  <p className="text-[13px] font-semibold text-white/90 mb-1.5 leading-snug">{title}</p>
+                  <p className="text-[12px] text-white/40 leading-relaxed">{desc}</p>
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
+
+        {/* Compliance logos strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-10 flex flex-wrap items-center gap-6 pt-8 border-t border-white/[0.05]"
+        >
+          <span className="text-[11px] text-white/25 uppercase tracking-widest">Compliance signals</span>
+          {['SOC 2 Aware', 'TLS 1.3 Encrypted', 'Data Minimization', 'Audit Logs', 'US-based Servers'].map((label) => (
+            <div key={label} className="flex items-center gap-1.5">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <circle cx="5" cy="5" r="4.5" stroke="#059669" strokeWidth="0.8"/>
+                <path d="M3 5l1.5 1.5L7 3.5" stroke="#059669" strokeWidth="0.9" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span className="text-[11px] text-white/40">{label}</span>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   )

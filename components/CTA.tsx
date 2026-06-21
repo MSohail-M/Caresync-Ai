@@ -1,155 +1,181 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import TiltCard from './TiltCard'
+
+const proofItems = [
+  { label: 'No setup fees' },
+  { label: '14-day free trial' },
+  { label: 'Cancel anytime' },
+  { label: 'Setup in 48 hours' },
+]
+
+const clinics = [
+  { initials: 'PM', color: '#0891B2' },
+  { initials: 'RK', color: '#0369A1' },
+  { initials: 'JT', color: '#0284C7' },
+]
 
 export default function CTA() {
   return (
-    <section className="py-24 md:py-40 relative overflow-hidden" id="cta">
-      {/* Background image with dark overlay */}
-      <div className="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=1920&q=80&auto=format&fit=crop"
-          alt=""
-          className="w-full h-full object-cover object-center"
+    <section className="relative py-28 md:py-40 px-4 overflow-hidden bg-[#050A18]" id="cta">
+      {/* Ambient blobs — hardware accelerated via transform only */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute top-1/4 left-1/3 w-[700px] h-[500px] rounded-full"
+          style={{
+            background: 'radial-gradient(ellipse, rgba(8,145,178,0.18) 0%, transparent 65%)',
+            filter: 'blur(100px)',
+            animation: 'orb-drift 12s ease-in-out infinite',
+          }}
         />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(5,11,24,0.93) 0%, rgba(7,18,35,0.90) 40%, rgba(6,26,24,0.92) 100%)' }} />
+        <div
+          className="absolute bottom-1/4 right-1/4 w-[500px] h-[400px] rounded-full"
+          style={{
+            background: 'radial-gradient(ellipse, rgba(34,211,238,0.10) 0%, transparent 65%)',
+            filter: 'blur(120px)',
+            animation: 'orb-drift 16s ease-in-out infinite 4s',
+          }}
+        />
+        {/* Subtle dot grid */}
+        <div
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage: 'radial-gradient(circle, rgba(56,189,248,0.6) 1px, transparent 1px)',
+            backgroundSize: '32px 32px',
+          }}
+        />
       </div>
 
-      {/* Perspective grid overlay */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ opacity: 0.15 }}>
-        <div className="perspective-grid-dark" />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(5,11,24,0.8) 0%, transparent 30%, transparent 70%, rgba(5,11,24,0.8) 100%)' }} />
-      </div>
-
-      {/* Floating glow orbs */}
-      <div
-        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(14,165,233,0.18) 0%, transparent 65%)',
-          filter: 'blur(80px)',
-          animation: 'orb-drift 10s ease-in-out infinite',
-        }}
-      />
-      <div
-        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(56,189,248,0.14) 0%, transparent 65%)',
-          filter: 'blur(100px)',
-          animation: 'orb-drift 13s ease-in-out infinite 3s',
-        }}
-      />
-
-      {/* Center radial glow */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(14,165,233,0.14) 0%, rgba(56,189,248,0.07) 40%, transparent 70%)' }}
-      />
-
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative max-w-[900px] mx-auto text-center">
+        {/* Live badge */}
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="flex justify-center mb-8"
         >
-          {/* Glass card wrapping the CTA content */}
-          <TiltCard intensity={4} glowColor="rgba(14,165,233,0.10)" className="w-full">
-            <div
-              className="bg-white/[0.04] border border-white/[0.06] rounded-[3rem] p-10 md:p-16"
-              style={{ boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.08), 0 32px 80px rgba(0,0,0,0.3)' }}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-sky-500/20 bg-sky-500/[0.06]">
+            <motion.div
+              className="w-2 h-2 rounded-full bg-sky-400"
+              animate={{ opacity: [1, 0.3, 1] }}
+              transition={{ duration: 1.8, repeat: Infinity }}
+            />
+            <span className="text-[12px] font-semibold text-sky-400 tracking-wide">
+              500+ clinics already live on CareSync AI
+            </span>
+          </div>
+        </motion.div>
+
+        {/* Headline */}
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-[1.05] mb-5"
+        >
+          Stop losing patients<br />
+          to <span className="text-sky-400">missed calls.</span>
+        </motion.h2>
+
+        {/* Subtext */}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+          className="text-[16px] text-white/45 leading-relaxed max-w-xl mx-auto mb-10"
+        >
+          CareSync AI answers every call in under 2 seconds, books directly into your calendar, and logs everything — automatically.
+        </motion.p>
+
+        {/* CTA buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10"
+        >
+          {/* Primary CTA */}
+          <a
+            href="/calendar"
+            className="group relative flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-[15px] text-white transition-all duration-300 active:scale-[0.97]"
+            style={{
+              background: 'linear-gradient(135deg, #0891B2 0%, #0284C7 100%)',
+              boxShadow: '0 0 0 1px rgba(8,145,178,0.4), 0 8px 32px rgba(8,145,178,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+              <polyline points="9 16 11 18 15 14"/>
+            </svg>
+            Book a Free Demo
+            <span
+              className="w-7 h-7 rounded-lg bg-white/15 flex items-center justify-center group-hover:translate-x-0.5 transition-transform duration-300"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.04] mb-8">
-                <span className="relative w-1.5 h-1.5 rounded-full bg-[#0284C7]">
-                  <span className="absolute inset-0 rounded-full bg-[#0284C7] animate-pulse" />
-                </span>
-                <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-[rgba(248,250,252,0.65)]">
-                  Ready to transform your clinic?
-                </span>
-              </div>
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                <path d="M2 10L10 2M10 2H4M10 2V8" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
+          </a>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight mb-6 text-[#F8FAFC]">
-                Ready to Stop Losing Patients to{' '}
-                <span className="font-serif italic text-gradient-blue">Missed Calls?</span>
-              </h2>
+          {/* Secondary CTA */}
+          <a
+            href="#demo"
+            className="flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-[15px] text-white/75 border border-white/[0.09] bg-white/[0.03] hover:bg-white/[0.06] hover:text-white hover:border-white/[0.15] transition-all duration-300 active:scale-[0.97]"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            Hear a Live Call
+          </a>
+        </motion.div>
 
-              <p className="text-lg text-[rgba(248,250,252,0.55)] leading-relaxed max-w-2xl mx-auto mb-12">
-                Join clinics across the US using CareSync AI to answer every call, book more appointments, and give patients the fast response they expect.
-              </p>
-
-              <div className="flex flex-wrap gap-4 justify-center mb-8">
-                <a
-                  href="/calendar"
-                  className="group flex items-center gap-2 px-8 py-4 rounded-full bg-[#0EA5E9] hover:bg-[#0284C7] text-white font-semibold text-base transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shadow-[0_0_50px_rgba(14,165,233,0.4)]"
-                >
-                  Book a Free Demo
-                  <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[1px] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                      <path d="M2 10L10 2M10 2H4M10 2V8" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                </a>
-                <a
-                  href="#how-it-works"
-                  className="flex items-center gap-2 px-8 py-4 rounded-full border border-white/10 bg-white/[0.04] text-[#F8FAFC] font-semibold text-base hover:bg-white/[0.08] hover:border-white/20 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
-                >
-                  See How It Works
-                </a>
-              </div>
-
-              {/* Floating glass "Join 500+ Clinics" social proof card */}
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3, ease: [0.32, 0.72, 0, 1] }}
-                className="float-card-light inline-flex items-center gap-3 px-4 py-3 mb-8"
-                style={{ animation: 'float 5s ease-in-out infinite' }}
-              >
-                {/* Avatar circles */}
-                <div className="flex -space-x-2">
-                  {['JM', 'SP', 'KC'].map((initials, i) => (
-                    <div
-                      key={initials}
-                      className="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-[9px] font-bold text-white"
-                      style={{
-                        background: i === 0 ? '#0EA5E9' : i === 1 ? '#38BDF8' : '#38BDF8',
-                      }}
-                    >
-                      {initials}
-                    </div>
-                  ))}
-                </div>
-                <div className="text-left">
-                  <div className="text-xs font-semibold text-[#0A1628]">Join 500+ Clinics</div>
-                  <div className="text-[10px] text-[#64748B]">Already using CareSync AI</div>
-                </div>
-              </motion.div>
-
-              {/* Social proof chips */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
-                className="flex flex-wrap justify-center gap-3"
-              >
-                {[
-                  { icon: '✓', label: 'No setup fees' },
-                  { icon: '✓', label: '14-day free trial' },
-                  { icon: '✓', label: 'Cancel anytime' },
-                ].map((chip) => (
-                  <div
-                    key={chip.label}
-                    className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.04]"
-                  >
-                    <span className="text-[#0284C7] text-xs font-bold">{chip.icon}</span>
-                    <span className="text-xs text-[rgba(248,250,252,0.6)] font-medium">{chip.label}</span>
-                  </div>
-                ))}
-              </motion.div>
+        {/* Trust chips */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-wrap items-center justify-center gap-3 mb-10"
+        >
+          {proofItems.map((p) => (
+            <div key={p.label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/[0.07] bg-white/[0.02]">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <circle cx="5" cy="5" r="4.5" stroke="#0891B2" strokeWidth="0.8"/>
+                <path d="M3 5l1.5 1.5L7 3.5" stroke="#0891B2" strokeWidth="0.9" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span className="text-[12px] text-white/40">{p.label}</span>
             </div>
-          </TiltCard>
+          ))}
+        </motion.div>
+
+        {/* Social proof avatars */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
+          className="flex items-center justify-center gap-3"
+        >
+          <div className="flex -space-x-2.5">
+            {clinics.map((c) => (
+              <div
+                key={c.initials}
+                className="w-8 h-8 rounded-full border-2 border-[#050A18] flex items-center justify-center text-[10px] font-bold text-white"
+                style={{ background: c.color }}
+              >
+                {c.initials}
+              </div>
+            ))}
+          </div>
+          <p className="text-[12px] text-white/30">
+            Joined by <span className="text-white/55 font-semibold">500+ clinics</span> across the US
+          </p>
         </motion.div>
       </div>
     </section>
