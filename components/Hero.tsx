@@ -19,12 +19,15 @@ const bottomFeatures = [
   { icon: '📅', label: 'Books Appointments' },
   { icon: '💬', label: 'Sends SMS Confirmations' },
   { icon: '🔄', label: 'Reschedules & Cancels' },
+  { icon: '🏥', label: 'EMR/EHR Integrated' },
   { icon: '🌙', label: '24/7 Coverage' },
 ]
 
 export default function Hero() {
   const [phoneState, setPhoneState]     = useState<PhoneState>('ringing')
   const [transcriptStep, setTranscriptStep] = useState(0)
+  const [cursorPos, setCursorPos] = useState({ x: 50, y: 50 })
+  const [isHovered, setIsHovered] = useState(false)
   const prefersReducedMotion = useReducedMotion()
   const heroRef = useRef<HTMLElement>(null)
 
@@ -77,7 +80,7 @@ export default function Hero() {
       ref={heroRef}
       id="features"
       className="relative min-h-[100dvh] flex flex-col overflow-hidden"
-      style={{ background: 'linear-gradient(175deg, #040D06 0%, #030906 60%, #050F08 100%)' }}
+      style={{ background: 'linear-gradient(175deg, #050A18 0%, #060E22 60%, #050A18 100%)' }}
     >
       {/* ── Fixed grain overlay ── */}
       <div className="pointer-events-none" style={{
@@ -94,7 +97,7 @@ export default function Hero() {
         <div className="spotlight-glow" />
         {/* Extra depth glow — upper right */}
         <div className="absolute top-0 right-0 w-[500px] h-[600px] pointer-events-none" style={{
-          background: 'radial-gradient(ellipse 60% 80% at 100% 20%, rgba(34,197,94,0.08) 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse 60% 80% at 100% 20%, rgba(14,165,233,0.08) 0%, transparent 65%)',
           filter: 'blur(40px)',
         }} />
       </motion.div>
@@ -112,12 +115,12 @@ export default function Hero() {
 
               {/* Eyebrow */}
               <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, ease:[0.32,0.72,0,1] }}>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(34,197,94,0.2)] bg-[rgba(34,197,94,0.06)] mb-5">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(14,165,233,0.2)] bg-[rgba(14,165,233,0.06)] mb-5">
                   <span className="relative flex w-1.5 h-1.5">
-                    <span className="absolute inset-0 rounded-full bg-[#22C55E] animate-ping opacity-60" />
-                    <span className="relative rounded-full bg-[#22C55E] w-1.5 h-1.5" />
+                    <span className="absolute inset-0 rounded-full bg-[#0EA5E9] animate-ping opacity-60" />
+                    <span className="relative rounded-full bg-[#0EA5E9] w-1.5 h-1.5" />
                   </span>
-                  <span className="text-[11px] uppercase tracking-[0.22em] font-semibold text-[rgba(74,222,128,0.8)]">AI Voice Agent for Clinics</span>
+                  <span className="text-[11px] uppercase tracking-[0.22em] font-semibold text-[rgba(56,189,248,0.8)]">AI Voice Agent for Clinics</span>
                 </div>
               </motion.div>
 
@@ -128,9 +131,9 @@ export default function Hero() {
                 transition={{ duration:0.95, delay:0.08, ease:[0.32,0.72,0,1] }}
                 className="text-5xl sm:text-6xl lg:text-7xl xl:text-[80px] font-bold leading-[1.0] tracking-tight mb-5 text-[#F8FAFC]"
               >
-                Your AI<br />
-                Front Desk,<br />
-                <span className="font-serif italic text-gradient-green">Ready 24/7</span>
+                Front Desk AI<br />
+                System for<br />
+                <span className="font-serif italic text-gradient-blue">Healthcare 24/7</span>
               </motion.h1>
 
               <motion.p
@@ -150,15 +153,15 @@ export default function Hero() {
                 className="flex flex-wrap gap-3 mb-8"
               >
                 <MagneticButton>
-                  <a href="#demo" className="group flex items-center gap-2 pl-5 pr-2 py-3 rounded-full bg-[#22C55E] hover:bg-[#16A34A] text-[#040D06] font-bold text-sm transition-colors duration-300 active:scale-[0.98] shadow-[0_0_32px_rgba(34,197,94,0.4)]">
+                  <a href="/calendar" className="group flex items-center gap-2 pl-5 pr-2 py-3 rounded-full bg-[#0EA5E9] hover:bg-[#0284C7] text-[#050A18] font-bold text-sm transition-colors duration-300 active:scale-[0.98] shadow-[0_0_32px_rgba(14,165,233,0.4)]">
                     Book a Demo
-                    <span className="w-8 h-8 rounded-full bg-[#040D06]/20 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[1px] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="#040D06" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    <span className="w-8 h-8 rounded-full bg-[#050A18]/20 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[1px] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="#050A18" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     </span>
                   </a>
                 </MagneticButton>
                 <MagneticButton>
-                  <a href="#demo" className="flex items-center gap-2 px-5 py-3 rounded-full border border-[rgba(34,197,94,0.2)] bg-[rgba(34,197,94,0.06)] text-[rgba(248,250,252,0.75)] hover:bg-[rgba(34,197,94,0.1)] font-semibold text-sm transition-all duration-300">
+                  <a href="#demo" className="flex items-center gap-2 px-5 py-3 rounded-full border border-[rgba(14,165,233,0.2)] bg-[rgba(14,165,233,0.06)] text-[rgba(248,250,252,0.75)] hover:bg-[rgba(14,165,233,0.1)] font-semibold text-sm transition-all duration-300">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" strokeWidth="1.2"/><path d="M5.5 4.5L9.5 7L5.5 9.5V4.5Z" fill="currentColor"/></svg>
                     Listen to Demo
                   </a>
@@ -169,9 +172,9 @@ export default function Hero() {
               <motion.div initial={{ opacity:0 }} animate={{ opacity:1 }} transition={{ duration:0.6, delay:0.36 }} className="flex flex-wrap gap-x-6 gap-y-2">
                 {[{ v:'94%', l:'calls answered' },{ v:'3×', l:'more bookings' },{ v:'< 2s', l:'response' }].map((s,i)=>(
                   <div key={i} className="flex items-center gap-1.5">
-                    <span className="text-lg font-bold text-[#22C55E]">{s.v}</span>
+                    <span className="text-lg font-bold text-[#0EA5E9]">{s.v}</span>
                     <span className="text-xs text-[rgba(248,250,252,0.4)]">{s.l}</span>
-                    {i<2 && <span className="w-px h-3 bg-[rgba(34,197,94,0.2)] ml-2"/>}
+                    {i<2 && <span className="w-px h-3 bg-[rgba(14,165,233,0.2)] ml-2"/>}
                   </div>
                 ))}
               </motion.div>
@@ -185,20 +188,46 @@ export default function Hero() {
               transition={{ duration:1.0, delay:0.15, ease:[0.32,0.72,0,1] }}
               className="relative flex items-center justify-center order-1 lg:order-2"
             >
+              {/* Voice wave rings — emanate from Casey */}
+              {[0, 1, 2, 3].map(i => (
+                <div
+                  key={i}
+                  className="absolute rounded-full pointer-events-none voice-ring"
+                  style={{
+                    inset: -20 - i * 24,
+                    borderColor: `rgba(14,165,233,${0.35 - i * 0.07})`,
+                    animationDelay: `${i * 0.75}s`,
+                    animationDuration: '3s',
+                  }}
+                />
+              ))}
+
               {/* SVG connector lines */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{zIndex:1}} viewBox="0 0 440 480" preserveAspectRatio="xMidYMid meet">
-                <path d="M 70 70 Q 110 130 175 195"  stroke="rgba(34,197,94,0.18)"  strokeWidth="1" fill="none" strokeDasharray="4 5"/>
-                <path d="M 370 380 Q 330 340 290 300" stroke="rgba(74,222,128,0.15)" strokeWidth="1" fill="none" strokeDasharray="4 5"/>
-                <path d="M 380 90 Q 345 155 305 210"  stroke="rgba(22,163,74,0.12)"  strokeWidth="1" fill="none" strokeDasharray="4 5"/>
+                <path d="M 70 70 Q 110 130 175 195"  stroke="rgba(14,165,233,0.18)"  strokeWidth="1" fill="none" strokeDasharray="4 5"/>
+                <path d="M 370 380 Q 330 340 290 300" stroke="rgba(56,189,248,0.15)" strokeWidth="1" fill="none" strokeDasharray="4 5"/>
+                <path d="M 380 90 Q 345 155 305 210"  stroke="rgba(2,132,199,0.12)"  strokeWidth="1" fill="none" strokeDasharray="4 5"/>
               </svg>
 
-              {/* Main AI receptionist image — double bezel */}
+              {/* Main AI receptionist image — double bezel with cursor glow */}
               <div className="relative" style={{zIndex:2}}>
                 <div className="p-2 rounded-[2.5rem]" style={{
-                  background: 'rgba(34,197,94,0.05)',
-                  boxShadow: '0 0 0 1px rgba(34,197,94,0.18), 0 40px 80px rgba(34,197,94,0.12), 0 80px 160px rgba(0,0,0,0.5)',
+                  background: 'rgba(14,165,233,0.05)',
+                  boxShadow: '0 0 0 1px rgba(14,165,233,0.18), 0 40px 80px rgba(14,165,233,0.12), 0 80px 160px rgba(0,0,0,0.5)',
                 }}>
-                  <div className="rounded-[calc(2.5rem-8px)] overflow-hidden shadow-[inset_0_1px_1px_rgba(74,222,128,0.12)]" style={{width:300,height:380}}>
+                  <div
+                    className="relative rounded-[calc(2.5rem-8px)] overflow-hidden shadow-[inset_0_1px_1px_rgba(56,189,248,0.12)]"
+                    style={{width:300,height:380}}
+                    onMouseMove={(e) => {
+                      const rect = e.currentTarget.getBoundingClientRect()
+                      setCursorPos({
+                        x: ((e.clientX - rect.left) / rect.width) * 100,
+                        y: ((e.clientY - rect.top) / rect.height) * 100,
+                      })
+                    }}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  >
                     <img
                       src="/Gemini_Generated_Image_a1e9r2a1e9r2a1e9.png"
                       alt="CareSync AI Voice Agent"
@@ -206,75 +235,117 @@ export default function Hero() {
                       onError={e => {
                         const el = e.currentTarget.parentElement
                         if (el) {
-                          el.style.background='linear-gradient(135deg, #071209 0%, #0C1F10 50%, #071209 100%)'
+                          el.style.background='linear-gradient(135deg, #0A1628 0%, #06122A 50%, #0A1628 100%)'
                           e.currentTarget.style.display='none'
                         }
                       }}
                     />
                     <div className="absolute inset-0 pointer-events-none" style={{
-                      background:'linear-gradient(to bottom, transparent 55%, rgba(4,13,6,0.7) 100%)',
+                      background:'linear-gradient(to bottom, transparent 55%, rgba(5,10,24,0.7) 100%)',
                     }}/>
+                    {isHovered && (
+                      <div className="absolute inset-0 rounded-[inherit] pointer-events-none z-10 transition-opacity duration-300"
+                        style={{ background: `radial-gradient(circle at ${cursorPos.x}% ${cursorPos.y}%, rgba(14,165,233,0.2) 0%, transparent 60%)` }}
+                      />
+                    )}
                   </div>
                 </div>
-                {/* Green glow beneath */}
+                {/* Electric blue glow beneath */}
                 <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[200px] h-[50px] rounded-full pointer-events-none" style={{
-                  background:'rgba(34,197,94,0.22)', filter:'blur(28px)',
+                  background:'rgba(14,165,233,0.22)', filter:'blur(28px)',
                 }}/>
               </div>
 
-              {/* Floating card 1: Incoming call (top-left) */}
-              <div className="absolute -top-3 -left-2 lg:-left-10 z-20" style={{animation:'float 4s ease-in-out infinite'}}>
-                <div className="p-1.5 rounded-2xl" style={{background:'rgba(4,13,6,0.85)',boxShadow:'0 0 0 1px rgba(34,197,94,0.18), 0 8px 32px rgba(0,0,0,0.4)'}}>
-                  <div className="rounded-[calc(1rem)] bg-[#071209] px-3 py-2.5 flex items-center gap-2.5 shadow-[inset_0_1px_1px_rgba(74,222,128,0.08)]" style={{minWidth:180}}>
-                    <div className="w-8 h-8 rounded-full bg-[rgba(34,197,94,0.12)] border border-[rgba(34,197,94,0.2)] flex items-center justify-center shrink-0">
-                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 3.5A1 1 0 013 2.5h1.5a1 1 0 01.97.757l.4 1.6a1 1 0 01-.285.99L4.85 6.25a6.3 6.3 0 002.9 2.9l.4-.735a1 1 0 01.99-.285l1.6.4A1 1 0 0111.5 9.5V11a1 1 0 01-1 1C5.37 12 2 8.63 2 4.5V3.5z" stroke="#22C55E" strokeWidth="1" strokeLinecap="round"/></svg>
-                    </div>
+              {/* Decorative ring dial (top-left, dashboard-style) */}
+              <div className="absolute -top-12 left-20 lg:-top-8 lg:left-16 z-30" style={{animation:'float 4.5s ease-in-out infinite 0.4s'}}>
+                <div className="float-ring-dial w-12 h-12 flex items-center justify-center relative">
+                  <svg width="44" height="44" viewBox="0 0 44 44" className="absolute inset-0">
+                    <circle cx="22" cy="22" r="18" fill="none" stroke="#E2E8F0" strokeWidth="3"/>
+                    <circle cx="22" cy="22" r="18" fill="none" stroke="#0EA5E9" strokeWidth="3" strokeDasharray="106 113" strokeLinecap="round" transform="rotate(-90 22 22)"/>
+                  </svg>
+                  <span className="text-[9px] font-extrabold text-[#0A1628]">94%</span>
+                </div>
+              </div>
+
+              {/* Floating card 1: Calls Handled (top-left, dashboard-style white card) */}
+              <div className="absolute -top-2 -left-2 lg:-left-14 z-20" style={{animation:'float 4s ease-in-out infinite'}}>
+                <div className="float-card-light p-4" style={{minWidth:188}}>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] font-bold text-[#64748B] uppercase tracking-wide">Calls Handled</span>
+                    <span className="text-[#94A3B8] text-xs">↗</span>
+                  </div>
+                  <div className="text-[34px] font-extrabold leading-none mb-3 tracking-tight text-[#0A1628]">1,204</div>
+                  <div className="flex items-center gap-2 pt-2.5 border-t border-[#E2E8F0]">
+                    <div className="w-7 h-7 rounded-full bg-[#0EA5E9] flex items-center justify-center text-sm shrink-0">🤖</div>
                     <div>
-                      <div className="text-[9px] text-[rgba(248,250,252,0.35)] uppercase tracking-widest">Incoming Call</div>
-                      <div className="text-xs font-semibold text-[#F8FAFC]">Maria Chen</div>
-                      <div className="flex items-center gap-1 mt-0.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E] animate-pulse"/>
-                        <span className="text-[9px] text-[#22C55E]">AI Answering</span>
-                      </div>
+                      <div className="text-[11px] font-bold text-[#0A1628]">This Month</div>
+                      <div className="text-[10px] text-[#64748B]">94% answer rate</div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Floating card 2: Appointment booked (top-right — Pelmatech style) */}
-              <div className="absolute -top-8 -right-2 lg:-right-10 z-20" style={{animation:'float 4.5s ease-in-out infinite 1.2s'}}>
-                <div className="p-1.5 rounded-2xl" style={{background:'rgba(4,13,6,0.85)',boxShadow:'0 0 0 1px rgba(34,197,94,0.15), 0 8px 32px rgba(0,0,0,0.4)'}}>
-                  <div className="rounded-[calc(1rem)] bg-[#071209] px-3 py-3 shadow-[inset_0_1px_1px_rgba(74,222,128,0.08)]" style={{minWidth:168}}>
-                    <div className="text-[9px] text-[#22C55E] uppercase tracking-widest mb-2 font-semibold flex items-center gap-1">
-                      <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2" stroke="#22C55E" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                      Appointment Booked
-                    </div>
-                    <div className="text-xs font-semibold text-[#F8FAFC] mb-0.5">Dr. Johnson</div>
-                    <div className="text-[10px] text-[rgba(248,250,252,0.4)]">March 15 · 10:30 AM</div>
-                    <div className="mt-2 pt-2 border-t border-[rgba(34,197,94,0.1)] flex items-center justify-between">
-                      <span className="text-[9px] text-[rgba(248,250,252,0.3)]">New Patient</span>
-                      <span className="text-[9px] font-semibold text-[#4ADE80]">SMS Sent ✓</span>
+              {/* Floating card 2: AI Performance (top-right, dashboard-style accent card) */}
+              <div className="absolute -top-8 -right-2 lg:-right-14 z-20" style={{animation:'float 4.5s ease-in-out infinite 1.2s'}}>
+                <div className="float-card-accent p-4" style={{minWidth:172}}>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[10px] font-bold uppercase tracking-wide">AI Performance</span>
+                    <span className="text-xs">↗</span>
+                  </div>
+                  <div className="flex items-end gap-1 h-10 mb-3">
+                    {[0.4,0.7,0.5,0.9,0.6,1,0.75].map((h,i)=>(
+                      <div key={i} className="flex-1 rounded-full bg-white" style={{height:`${h*100}%`, opacity:0.5+h*0.5}}/>
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-2 pt-2.5 border-t border-white/25">
+                    <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-sm shrink-0">🎙️</div>
+                    <div>
+                      <div className="text-[11px] font-bold">Voice AI</div>
+                      <div className="text-[10px] text-white/75">Real-time response</div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Chip: response time */}
+              {/* Pill: response time */}
               <div className="absolute -bottom-2 -right-2 lg:-right-8 z-20" style={{animation:'float 3.8s ease-in-out infinite 0.6s'}}>
-                <div className="px-3 py-1.5 rounded-full flex items-center gap-2" style={{background:'rgba(34,197,94,0.1)',boxShadow:'0 0 0 1px rgba(34,197,94,0.2)'}}>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E] animate-pulse"/>
-                  <span className="text-[11px] font-semibold text-[#22C55E]">⚡ &lt; 2s response</span>
+                <div className="float-pill-light px-4 py-2 flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-[#0EA5E9] flex items-center justify-center shrink-0">
+                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </span>
+                  <span className="text-[12px] font-bold">⚡ &lt; 2s response</span>
                 </div>
               </div>
 
-              {/* Chip: 24/7 */}
+              {/* Pill: 24/7 */}
               <div className="absolute -bottom-6 -left-2 lg:-left-8 z-20" style={{animation:'float 5s ease-in-out infinite 2s'}}>
-                <div className="px-3 py-1.5 rounded-full flex items-center gap-2" style={{background:'rgba(74,222,128,0.08)',boxShadow:'0 0 0 1px rgba(74,222,128,0.15)'}}>
-                  <span className="text-[11px] font-semibold text-[#4ADE80]">🌙 24/7 active</span>
+                <div className="float-pill-light px-4 py-2 flex items-center gap-2">
+                  <span className="relative flex w-1.5 h-1.5">
+                    <span className="absolute inset-0 rounded-full bg-[#0EA5E9] animate-ping opacity-60"/>
+                    <span className="relative rounded-full bg-[#0EA5E9] w-1.5 h-1.5"/>
+                  </span>
+                  <span className="text-[12px] font-bold">🌙 24/7 Active</span>
                 </div>
               </div>
             </motion.div>
 
+          </div>
+
+          {/* Active Call indicator */}
+          <div className="flex items-center justify-center gap-2 mt-2">
+            <div className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[rgba(14,165,233,0.08)] border border-[rgba(14,165,233,0.2)]"
+              style={{ animation: 'neon-pulse 2s ease-in-out infinite' }}>
+              <div className="w-2 h-2 rounded-full bg-[#0EA5E9] animate-pulse" />
+              <span className="text-xs font-semibold text-[#38BDF8]">Casey is online</span>
+              <div className="flex items-center gap-0.5 h-4 ml-1">
+                {[0.5,0.8,1,0.7,0.6,1,0.4].map((h,i)=>(
+                  <div key={i} className="w-0.5 rounded-full bg-[#0EA5E9]" style={{
+                    height:`${h*14}px`,
+                    animation:`waveform ${0.5+i*0.08}s ease-in-out infinite ${i*0.1}s`
+                  }}/>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -282,14 +353,14 @@ export default function Hero() {
         <motion.div
           initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }}
           transition={{ duration:0.7, delay:0.5 }}
-          className="w-full border-t border-[rgba(34,197,94,0.1)] mt-auto"
+          className="w-full border-t border-[rgba(14,165,233,0.1)] mt-auto"
           style={{zIndex:10}}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
               {bottomFeatures.map((f,i)=>(
                 <div key={i} className="flex items-center gap-2">
-                  {i>0 && <div className="hidden sm:block w-px h-3.5 bg-[rgba(34,197,94,0.15)]"/>}
+                  {i>0 && <div className="hidden sm:block w-px h-3.5 bg-[rgba(14,165,233,0.15)]"/>}
                   <span className="text-sm">{f.icon}</span>
                   <span className="text-[12px] font-medium text-[rgba(248,250,252,0.5)]">{f.label}</span>
                 </div>

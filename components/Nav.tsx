@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-const links = ['Features', 'How It Works', 'Use Cases', 'Pricing']
+const links = ['Features', 'How It Works', 'Use Cases']
 
 export default function Nav() {
   const [scrolled, setScrolled]   = useState(false)
@@ -39,10 +39,19 @@ export default function Nav() {
         >
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 px-3 py-1.5 mr-2">
-            <div className="relative w-2 h-2">
-              <span className="absolute inset-0 rounded-full bg-[#16A34A]" />
-              <span className="absolute inset-0 rounded-full bg-[#16A34A] animate-pulse-ring" />
-            </div>
+            <svg width="30" height="20" viewBox="0 0 70 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="navLogoG" x1="0" y1="0" x2="70" y2="44" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stopColor="#27AE60"/>
+                  <stop offset="50%" stopColor="#16A085"/>
+                  <stop offset="100%" stopColor="#1B6FA4"/>
+                </linearGradient>
+              </defs>
+              <ellipse cx="22" cy="22" rx="18" ry="13" stroke="#1B6FA4" strokeWidth="4" fill="none" opacity="0.7"/>
+              <ellipse cx="48" cy="22" rx="18" ry="13" stroke="#1B6FA4" strokeWidth="4" fill="none" opacity="0.7"/>
+              <path d="M35 22 C31 14 23 8 17 8 C9 8 4 14 4 22 C4 30 9 36 17 36 C23 36 31 30 35 22 Z" stroke="url(#navLogoG)" strokeWidth="4.5" fill="none"/>
+              <path d="M35 22 C39 14 47 8 53 8 C61 8 66 14 66 22 C66 30 61 36 53 36 C47 36 39 30 35 22 Z" stroke="url(#navLogoG)" strokeWidth="4.5" fill="none"/>
+            </svg>
             <span className="text-sm font-bold text-[#F8FAFC] tracking-tight">CareSync AI</span>
           </Link>
 
@@ -63,31 +72,22 @@ export default function Nav() {
 
           {/* Desktop CTAs */}
           <div className="hidden md:flex items-center gap-2 ml-2">
-            {/* Chatbot button */}
-            <Link
-              href="/chatbot"
-              className={`flex items-center gap-2 pl-4 pr-2 py-2 rounded-full text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group active:scale-[0.98] ${
-                isChatbot
-                  ? 'bg-[#16A34A] text-white shadow-[0_2px_16px_rgba(16,185,129,0.45)]'
-                  : 'border border-white/10 bg-white/[0.06] text-[rgba(248,250,252,0.85)] hover:bg-white/[0.12] hover:border-white/20'
-              }`}
+            {/* Phone number */}
+            <a
+              href="tel:+15717034510"
+              className="flex items-center gap-2 pl-4 pr-4 py-2 rounded-full border border-white/10 bg-white/[0.06] text-[rgba(248,250,252,0.85)] text-sm font-semibold hover:bg-white/[0.12] hover:border-white/20 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
             >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M2 2h10a1 1 0 011 1v6a1 1 0 01-1 1H5l-3 3V3a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M3.5 1.5h2l1.2 3.2-1.4 1.4a8 8 0 004.6 4.6l1.4-1.4 3.2 1.2v2c0 .8-.7 1.5-1.5 1.5C7.5 14 2 8.5 2 3c0-.8.7-1.5 1.5-1.5z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              Chatbot
-              <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[1px] transition-transform duration-500">
-                <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
-                  <path d="M1.5 7.5L7.5 1.5M7.5 1.5H3M7.5 1.5V6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </span>
-            </Link>
+              1-571-703-4510
+            </a>
 
             {/* Book a Demo */}
             {!isChatbot && (
               <a
-                href="#demo"
-                className="flex items-center gap-2 pl-4 pr-2 py-2 rounded-full bg-[#22C55E] hover:bg-[#16A34A] text-white text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group active:scale-[0.98] shadow-[0_2px_16px_rgba(34,197,94,0.45)]"
+                href="/calendar"
+                className="flex items-center gap-2 pl-4 pr-2 py-2 rounded-full bg-[#0EA5E9] hover:bg-[#0284C7] text-white text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group active:scale-[0.98] shadow-[0_2px_16px_rgba(14,165,233,0.45)]"
               >
                 Book a Demo
                 <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[1px] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
@@ -131,41 +131,38 @@ export default function Nav() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 16 }}
                 transition={{ duration: 0.5, delay: i * 0.07, ease: [0.32, 0.72, 0, 1] }}
-                className="text-3xl font-bold text-[#F8FAFC] hover:text-[#22C55E] transition-colors duration-300 py-3"
+                className="text-3xl font-bold text-[#F8FAFC] hover:text-[#0EA5E9] transition-colors duration-300 py-3"
               >
                 {link}
               </motion.a>
             ))}
 
-            {/* Chatbot link in mobile */}
-            <motion.div
-              initial={{ opacity: 0, y: 32 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 16 }}
-              transition={{ duration: 0.5, delay: (isChatbot ? 0 : links.length) * 0.07, ease: [0.32, 0.72, 0, 1] }}
-              className="mt-2"
-            >
-              <Link
-                href="/chatbot"
+            {!isChatbot && (
+              <motion.a
+                href="tel:+15717034510"
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 bg-white/[0.06] text-white text-lg font-semibold"
+                initial={{ opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 16 }}
+                transition={{ duration: 0.5, delay: links.length * 0.07, ease: [0.32, 0.72, 0, 1] }}
+                className="mt-2 flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 bg-white/[0.06] text-white text-lg font-semibold"
               >
-                <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 2h10a1 1 0 011 1v6a1 1 0 01-1 1H5l-3 3V3a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3.5 1.5h2l1.2 3.2-1.4 1.4a8 8 0 004.6 4.6l1.4-1.4 3.2 1.2v2c0 .8-.7 1.5-1.5 1.5C7.5 14 2 8.5 2 3c0-.8.7-1.5 1.5-1.5z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                Chatbot
-              </Link>
-            </motion.div>
+                1-571-703-4510
+              </motion.a>
+            )}
 
             {!isChatbot && (
               <motion.a
-                href="#demo"
+                href="/calendar"
                 onClick={() => setMenuOpen(false)}
                 initial={{ opacity: 0, y: 32 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 16 }}
                 transition={{ duration: 0.5, delay: (links.length + 1) * 0.07, ease: [0.32, 0.72, 0, 1] }}
-                className="mt-2 flex items-center gap-2 px-6 py-3 rounded-full bg-[#22C55E] text-white text-lg font-semibold shadow-[0_4px_24px_rgba(34,197,94,0.4)]"
+                className="mt-2 flex items-center gap-2 px-6 py-3 rounded-full bg-[#0EA5E9] text-white text-lg font-semibold shadow-[0_4px_24px_rgba(14,165,233,0.4)]"
               >
                 Book a Demo
                 <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">

@@ -8,6 +8,10 @@ const footerLinks = {
   Legal: ['Privacy Policy', 'Terms of Service', 'HIPAA Notice'],
 }
 
+const linkHrefOverrides: Record<string, string> = {
+  Blog: '/blog',
+}
+
 export default function Footer() {
   return (
     <footer className="relative border-t border-white/[0.06] py-16 overflow-hidden">
@@ -40,7 +44,7 @@ export default function Footer() {
                 {links.map((link) => (
                   <li key={link}>
                     <a
-                      href="#"
+                      href={linkHrefOverrides[link] ?? '#'}
                       className="text-sm text-[rgba(248,250,252,0.55)] hover:text-[#F8FAFC] transition-colors duration-300"
                     >
                       {link}
