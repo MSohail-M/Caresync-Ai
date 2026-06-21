@@ -4,7 +4,6 @@ import ScrollStory from '@/components/ScrollStory'
 import Demo from '@/components/Demo'
 import FrontDeskComparison from '@/components/FrontDeskComparison'
 import EHRAutomation from '@/components/EHRAutomation'
-import Demo from '@/components/Demo'
 import ROI from '@/components/ROI'
 import Trust from '@/components/Trust'
 import CTA from '@/components/CTA'
@@ -30,8 +29,6 @@ export default function Home() {
       <FrontDeskComparison />
       <Divider />
       <EHRAutomation />
-      <Divider />
-      <Demo />
       <Divider />
       <ROI />
       <Divider />
