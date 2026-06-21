@@ -8,6 +8,7 @@ import ROI from '@/components/ROI'
 import Trust from '@/components/Trust'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
+import StickyBar from '@/components/StickyBar'
 
 function Divider() {
   return (
@@ -36,6 +37,7 @@ export default function Home() {
       <Divider />
       <CTA />
       <Footer />
+      <StickyBar />
     </main>
   )
 }

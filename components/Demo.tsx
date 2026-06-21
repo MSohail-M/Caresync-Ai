@@ -373,7 +373,7 @@ export default function Demo() {
                         <span className="text-xs font-semibold text-[#0EA5E9] uppercase tracking-wide">Appointment Confirmed</span>
                         <span className="ml-auto text-[10px] text-[rgba(248,250,252,0.35)]">SMS Sent ✓</span>
                       </div>
-                      <div className="flex flex-wrap gap-x-4 gap-y-1">
+                      <div className="flex flex-wrap gap-x-4 gap-y-1 mb-3">
                         {[
                           { label: 'Patient', value: 'James Torres' },
                           { label: 'Doctor', value: 'Dr. Johnson' },
@@ -385,6 +385,25 @@ export default function Demo() {
                             <span className="text-xs text-[#F8FAFC] font-semibold">{detail.value}</span>
                           </div>
                         ))}
+                      </div>
+                      {/* Post-completion CTA — strike at peak engagement */}
+                      <div className="pt-3 border-t border-white/[0.07] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                        <p className="text-[11px] text-white/40 leading-snug max-w-[200px]">
+                          This is what CareSync AI does for your clinic — every call.
+                        </p>
+                        <a
+                          href="/calendar"
+                          className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-[12px] font-semibold text-white whitespace-nowrap transition-all duration-200 active:scale-[0.97]"
+                          style={{
+                            background: 'linear-gradient(135deg, #0891B2, #0284C7)',
+                            boxShadow: '0 0 12px rgba(8,145,178,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
+                          }}
+                        >
+                          Book Your Demo
+                          <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
+                            <path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </a>
                       </div>
                     </div>
                   </motion.div>

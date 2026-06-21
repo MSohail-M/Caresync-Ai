@@ -173,6 +173,33 @@ export default function ROI() {
             </div>
           </div>
         </motion.div>
+
+        {/* Inline CTA — after proof is established */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 p-5 rounded-2xl border border-sky-500/10 bg-sky-500/[0.03]"
+        >
+          <div>
+            <p className="text-[14px] font-semibold text-white/80">See these numbers at your clinic.</p>
+            <p className="text-[12px] text-white/35 mt-0.5">Setup in 48 hours. No hardware. No contracts.</p>
+          </div>
+          <a
+            href="/calendar"
+            className="shrink-0 flex items-center gap-2 px-6 py-2.5 rounded-xl text-[13px] font-semibold text-white transition-all duration-200 active:scale-[0.97]"
+            style={{
+              background: 'linear-gradient(135deg, #0891B2, #0284C7)',
+              boxShadow: '0 0 20px rgba(8,145,178,0.25), inset 0 1px 0 rgba(255,255,255,0.1)',
+            }}
+          >
+            Book a Free Demo
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </motion.div>
       </div>
     </section>
   )

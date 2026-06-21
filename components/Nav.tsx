@@ -5,7 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-const links = ['Features', 'How It Works', 'Use Cases']
+const links = [
+  { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Live Demo',    href: '#demo' },
+  { label: 'Results',      href: '#results' },
+]
 
 export default function Nav() {
   const [scrolled, setScrolled]   = useState(false)
@@ -58,13 +62,13 @@ export default function Nav() {
           {/* Desktop Links — only on main page */}
           {!isChatbot && (
             <div className="hidden md:flex items-center gap-1">
-              {links.map((link) => (
+              {links.map(({ label, href }) => (
                 <a
-                  key={link}
-                  href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}
+                  key={label}
+                  href={href}
                   className="px-4 py-2 rounded-full text-sm font-medium text-[rgba(248,250,252,0.6)] hover:text-[#F8FAFC] hover:bg-white/[0.07] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
                 >
-                  {link}
+                  {label}
                 </a>
               ))}
             </div>
@@ -122,10 +126,10 @@ export default function Nav() {
             className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-2"
             style={{ background: 'rgba(5,11,24,0.96)', backdropFilter: 'blur(48px)', WebkitBackdropFilter: 'blur(48px)' }}
           >
-            {!isChatbot && links.map((link, i) => (
+            {!isChatbot && links.map(({ label, href }, i) => (
               <motion.a
-                key={link}
-                href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}
+                key={label}
+                href={href}
                 onClick={() => setMenuOpen(false)}
                 initial={{ opacity: 0, y: 32 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -133,7 +137,7 @@ export default function Nav() {
                 transition={{ duration: 0.5, delay: i * 0.07, ease: [0.32, 0.72, 0, 1] }}
                 className="text-3xl font-bold text-[#F8FAFC] hover:text-[#0EA5E9] transition-colors duration-300 py-3"
               >
-                {link}
+                {label}
               </motion.a>
             ))}
 

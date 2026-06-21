@@ -15,12 +15,12 @@ const transcriptLines = [
 ]
 
 const bottomFeatures = [
-  { icon: '📞', label: 'Answers Every Call' },
-  { icon: '📅', label: 'Books Appointments' },
-  { icon: '💬', label: 'Sends SMS Confirmations' },
-  { icon: '🔄', label: 'Reschedules & Cancels' },
-  { icon: '🏥', label: 'EMR/EHR Integrated' },
-  { icon: '🌙', label: '24/7 Coverage' },
+  { label: 'Answers Every Call', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.003 1.19 2 2 0 012 .003h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg> },
+  { label: 'Books Appointments', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/></svg> },
+  { label: 'SMS Confirmations', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> },
+  { label: 'Reschedules & Cancels', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg> },
+  { label: 'EMR/EHR Integrated', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg> },
+  { label: '24/7 Coverage', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> },
 ]
 
 export default function Hero() {
@@ -113,8 +113,18 @@ export default function Hero() {
             {/* ═══ LEFT: PELMATECH MEGA TYPOGRAPHY ═══ */}
             <motion.div style={{ y: textY }} className="flex flex-col justify-center order-2 lg:order-1">
 
+              {/* Social proof — above fold, reduces skepticism */}
+              <motion.div initial={{ opacity:0, y:16 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.5, ease:[0.32,0.72,0,1] }} className="flex items-center gap-3 mb-5">
+                <div className="flex -space-x-2">
+                  {['#0891B2','#0369A1','#0284C7','#0EA5E9'].map((bg, i) => (
+                    <div key={i} className="w-6 h-6 rounded-full border-2 border-[#050A18] flex items-center justify-center text-[8px] font-bold text-white" style={{ background: bg }}>{['PM','RK','JT','SL'][i]}</div>
+                  ))}
+                </div>
+                <span className="text-[12px] text-white/45">Trusted by <span className="text-white/75 font-semibold">500+ clinic teams</span> across the US</span>
+              </motion.div>
+
               {/* Eyebrow */}
-              <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, ease:[0.32,0.72,0,1] }}>
+              <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.05, ease:[0.32,0.72,0,1] }}>
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(14,165,233,0.2)] bg-[rgba(14,165,233,0.06)] mb-5">
                   <span className="relative flex w-1.5 h-1.5">
                     <span className="absolute inset-0 rounded-full bg-[#0EA5E9] animate-ping opacity-60" />
@@ -313,7 +323,7 @@ export default function Hero() {
                   <span className="w-5 h-5 rounded-full bg-[#0EA5E9] flex items-center justify-center shrink-0">
                     <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   </span>
-                  <span className="text-[12px] font-bold">⚡ &lt; 2s response</span>
+                  <span className="text-[12px] font-bold">&lt; 2s response</span>
                 </div>
               </div>
 
@@ -324,7 +334,7 @@ export default function Hero() {
                     <span className="absolute inset-0 rounded-full bg-[#0EA5E9] animate-ping opacity-60"/>
                     <span className="relative rounded-full bg-[#0EA5E9] w-1.5 h-1.5"/>
                   </span>
-                  <span className="text-[12px] font-bold">🌙 24/7 Active</span>
+                  <span className="text-[12px] font-bold">24/7 Active</span>
                 </div>
               </div>
             </motion.div>
@@ -361,7 +371,7 @@ export default function Hero() {
               {bottomFeatures.map((f,i)=>(
                 <div key={i} className="flex items-center gap-2">
                   {i>0 && <div className="hidden sm:block w-px h-3.5 bg-[rgba(14,165,233,0.15)]"/>}
-                  <span className="text-sm">{f.icon}</span>
+                  <span className="text-[rgba(248,250,252,0.4)]">{f.icon}</span>
                   <span className="text-[12px] font-medium text-[rgba(248,250,252,0.5)]">{f.label}</span>
                 </div>
               ))}
