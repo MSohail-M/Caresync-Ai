@@ -37,8 +37,8 @@ export default function Nav() {
           transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           className="flex items-center gap-1 px-2 py-2 rounded-full transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
           style={scrolled
-            ? { background: 'rgba(5,11,24,0.92)', border: '1px solid rgba(255,255,255,0.1)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }
-            : { background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }
+            ? { background: 'rgba(255,255,255,0.94)', border: '1px solid rgba(16,185,129,0.15)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', boxShadow: '0 4px 24px rgba(0,0,0,0.08)' }
+            : { background: 'rgba(255,255,255,0.75)', border: '1px solid rgba(16,185,129,0.12)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }
           }
         >
           {/* Logo */}
@@ -56,7 +56,7 @@ export default function Nav() {
               <path d="M35 22 C31 14 23 8 17 8 C9 8 4 14 4 22 C4 30 9 36 17 36 C23 36 31 30 35 22 Z" stroke="url(#navLogoG)" strokeWidth="4.5" fill="none"/>
               <path d="M35 22 C39 14 47 8 53 8 C61 8 66 14 66 22 C66 30 61 36 53 36 C47 36 39 30 35 22 Z" stroke="url(#navLogoG)" strokeWidth="4.5" fill="none"/>
             </svg>
-            <span className="text-sm font-bold text-[#F8FAFC] tracking-tight">CareSync AI</span>
+            <span className="text-sm font-bold text-[#0F172A] tracking-tight">CareSync AI</span>
           </Link>
 
           {/* Desktop Links — only on main page */}
@@ -66,7 +66,7 @@ export default function Nav() {
                 <a
                   key={label}
                   href={href}
-                  className="px-4 py-2 rounded-full text-sm font-medium text-[rgba(248,250,252,0.6)] hover:text-[#F8FAFC] hover:bg-white/[0.07] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                  className="px-4 py-2 rounded-full text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[rgba(15,23,42,0.05)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
                 >
                   {label}
                 </a>
@@ -79,7 +79,7 @@ export default function Nav() {
             {/* Phone number */}
             <a
               href="tel:+15717034510"
-              className="flex items-center gap-2 pl-4 pr-4 py-2 rounded-full border border-white/10 bg-white/[0.06] text-[rgba(248,250,252,0.85)] text-sm font-semibold hover:bg-white/[0.12] hover:border-white/20 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+              className="flex items-center gap-2 pl-4 pr-4 py-2 rounded-full border border-[rgba(15,23,42,0.12)] bg-[rgba(15,23,42,0.04)] text-[#334155] text-sm font-semibold hover:bg-[rgba(15,23,42,0.08)] hover:border-[rgba(15,23,42,0.2)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
             >
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                 <path d="M3.5 1.5h2l1.2 3.2-1.4 1.4a8 8 0 004.6 4.6l1.4-1.4 3.2 1.2v2c0 .8-.7 1.5-1.5 1.5C7.5 14 2 8.5 2 3c0-.8.7-1.5 1.5-1.5z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -91,7 +91,7 @@ export default function Nav() {
             {!isChatbot && (
               <a
                 href="/calendar"
-                className="flex items-center gap-2 pl-4 pr-2 py-2 rounded-full bg-[#0EA5E9] hover:bg-[#0284C7] text-white text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group active:scale-[0.98] shadow-[0_2px_16px_rgba(14,165,233,0.45)]"
+                className="btn-primary flex items-center gap-2 pl-4 pr-2 py-2 rounded-full text-white text-sm font-semibold group active:scale-[0.98]"
               >
                 Book a Demo
                 <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[1px] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
@@ -109,8 +109,8 @@ export default function Nav() {
             className="md:hidden relative w-10 h-10 rounded-full flex items-center justify-center"
             aria-label="Toggle menu"
           >
-            <span className={`absolute w-4 h-[1.5px] bg-[#F8FAFC] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${menuOpen ? 'rotate-45' : '-translate-y-1.5'}`} />
-            <span className={`absolute w-4 h-[1.5px] bg-[#F8FAFC] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${menuOpen ? '-rotate-45' : 'translate-y-1.5'}`} />
+            <span className={`absolute w-4 h-[1.5px] bg-[#0F172A] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${menuOpen ? 'rotate-45' : '-translate-y-1.5'}`} />
+            <span className={`absolute w-4 h-[1.5px] bg-[#0F172A] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${menuOpen ? '-rotate-45' : 'translate-y-1.5'}`} />
           </button>
         </motion.nav>
       </div>
@@ -124,7 +124,7 @@ export default function Nav() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
             className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-2"
-            style={{ background: 'rgba(5,11,24,0.96)', backdropFilter: 'blur(48px)', WebkitBackdropFilter: 'blur(48px)' }}
+            style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(48px)', WebkitBackdropFilter: 'blur(48px)' }}
           >
             {!isChatbot && links.map(({ label, href }, i) => (
               <motion.a
@@ -135,7 +135,7 @@ export default function Nav() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 16 }}
                 transition={{ duration: 0.5, delay: i * 0.07, ease: [0.32, 0.72, 0, 1] }}
-                className="text-3xl font-bold text-[#F8FAFC] hover:text-[#0EA5E9] transition-colors duration-300 py-3"
+                className="text-3xl font-bold text-[#0F172A] hover:text-[#10B981] transition-colors duration-300 py-3"
               >
                 {label}
               </motion.a>
@@ -149,7 +149,7 @@ export default function Nav() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 16 }}
                 transition={{ duration: 0.5, delay: links.length * 0.07, ease: [0.32, 0.72, 0, 1] }}
-                className="mt-2 flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 bg-white/[0.06] text-white text-lg font-semibold"
+                className="mt-2 flex items-center gap-2 px-6 py-3 rounded-full border border-[rgba(15,23,42,0.12)] bg-[rgba(15,23,42,0.04)] text-[#334155] text-lg font-semibold"
               >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M3.5 1.5h2l1.2 3.2-1.4 1.4a8 8 0 004.6 4.6l1.4-1.4 3.2 1.2v2c0 .8-.7 1.5-1.5 1.5C7.5 14 2 8.5 2 3c0-.8.7-1.5 1.5-1.5z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -166,7 +166,7 @@ export default function Nav() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 16 }}
                 transition={{ duration: 0.5, delay: (links.length + 1) * 0.07, ease: [0.32, 0.72, 0, 1] }}
-                className="mt-2 flex items-center gap-2 px-6 py-3 rounded-full bg-[#0EA5E9] text-white text-lg font-semibold shadow-[0_4px_24px_rgba(14,165,233,0.4)]"
+                className="btn-primary mt-2 flex items-center gap-2 px-6 py-3 rounded-full text-white text-lg font-semibold"
               >
                 Book a Demo
                 <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">

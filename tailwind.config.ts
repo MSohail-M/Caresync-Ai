@@ -15,9 +15,13 @@ const config: Config = {
           card: '#0A1628',
           border: 'rgba(255,255,255,0.08)',
         },
-        blue: {
-          accent: '#3B8EF0',
-          glow: 'rgba(59,142,240,0.15)',
+        brand: {
+          green: '#10B981',
+          'green-light': '#34D399',
+          'green-dark': '#059669',
+          teal: '#0D9488',
+          blue: '#1B6FA4',
+          glow: 'rgba(16,185,129,0.15)',
         },
         green: {
           accent: '#10B981',

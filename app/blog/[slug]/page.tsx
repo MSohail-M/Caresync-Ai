@@ -70,15 +70,15 @@ export default async function BlogPostPage({
   return (
     <>
       <Nav />
-      <main className="relative pt-36 pb-24 overflow-hidden" style={{ background: '#050B18' }}>
+      <main className="relative pt-36 pb-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] rounded-full" style={{background:'radial-gradient(circle, rgba(14,165,233,0.06) 0%, transparent 65%)',filter:'blur(60px)'}}/>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] rounded-full" style={{background:'radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 65%)',filter:'blur(60px)'}}/>
         </div>
 
         <article className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-[rgba(248,250,252,0.5)] hover:text-[#0EA5E9] transition-colors duration-300 mb-8"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-[#64748B] hover:text-[#10B981] transition-colors duration-300 mb-8"
           >
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
               <path d="M8 2L2 8M2 8H6.5M2 8V3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -87,15 +87,15 @@ export default async function BlogPostPage({
           </Link>
 
           <div className="flex items-center gap-3 mb-5">
-            <span className="px-2.5 py-1 rounded-full text-[10px] uppercase tracking-[0.15em] font-semibold text-[#0EA5E9] border border-[#0EA5E9]/25 bg-[#0EA5E9]/[0.08]">
+            <span className="px-2.5 py-1 rounded-full text-[10px] uppercase tracking-[0.15em] font-semibold text-[#10B981] border border-[#10B981]/25 bg-[#10B981]/[0.08]">
               {post.category}
             </span>
-            <span className="text-[12px] text-[rgba(248,250,252,0.35)]">{formattedDate}</span>
-            <span className="text-[12px] text-[rgba(248,250,252,0.35)]">·</span>
-            <span className="text-[12px] text-[rgba(248,250,252,0.35)]">{post.readTime}</span>
+            <span className="text-[12px] text-[#94A3B8]">{formattedDate}</span>
+            <span className="text-[12px] text-[#94A3B8]">·</span>
+            <span className="text-[12px] text-[#94A3B8]">{post.readTime}</span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#F8FAFC] tracking-tight leading-tight mb-10">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0F172A] tracking-tight leading-tight mb-10">
             {post.title}
           </h1>
 
@@ -105,13 +105,13 @@ export default async function BlogPostPage({
 
           {/* FAQ section */}
           <div className="mt-16">
-            <h2 className="text-xl font-bold text-[#F8FAFC] mb-6">Frequently Asked Questions</h2>
+            <h2 className="text-xl font-bold text-[#0F172A] mb-6">Frequently Asked Questions</h2>
             <div className="space-y-3">
               {post.faqs.map((faq) => (
-                <div key={faq.q} className="p-1.5 rounded-2xl bg-white/[0.02] ring-1 ring-white/[0.06]">
-                  <div className="rounded-[calc(1rem-2px)] bg-[#0A1628] p-5">
-                    <h3 className="text-sm font-bold text-[#F8FAFC] mb-2">{faq.q}</h3>
-                    <p className="text-sm text-[rgba(248,250,252,0.55)] leading-relaxed">{faq.a}</p>
+                <div key={faq.q} className="p-1.5 rounded-2xl bg-white ring-1 ring-[rgba(15,23,42,0.08)]">
+                  <div className="rounded-[calc(1rem-2px)] bg-[#F8FAFC] p-5">
+                    <h3 className="text-sm font-bold text-[#0F172A] mb-2">{faq.q}</h3>
+                    <p className="text-sm text-[#475569] leading-relaxed">{faq.a}</p>
                   </div>
                 </div>
               ))}
@@ -119,18 +119,18 @@ export default async function BlogPostPage({
           </div>
 
           {/* CTA */}
-          <div className="mt-16 p-1.5 rounded-[2rem] bg-[#0EA5E9]/[0.08] ring-1 ring-[#0EA5E9]/20">
-            <div className="rounded-[calc(2rem-6px)] bg-[#0A1628] p-8 text-center">
-              <h2 className="text-xl sm:text-2xl font-bold text-[#F8FAFC] mb-2">
+          <div className="mt-16 p-1.5 rounded-[2rem] bg-[#10B981]/[0.08] ring-1 ring-[#10B981]/20">
+            <div className="rounded-[calc(2rem-6px)] bg-[#F8FAFC] p-8 text-center">
+              <h2 className="text-xl sm:text-2xl font-bold text-[#0F172A] mb-2">
                 See it working for your practice
               </h2>
-              <p className="text-sm text-[rgba(248,250,252,0.5)] mb-6 max-w-md mx-auto">
+              <p className="text-sm text-[#64748B] mb-6 max-w-md mx-auto">
                 Book a short call and we&apos;ll walk through how this would connect to your
                 phone line, website, and scheduling system.
               </p>
               <Link
                 href="/calendar"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0EA5E9] hover:bg-[#0284C7] text-white text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-[0_2px_16px_rgba(14,165,233,0.45)]"
+                className="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-semibold"
               >
                 Book a Demo
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none">

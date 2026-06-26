@@ -54,8 +54,8 @@ const leftFeatures = [
     Icon: PhoneIcon,
     title: 'Missed & Inbound Calls',
     desc: 'Every call answered in under 2 seconds. No hold music, no voicemails.',
-    color: '#38BDF8',
-    glow: 'rgba(56,189,248,0.12)',
+    color: '#34D399',
+    glow: 'rgba(52,211,153,0.12)',
   },
   {
     Icon: CalendarIcon,
@@ -78,8 +78,8 @@ const rightFeatures = [
     Icon: UserUpdateIcon,
     title: 'Patient Profile Updates',
     desc: 'Address, phone, or email changes written instantly to the chart.',
-    color: '#38BDF8',
-    glow: 'rgba(56,189,248,0.12)',
+    color: '#34D399',
+    glow: 'rgba(52,211,153,0.12)',
   },
   {
     Icon: PillIcon,
@@ -115,7 +115,7 @@ function FeatureCard({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.55, delay, ease: [0.32, 0.72, 0, 1] }}
-      className="relative group flex gap-3 p-4 rounded-xl border border-white/[0.06] bg-[#0A1628]/70 backdrop-blur-sm hover:border-white/10 transition-colors duration-300"
+      className="relative group flex gap-3 p-4 rounded-xl border border-[rgba(15,23,42,0.08)] bg-[#F8FAFC]/70 backdrop-blur-sm hover:border-white/10 transition-colors duration-300"
       style={{ boxShadow: `inset 0 1px 0 rgba(255,255,255,0.04), 0 0 0 0 ${glow}` }}
     >
       {/* left accent bar */}
@@ -137,7 +137,7 @@ function FeatureCard({
       {/* text */}
       <div>
         <p className="text-[13px] font-600 text-white/90 leading-snug mb-1" style={{ fontWeight: 600 }}>{title}</p>
-        <p className="text-[12px] text-white/40 leading-relaxed">{desc}</p>
+        <p className="text-[12px] text-[#64748B] leading-relaxed">{desc}</p>
       </div>
 
       {/* connector arrow */}
@@ -164,16 +164,16 @@ function EHRHub() {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.65, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
-      className="relative flex flex-col items-center justify-center h-full min-h-[280px] rounded-2xl border border-sky-500/20 bg-[#060F22]"
+      className="relative flex flex-col items-center justify-center h-full min-h-[280px] rounded-2xl border border-emerald-500/20 bg-[#060F22]"
       style={{
-        boxShadow: `0 0 0 1px rgba(14,165,233,0.08), inset 0 1px 0 rgba(255,255,255,0.05), 0 0 60px rgba(14,165,233,0.12), 0 0 120px rgba(14,165,233,0.06)`,
+        boxShadow: `0 0 0 1px rgba(16,185,129,0.08), inset 0 1px 0 rgba(255,255,255,0.05), 0 0 60px rgba(16,185,129,0.12), 0 0 120px rgba(16,185,129,0.06)`,
       }}
     >
       {/* Pulse rings */}
       {[1, 2, 3].map((i) => (
         <motion.div
           key={i}
-          className="absolute inset-0 rounded-2xl border border-sky-500/20"
+          className="absolute inset-0 rounded-2xl border border-emerald-500/20"
           animate={{ scale: [1, 1.08 + i * 0.04], opacity: [0.4, 0] }}
           transition={{ duration: 2.4, delay: i * 0.6, repeat: Infinity, ease: 'easeOut' }}
         />
@@ -183,7 +183,7 @@ function EHRHub() {
       <div
         className="absolute inset-0 rounded-2xl opacity-30"
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(14,165,233,0.3) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, rgba(16,185,129,0.3) 1px, transparent 1px)',
           backgroundSize: '20px 20px',
         }}
       />
@@ -191,8 +191,8 @@ function EHRHub() {
       {/* ECW Logo area */}
       <div className="relative z-10 flex flex-col items-center gap-3 px-4 text-center">
         {/* ECW icon */}
-        <div className="w-14 h-14 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center mb-1">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+        <div className="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-1">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#34D399" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M4 7h16M4 12h10M4 17h7"/>
             <circle cx="18" cy="15" r="3"/>
             <path d="M21 18l2 2"/>
@@ -200,9 +200,9 @@ function EHRHub() {
         </div>
 
         <div>
-          <p className="text-[10px] font-semibold tracking-[0.18em] text-sky-400/60 uppercase mb-1">Connected to</p>
+          <p className="text-[10px] font-semibold tracking-[0.18em] text-emerald-400/60 uppercase mb-1">Connected to</p>
           <p className="text-[15px] font-bold text-white leading-tight">eClinicalWorks</p>
-          <p className="text-[11px] text-white/40 mt-0.5">EHR Integration</p>
+          <p className="text-[11px] text-[#64748B] mt-0.5">EHR Integration</p>
         </div>
 
         {/* Live indicator */}
@@ -223,8 +223,8 @@ function EHRHub() {
             { label: 'Uptime', val: '24/7' },
           ].map(({ label, val }) => (
             <div key={label} className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.05]">
-              <span className="text-[11px] text-white/40">{label}</span>
-              <span className="text-[11px] font-bold text-sky-400">{val}</span>
+              <span className="text-[11px] text-[#64748B]">{label}</span>
+              <span className="text-[11px] font-bold text-emerald-400">{val}</span>
             </div>
           ))}
         </div>
@@ -241,7 +241,7 @@ export default function EHRAutomation() {
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full opacity-10"
-          style={{ background: 'radial-gradient(ellipse, #0EA5E9 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse, #10B981 0%, transparent 70%)' }}
         />
       </div>
 
@@ -254,15 +254,15 @@ export default function EHRAutomation() {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 mb-4">
-            <div className="w-1.5 h-1.5 rounded-full bg-sky-400" />
-            <span className="text-[11px] font-semibold text-sky-400 tracking-widest uppercase">eClinicalWorks Native</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-4">
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            <span className="text-[11px] font-semibold text-emerald-400 tracking-widest uppercase">eClinicalWorks Native</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-none mb-3">
             Six capabilities.<br />
-            <span className="text-sky-400">One connection.</span>
+            <span className="text-emerald-400">One connection.</span>
           </h2>
-          <p className="text-base text-white/40 max-w-md leading-relaxed">
+          <p className="text-base text-[#64748B] max-w-md leading-relaxed">
             Every patient interaction flows directly into eClinicalWorks — no middleware, no manual entry, no lag.
           </p>
         </motion.div>

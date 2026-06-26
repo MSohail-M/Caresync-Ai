@@ -58,8 +58,8 @@ const trustItems = [
     Icon: UsersIcon,
     title: 'Role-Based Access Control',
     desc: 'Staff see only what they need. Admins control exactly who can access call logs, transcripts, and patient data.',
-    color: '#0891B2',
-    glow: 'rgba(8,145,178,0.1)',
+    color: '#0D9488',
+    glow: 'rgba(13,148,136,0.1)',
   },
   {
     Icon: FileTextIcon,
@@ -72,8 +72,8 @@ const trustItems = [
     Icon: PhoneForwardIcon,
     title: 'Human Handoff, Always',
     desc: 'Emergencies, clinical questions, and complaints route to real staff instantly. No exceptions, no dead ends.',
-    color: '#0891B2',
-    glow: 'rgba(8,145,178,0.1)',
+    color: '#0D9488',
+    glow: 'rgba(13,148,136,0.1)',
   },
   {
     Icon: LockIcon,
@@ -86,8 +86,8 @@ const trustItems = [
     Icon: DatabaseIcon,
     title: 'Encrypted API Channels',
     desc: 'All integrations use TLS-encrypted connections with authenticated webhooks and rotating token validation.',
-    color: '#0891B2',
-    glow: 'rgba(8,145,178,0.1)',
+    color: '#0D9488',
+    glow: 'rgba(13,148,136,0.1)',
   },
 ]
 
@@ -102,7 +102,7 @@ const item = {
 
 export default function Trust() {
   return (
-    <section className="relative py-24 px-4 overflow-hidden bg-[#050A18]" id="trust">
+    <section className="relative py-24 px-4 overflow-hidden bg-white" id="trust">
       {/* Ambient bg */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] opacity-20"
@@ -122,7 +122,7 @@ export default function Trust() {
               <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
               <span className="text-[11px] font-semibold text-emerald-400 tracking-widest uppercase">Built for Healthcare</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-none">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] tracking-tight leading-none">
               Patient privacy<br />
               <span className="text-emerald-400">at the core.</span>
             </h2>
@@ -157,7 +157,7 @@ export default function Trust() {
           {trustItems.map(({ Icon, title, desc, color, glow }) => (
             <motion.div key={title} variants={item}>
               <div
-                className="group h-full flex gap-4 p-5 rounded-2xl border border-white/[0.06] bg-[#0A1628]/60 hover:border-white/10 transition-all duration-300"
+                className="group h-full flex gap-4 p-5 rounded-2xl border border-[rgba(15,23,42,0.08)] bg-white/60 hover:border-[rgba(15,23,42,0.14)] transition-all duration-300"
                 style={{ boxShadow: `inset 0 1px 0 rgba(255,255,255,0.04)` }}
               >
                 <div
@@ -167,8 +167,8 @@ export default function Trust() {
                   <Icon />
                 </div>
                 <div>
-                  <p className="text-[13px] font-semibold text-white/90 mb-1.5 leading-snug">{title}</p>
-                  <p className="text-[12px] text-white/40 leading-relaxed">{desc}</p>
+                  <p className="text-[13px] font-semibold text-[#1E293B] mb-1.5 leading-snug">{title}</p>
+                  <p className="text-[12px] text-[#64748B] leading-relaxed">{desc}</p>
                 </div>
               </div>
             </motion.div>
@@ -181,16 +181,16 @@ export default function Trust() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-10 flex flex-wrap items-center gap-6 pt-8 border-t border-white/[0.05]"
+          className="mt-10 flex flex-wrap items-center gap-6 pt-8 border-t border-[rgba(15,23,42,0.08)]"
         >
-          <span className="text-[11px] text-white/25 uppercase tracking-widest">Compliance signals</span>
+          <span className="text-[11px] text-[#94A3B8] uppercase tracking-widest">Compliance signals</span>
           {['SOC 2 Aware', 'TLS 1.3 Encrypted', 'Data Minimization', 'Audit Logs', 'US-based Servers'].map((label) => (
             <div key={label} className="flex items-center gap-1.5">
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
                 <circle cx="5" cy="5" r="4.5" stroke="#059669" strokeWidth="0.8"/>
                 <path d="M3 5l1.5 1.5L7 3.5" stroke="#059669" strokeWidth="0.9" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <span className="text-[11px] text-white/40">{label}</span>
+              <span className="text-[11px] text-[#64748B]">{label}</span>
             </div>
           ))}
         </motion.div>

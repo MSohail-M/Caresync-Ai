@@ -185,7 +185,7 @@ export default function Demo() {
   }, [stopDemo, triggerDemo])
 
   return (
-    <section className="pb-24 pt-4 relative" id="demo" style={{ background: '#050A18' }}>
+    <section className="pb-24 pt-4 relative" id="demo" style={{ background: '#FFFFFF' }}>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
@@ -195,8 +195,8 @@ export default function Demo() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(14,165,233,0.2)] bg-[rgba(14,165,233,0.06)] mb-6">
-              <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#38BDF8]">Hear It Live</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(16,185,129,0.2)] bg-[rgba(16,185,129,0.06)] mb-6">
+              <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#059669]">Hear It Live</span>
             </div>
           </motion.div>
           <motion.h2
@@ -204,7 +204,7 @@ export default function Demo() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-[#F8FAFC]"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-[#0F172A]"
           >
             Listen to CareSync AI Handle{' '}
             <span className="font-serif italic text-gradient-blue">a Real Booking</span>
@@ -220,7 +220,7 @@ export default function Demo() {
             <button
               onClick={triggerDemo}
               disabled={isPlaying && isLoading}
-              className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#0EA5E9] hover:bg-[#0284C7] disabled:opacity-70 text-white font-semibold text-base transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shadow-[0_4px_24px_rgba(14,165,233,0.45)]"
+              className="btn-primary group inline-flex items-center gap-3 px-7 py-3.5 rounded-full disabled:opacity-70 text-white font-semibold text-base active:scale-[0.98]"
             >
               <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                 {isLoading ? (
@@ -240,10 +240,10 @@ export default function Demo() {
             </button>
 
             {useElevenLabs && (
-              <div className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full border border-[rgba(14,165,233,0.2)] bg-[rgba(14,165,233,0.06)] text-xs text-[rgba(248,250,252,0.6)]">
+              <div className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full border border-[rgba(16,185,129,0.2)] bg-[rgba(16,185,129,0.06)] text-xs text-[rgba(248,250,252,0.6)]">
                 <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-                  <circle cx="5.5" cy="5.5" r="4.5" stroke="#0EA5E9" strokeWidth="1"/>
-                  <path d="M3.5 5.5c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z" fill="#0EA5E9"/>
+                  <circle cx="5.5" cy="5.5" r="4.5" stroke="#10B981" strokeWidth="1"/>
+                  <path d="M3.5 5.5c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z" fill="#10B981"/>
                 </svg>
                 ElevenLabs · Sarah (AI) + Adam (Patient)
               </div>
@@ -257,14 +257,14 @@ export default function Demo() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
         >
-          <div className="p-1.5 rounded-[2rem]" style={{ background: 'rgba(14,165,233,0.04)', boxShadow: '0 0 0 1px rgba(14,165,233,0.15), 0 8px 60px rgba(14,165,233,0.08)' }}>
-            <div className="rounded-[calc(2rem-6px)] overflow-hidden" style={{ background: 'rgba(10,22,40,0.9)', boxShadow: 'inset 0 1px 1px rgba(56,189,248,0.08)' }}>
+          <div className="p-1.5 rounded-[2rem]" style={{ background: 'rgba(16,185,129,0.04)', boxShadow: '0 0 0 1px rgba(16,185,129,0.15), 0 8px 60px rgba(16,185,129,0.08)' }}>
+            <div className="rounded-[calc(2rem-6px)] overflow-hidden" style={{ background: 'rgba(10,22,40,0.9)', boxShadow: 'inset 0 1px 1px rgba(52,211,153,0.08)' }}>
 
               {/* Top bar */}
-              <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: '1px solid rgba(14,165,233,0.1)' }}>
+              <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: '1px solid rgba(16,185,129,0.1)' }}>
                 <div className="flex items-center gap-2">
-                  <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${isPlaying ? 'bg-[#0EA5E9] animate-pulse' : 'bg-[rgba(255,255,255,0.15)]'}`} />
-                  <span className="text-xs font-semibold text-[rgba(248,250,252,0.4)] uppercase tracking-widest">
+                  <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${isPlaying ? 'bg-[#10B981] animate-pulse' : 'bg-[rgba(255,255,255,0.15)]'}`} />
+                  <span className="text-xs font-semibold text-[#64748B] uppercase tracking-widest">
                     {isLoading ? 'Loading...' : isPlaying ? 'Now Playing' : showBooking ? 'Completed' : 'Ready'}
                   </span>
                 </div>
@@ -286,9 +286,9 @@ export default function Demo() {
                       style={{
                         height: `${bar.height * 48}px`,
                         background: aiSpeaking
-                          ? `rgba(14,165,233,${0.4 + bar.height * 0.6})`
+                          ? `rgba(16,185,129,${0.4 + bar.height * 0.6})`
                           : isPlaying
-                          ? `rgba(56,189,248,${0.2 + bar.height * 0.35})`
+                          ? `rgba(52,211,153,${0.2 + bar.height * 0.35})`
                           : `rgba(255,255,255,${0.04 + bar.height * 0.06})`,
                         animation: isPlaying ? `waveform ${bar.duration} ease-in-out infinite ${bar.delay}` : 'none',
                         transformOrigin: 'center',
@@ -298,7 +298,7 @@ export default function Demo() {
                   ))}
                 </div>
                 <div className="flex items-center justify-center gap-2 mt-3">
-                  <span className="text-xs text-[rgba(248,250,252,0.35)]">
+                  <span className="text-xs text-[#94A3B8]">
                     {isLoading ? 'Generating voice...' : aiSpeaking ? 'AI speaking...' : isPlaying ? 'Patient speaking...' : showBooking ? 'Booking confirmed' : 'Press Play above to start'}
                   </span>
                 </div>
@@ -319,9 +319,9 @@ export default function Demo() {
                       <div
                         className="w-6 h-6 rounded-full shrink-0 flex items-center justify-center text-[10px] font-bold mt-0.5"
                         style={{
-                          background: msg.speaker === 'ai' ? 'rgba(14,165,233,0.12)' : 'rgba(255,255,255,0.06)',
-                          color: msg.speaker === 'ai' ? '#0EA5E9' : 'rgba(248,250,252,0.5)',
-                          border: `1px solid ${msg.speaker === 'ai' ? 'rgba(14,165,233,0.25)' : 'rgba(255,255,255,0.1)'}`,
+                          background: msg.speaker === 'ai' ? 'rgba(16,185,129,0.12)' : 'rgba(255,255,255,0.06)',
+                          color: msg.speaker === 'ai' ? '#10B981' : 'rgba(248,250,252,0.5)',
+                          border: `1px solid ${msg.speaker === 'ai' ? 'rgba(16,185,129,0.25)' : 'rgba(255,255,255,0.1)'}`,
                         }}
                       >
                         {msg.speaker === 'ai' ? 'AI' : 'P'}
@@ -331,7 +331,7 @@ export default function Demo() {
                           msg.speaker === 'ai' ? 'rounded-tl-sm' : 'rounded-tr-sm'
                         }`}
                         style={msg.speaker === 'ai'
-                          ? { background: 'rgba(14,165,233,0.08)', border: '1px solid rgba(14,165,233,0.2)', color: '#38BDF8' }
+                          ? { background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', color: '#34D399' }
                           : { background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(248,250,252,0.75)' }
                         }
                       >
@@ -365,13 +365,13 @@ export default function Demo() {
                     transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
                     className="mx-6 mb-6"
                   >
-                    <div className="p-4 rounded-2xl" style={{ background: 'rgba(14,165,233,0.08)', border: '1px solid rgba(14,165,233,0.2)' }}>
+                    <div className="p-4 rounded-2xl" style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)' }}>
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-5 h-5 rounded-full flex items-center justify-center" style={{ background: 'rgba(14,165,233,0.15)', border: '1px solid rgba(14,165,233,0.25)' }}>
-                          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#0EA5E9" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                        <div className="w-5 h-5 rounded-full flex items-center justify-center" style={{ background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.25)' }}>
+                          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#10B981" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                         </div>
-                        <span className="text-xs font-semibold text-[#0EA5E9] uppercase tracking-wide">Appointment Confirmed</span>
-                        <span className="ml-auto text-[10px] text-[rgba(248,250,252,0.35)]">SMS Sent ✓</span>
+                        <span className="text-xs font-semibold text-[#10B981] uppercase tracking-wide">Appointment Confirmed</span>
+                        <span className="ml-auto text-[10px] text-[#94A3B8]">SMS Sent ✓</span>
                       </div>
                       <div className="flex flex-wrap gap-x-4 gap-y-1 mb-3">
                         {[
@@ -381,22 +381,22 @@ export default function Demo() {
                           { label: 'Time', value: '2:30 PM' },
                         ].map((detail) => (
                           <div key={detail.label}>
-                            <span className="text-[10px] text-[rgba(248,250,252,0.35)]">{detail.label}: </span>
-                            <span className="text-xs text-[#F8FAFC] font-semibold">{detail.value}</span>
+                            <span className="text-[10px] text-[#94A3B8]">{detail.label}: </span>
+                            <span className="text-xs text-[#0F172A] font-semibold">{detail.value}</span>
                           </div>
                         ))}
                       </div>
                       {/* Post-completion CTA — strike at peak engagement */}
                       <div className="pt-3 border-t border-white/[0.07] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                        <p className="text-[11px] text-white/40 leading-snug max-w-[200px]">
+                        <p className="text-[11px] text-[#64748B] leading-snug max-w-[200px]">
                           This is what CareSync AI does for your clinic — every call.
                         </p>
                         <a
                           href="/calendar"
                           className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-[12px] font-semibold text-white whitespace-nowrap transition-all duration-200 active:scale-[0.97]"
                           style={{
-                            background: 'linear-gradient(135deg, #0891B2, #0284C7)',
-                            boxShadow: '0 0 12px rgba(8,145,178,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
+                            background: 'linear-gradient(135deg, #0D9488, #059669)',
+                            boxShadow: '0 0 12px rgba(13,148,136,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
                           }}
                         >
                           Book Your Demo
@@ -428,7 +428,7 @@ export default function Demo() {
                   <button
                     onClick={handleReplay}
                     className="group flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
-                    style={{ background: 'rgba(14,165,233,0.06)', border: '1px solid rgba(14,165,233,0.15)', color: 'rgba(248,250,252,0.6)' }}
+                    style={{ background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.15)', color: 'rgba(248,250,252,0.6)' }}
                   >
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:rotate-180 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
                       <path d="M12 7A5 5 0 112 7M2 3v4h4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>

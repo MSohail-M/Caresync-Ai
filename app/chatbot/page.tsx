@@ -94,8 +94,8 @@ export default function ChatbotPage() {
         data-title="CareSync AI"
         data-bot-name="CareSync AI"
         data-color="#3B8EF0"
-        data-theme-color="#050B18"
-        data-component-color="#0A1628"
+        data-theme-color="#10B981"
+        data-component-color="#F8FAFC"
         data-fab-text="Chat with AI"
         data-popup-message="Hi! How can I help you today?"
         data-show-ai-popup="true"
@@ -135,7 +135,7 @@ export default function ChatbotPage() {
           alignItems: 'center',
           gap: 10,
           paddingLeft: 14,
-          background: '#0A1628',
+          background: '#F8FAFC',
           borderBottom: '1px solid rgba(255,255,255,0.08)',
           pointerEvents: 'none',
           userSelect: 'none',
@@ -164,13 +164,13 @@ export default function ChatbotPage() {
 
       <div
         className="min-h-[100dvh] relative overflow-hidden"
-        style={{ background: 'linear-gradient(160deg, #050B18 0%, #030810 100%)' }}
+        style={{ background: 'linear-gradient(160deg, #F0FDF8 0%, #ECFDF5 100%)' }}
       >
         <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(59,142,240,0.15) 0%, transparent 65%)', filter: 'blur(80px)', animation: 'orb-drift 12s ease-in-out infinite' }} />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 65%)', filter: 'blur(100px)', animation: 'orb-drift 14s ease-in-out infinite 3s' }} />
         <div className="absolute bottom-0 left-0 right-0 h-[25%] overflow-hidden pointer-events-none">
           <div className="perspective-grid-dark" style={{ opacity: 0.25 }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #050B18 0%, transparent 60%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #F0FDF8 0%, transparent 60%)' }} />
         </div>
 
         <Nav />
@@ -187,7 +187,7 @@ export default function ChatbotPage() {
                 AI Chat Assistant · Online 24/7
               </span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#F8FAFC] leading-tight tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#0F172A] leading-tight tracking-tight">
               Chat with{' '}
               <span className="font-serif italic text-gradient-blue">CareSync AI</span>
             </h1>

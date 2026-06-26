@@ -98,7 +98,7 @@ export default function Problems() {
   const imgY2 = useSpring(rawY2, { stiffness: 60, damping: 18 })
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 relative" id="use-cases" style={{ background: '#06122A' }}>
+    <section ref={sectionRef} className="py-24 md:py-32 relative" id="use-cases" style={{ background: '#F8FAFC' }}>
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="ray-layer-a opacity-30" />
         <div className="absolute bottom-0 left-0 right-0 h-[35%] overflow-hidden">
@@ -115,7 +115,7 @@ export default function Problems() {
               animation: 'grid-scroll 8s linear infinite',
             }}
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #06122A 0%, transparent 30%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #F8FAFC 0%, transparent 30%)' }} />
         </div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px]" style={{ background: 'radial-gradient(ellipse, rgba(239,68,68,0.08) 0%, transparent 70%)' }} />
       </div>
@@ -137,7 +137,7 @@ export default function Problems() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight max-w-3xl mx-auto text-[#F8FAFC]"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight max-w-3xl mx-auto text-[#0F172A]"
           >
             Clinics Lose Patients Every Day to the Same{' '}
             <span className="font-serif italic text-[#F87171]">6 Problems</span>
@@ -150,7 +150,7 @@ export default function Problems() {
             style={{ y: imgY }}
             className="absolute -left-4 lg:-left-16 -top-8 w-[180px] lg:w-[220px] z-10 hidden lg:block"
           >
-            <div className="p-1.5 rounded-[1.5rem]" style={{ background: 'rgba(14,165,233,0.04)', boxShadow: '0 0 0 1px rgba(14,165,233,0.12), 0 24px 60px rgba(239,68,68,0.14)' }}>
+            <div className="p-1.5 rounded-[1.5rem]" style={{ background: 'rgba(16,185,129,0.04)', boxShadow: '0 0 0 1px rgba(16,185,129,0.12), 0 24px 60px rgba(239,68,68,0.14)' }}>
               <div className="rounded-[calc(1.5rem-6px)] overflow-hidden relative">
                 <img
                   src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&q=80&auto=format&fit=crop"
@@ -169,7 +169,7 @@ export default function Problems() {
             style={{ y: imgY2 }}
             className="absolute -right-4 lg:-right-16 -top-16 w-[160px] lg:w-[200px] z-10 hidden lg:block"
           >
-            <div className="p-1.5 rounded-[1.5rem]" style={{ background: 'rgba(14,165,233,0.04)', boxShadow: '0 0 0 1px rgba(14,165,233,0.12), 0 24px 60px rgba(245,158,11,0.14)' }}>
+            <div className="p-1.5 rounded-[1.5rem]" style={{ background: 'rgba(16,185,129,0.04)', boxShadow: '0 0 0 1px rgba(16,185,129,0.12), 0 24px 60px rgba(245,158,11,0.14)' }}>
               <div className="rounded-[calc(1.5rem-6px)] overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&q=80&auto=format&fit=crop"
@@ -204,20 +204,20 @@ export default function Problems() {
                 <div
                   className="p-1.5 rounded-[2rem] h-full transition-all duration-700"
                   style={{
-                    background: 'rgba(14,165,233,0.04)',
+                    background: 'rgba(16,185,129,0.04)',
                     boxShadow: hoveredIndex === i
                       ? `0 0 0 1px ${problem.accentColor}45, 0 8px 40px ${problem.accentColor}18`
-                      : '0 0 0 1px rgba(255,255,255,0.06)',
+                      : '0 0 0 1px rgba(15,23,42,0.06)',
                   }}
                 >
                   <div
                     className="rounded-[calc(2rem-6px)] p-6 h-full relative"
                     style={{
                       background: hoveredIndex === i
-                        ? `linear-gradient(135deg, ${problem.accentColor}0E 0%, rgba(10,22,40,0.95) 60%)`
-                        : 'rgba(10,22,40,0.85)',
+                        ? `linear-gradient(135deg, ${problem.accentColor}0E 0%, rgba(255,255,255,0.98) 60%)`
+                        : 'rgba(255,255,255,0.95)',
                       borderTop: `1px solid ${problem.accentColor}35`,
-                      boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.06)',
+                      boxShadow: 'inset 0 1px 1px rgba(15,23,42,0.06)',
                     }}
                   >
                     <div
@@ -239,8 +239,8 @@ export default function Problems() {
                     >
                       {problem.icon}
                     </div>
-                    <h3 className="text-base font-semibold text-[#F8FAFC] mb-2">{problem.title}</h3>
-                    <p className="text-sm text-[rgba(248,250,252,0.5)] leading-relaxed">{problem.desc}</p>
+                    <h3 className="text-base font-semibold text-[#0F172A] mb-2">{problem.title}</h3>
+                    <p className="text-sm text-[#64748B] leading-relaxed">{problem.desc}</p>
                   </div>
                 </div>
               </TiltCard>

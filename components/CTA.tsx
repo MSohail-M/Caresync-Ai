@@ -10,20 +10,20 @@ const proofItems = [
 ]
 
 const clinics = [
-  { initials: 'PM', color: '#0891B2' },
-  { initials: 'RK', color: '#0369A1' },
-  { initials: 'JT', color: '#0284C7' },
+  { initials: 'PM', color: '#0D9488' },
+  { initials: 'RK', color: '#047857' },
+  { initials: 'JT', color: '#059669' },
 ]
 
 export default function CTA() {
   return (
-    <section className="relative py-28 md:py-40 px-4 overflow-hidden bg-[#050A18]" id="cta">
+    <section className="relative py-28 md:py-40 px-4 overflow-hidden bg-[#ECFDF5]" id="cta">
       {/* Ambient blobs — hardware accelerated via transform only */}
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute top-1/4 left-1/3 w-[700px] h-[500px] rounded-full"
           style={{
-            background: 'radial-gradient(ellipse, rgba(8,145,178,0.18) 0%, transparent 65%)',
+            background: 'radial-gradient(ellipse, rgba(16,185,129,0.12) 0%, transparent 65%)',
             filter: 'blur(100px)',
             animation: 'orb-drift 12s ease-in-out infinite',
           }}
@@ -31,7 +31,7 @@ export default function CTA() {
         <div
           className="absolute bottom-1/4 right-1/4 w-[500px] h-[400px] rounded-full"
           style={{
-            background: 'radial-gradient(ellipse, rgba(34,211,238,0.10) 0%, transparent 65%)',
+            background: 'radial-gradient(ellipse, rgba(45,212,191,0.10) 0%, transparent 65%)',
             filter: 'blur(120px)',
             animation: 'orb-drift 16s ease-in-out infinite 4s',
           }}
@@ -40,7 +40,7 @@ export default function CTA() {
         <div
           className="absolute inset-0 opacity-[0.025]"
           style={{
-            backgroundImage: 'radial-gradient(circle, rgba(56,189,248,0.6) 1px, transparent 1px)',
+            backgroundImage: 'radial-gradient(circle, rgba(52,211,153,0.6) 1px, transparent 1px)',
             backgroundSize: '32px 32px',
           }}
         />
@@ -55,13 +55,13 @@ export default function CTA() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="flex justify-center mb-8"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-sky-500/20 bg-sky-500/[0.06]">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/20 bg-emerald-500/[0.06]">
             <motion.div
-              className="w-2 h-2 rounded-full bg-sky-400"
+              className="w-2 h-2 rounded-full bg-emerald-400"
               animate={{ opacity: [1, 0.3, 1] }}
               transition={{ duration: 1.8, repeat: Infinity }}
             />
-            <span className="text-[12px] font-semibold text-sky-400 tracking-wide">
+            <span className="text-[12px] font-semibold text-emerald-400 tracking-wide">
               500+ clinics already live on CareSync AI
             </span>
           </div>
@@ -73,10 +73,10 @@ export default function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-[1.05] mb-5"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0F172A] tracking-tight leading-[1.05] mb-5"
         >
           Stop losing patients<br />
-          to <span className="text-sky-400">missed calls.</span>
+          to <span className="text-emerald-400">missed calls.</span>
         </motion.h2>
 
         {/* Subtext */}
@@ -85,7 +85,7 @@ export default function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[16px] text-white/45 leading-relaxed max-w-xl mx-auto mb-10"
+          className="text-[16px] text-[#64748B] leading-relaxed max-w-xl mx-auto mb-10"
         >
           CareSync AI answers every call in under 2 seconds, books directly into your calendar, and logs everything — automatically.
         </motion.p>
@@ -101,11 +101,7 @@ export default function CTA() {
           {/* Primary CTA */}
           <a
             href="/calendar"
-            className="group relative flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-[15px] text-white transition-all duration-300 active:scale-[0.97]"
-            style={{
-              background: 'linear-gradient(135deg, #0891B2 0%, #0284C7 100%)',
-              boxShadow: '0 0 0 1px rgba(8,145,178,0.4), 0 8px 32px rgba(8,145,178,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
-            }}
+            className="btn-primary group relative flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-[15px] text-white active:scale-[0.97]"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="4" width="18" height="18" rx="2"/>
@@ -144,12 +140,12 @@ export default function CTA() {
           className="flex flex-wrap items-center justify-center gap-3 mb-10"
         >
           {proofItems.map((p) => (
-            <div key={p.label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/[0.07] bg-white/[0.02]">
+            <div key={p.label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[rgba(15,23,42,0.08)] bg-white/80">
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                <circle cx="5" cy="5" r="4.5" stroke="#0891B2" strokeWidth="0.8"/>
-                <path d="M3 5l1.5 1.5L7 3.5" stroke="#0891B2" strokeWidth="0.9" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="5" cy="5" r="4.5" stroke="#0D9488" strokeWidth="0.8"/>
+                <path d="M3 5l1.5 1.5L7 3.5" stroke="#0D9488" strokeWidth="0.9" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <span className="text-[12px] text-white/40">{p.label}</span>
+              <span className="text-[12px] text-[#64748B]">{p.label}</span>
             </div>
           ))}
         </motion.div>
@@ -166,15 +162,15 @@ export default function CTA() {
             {clinics.map((c) => (
               <div
                 key={c.initials}
-                className="w-8 h-8 rounded-full border-2 border-[#050A18] flex items-center justify-center text-[10px] font-bold text-white"
+                className="w-8 h-8 rounded-full border-2 border-[#ECFDF5] flex items-center justify-center text-[10px] font-bold text-white"
                 style={{ background: c.color }}
               >
                 {c.initials}
               </div>
             ))}
           </div>
-          <p className="text-[12px] text-white/30">
-            Joined by <span className="text-white/55 font-semibold">500+ clinics</span> across the US
+          <p className="text-[12px] text-[#94A3B8]">
+            Joined by <span className="text-[#475569] font-semibold">500+ clinics</span> across the US
           </p>
         </motion.div>
       </div>

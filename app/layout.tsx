@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#050B18',
+  themeColor: '#10B981',
 }
 
 export default function RootLayout({
@@ -70,7 +70,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#050B18] text-[#F8FAFC] antialiased overflow-x-hidden">
+      <body className="bg-white text-[#0F172A] antialiased overflow-x-hidden">
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-VNX8RQTXY1"
           strategy="afterInteractive"

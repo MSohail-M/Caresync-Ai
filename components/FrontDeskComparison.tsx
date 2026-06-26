@@ -86,45 +86,45 @@ function ComparisonRow({
       className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-0 group"
     >
       {/* OLD WAY */}
-      <div className="relative flex items-start gap-3 p-5 md:pr-8 rounded-xl md:rounded-r-none bg-[#0D0F11]/60 border border-white/[0.04] md:border-r-0 group-hover:bg-[#110E0E]/80 transition-colors duration-300">
+      <div className="relative flex items-start gap-3 p-5 md:pr-8 rounded-xl md:rounded-r-none bg-[#F8FAFC] border border-[rgba(15,23,42,0.07)] md:border-r-0 group-hover:bg-[#F1F5F9] transition-colors duration-300">
         <div className="shrink-0 mt-0.5">
           <XIcon />
         </div>
         <div className="flex-1">
-          <p className="text-[13px] text-white/40 leading-snug">{oldData.headline}</p>
+          <p className="text-[13px] text-[#64748B] leading-snug">{oldData.headline}</p>
           <p className="mt-2 text-[11px] font-semibold text-red-400/60 tracking-wide">{oldData.stat}</p>
         </div>
       </div>
 
       {/* Divider */}
       <div className="hidden md:flex flex-col items-center justify-center w-10 relative bg-transparent z-10">
-        <div className="w-px h-full bg-gradient-to-b from-transparent via-sky-500/30 to-transparent absolute" />
+        <div className="w-px h-full bg-gradient-to-b from-transparent via-emerald-500/30 to-transparent absolute" />
         <div
-          className="w-6 h-6 rounded-full border border-sky-500/30 bg-[#050A18] flex items-center justify-center shrink-0 z-10"
-          style={{ boxShadow: '0 0 12px rgba(14,165,233,0.2)' }}
+          className="w-6 h-6 rounded-full border border-emerald-500/30 bg-white flex items-center justify-center shrink-0 z-10"
+          style={{ boxShadow: '0 0 8px rgba(16,185,129,0.15)' }}
         >
           <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-            <path d="M1 4h6M5 2l2 2-2 2" stroke="#38BDF8" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M1 4h6M5 2l2 2-2 2" stroke="#34D399" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
       </div>
 
       {/* WITH CARESYNC */}
       <div
-        className="relative flex items-start gap-3 p-5 md:pl-8 rounded-xl md:rounded-l-none border border-sky-500/10 md:border-l-0 transition-colors duration-300 group-hover:border-sky-500/20"
+        className="relative flex items-start gap-3 p-5 md:pl-8 rounded-xl md:rounded-l-none border border-emerald-500/10 md:border-l-0 transition-colors duration-300 group-hover:border-emerald-500/20"
         style={{
-          background: 'linear-gradient(135deg, rgba(14,165,233,0.04) 0%, rgba(6,10,24,0.8) 100%)',
-          boxShadow: 'inset 0 1px 0 rgba(56,189,248,0.05)',
+          background: 'linear-gradient(135deg, rgba(16,185,129,0.04) 0%, rgba(255,255,255,0.95) 100%)',
+          boxShadow: 'inset 0 1px 0 rgba(16,185,129,0.06)',
         }}
       >
         <div className="shrink-0 mt-0.5">
           <CheckIcon />
         </div>
         <div className="flex-1">
-          <p className="text-[13px] text-white/80 leading-snug font-medium">{neu.headline}</p>
+          <p className="text-[13px] text-[#334155] leading-snug font-medium">{neu.headline}</p>
           <div className="flex items-baseline gap-1.5 mt-2">
-            <span className="text-[18px] font-bold text-sky-400 leading-none tracking-tight">{neu.stat}</span>
-            <span className="text-[11px] text-sky-400/50">{neu.statLabel}</span>
+            <span className="text-[18px] font-bold text-emerald-400 leading-none tracking-tight">{neu.stat}</span>
+            <span className="text-[11px] text-emerald-400/50">{neu.statLabel}</span>
           </div>
         </div>
       </div>
@@ -140,7 +140,7 @@ export default function FrontDeskComparison() {
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute bottom-0 left-0 right-0 h-px opacity-20"
-          style={{ background: 'linear-gradient(to right, transparent, #0EA5E9, transparent)' }}
+          style={{ background: 'linear-gradient(to right, transparent, #10B981, transparent)' }}
         />
       </div>
 
@@ -156,7 +156,7 @@ export default function FrontDeskComparison() {
             className="flex items-center gap-2 mb-4 md:mb-0"
           >
             <div className="w-2 h-2 rounded-full bg-red-500/60" />
-            <span className="text-[11px] font-semibold text-white/30 tracking-widest uppercase">The Old Way</span>
+            <span className="text-[11px] font-semibold text-[#94A3B8] tracking-widest uppercase">The Old Way</span>
           </motion.div>
 
           <div className="hidden md:block w-10" />
@@ -170,10 +170,10 @@ export default function FrontDeskComparison() {
             className="flex items-center gap-2"
           >
             <div
-              className="w-2 h-2 rounded-full bg-sky-400"
-              style={{ boxShadow: '0 0 6px rgba(56,189,248,0.7)' }}
+              className="w-2 h-2 rounded-full bg-emerald-400"
+              style={{ boxShadow: '0 0 6px rgba(52,211,153,0.7)' }}
             />
-            <span className="text-[11px] font-semibold text-sky-400 tracking-widest uppercase">With CareSync AI</span>
+            <span className="text-[11px] font-semibold text-emerald-400 tracking-widest uppercase">With CareSync AI</span>
           </motion.div>
         </div>
 
@@ -185,9 +185,9 @@ export default function FrontDeskComparison() {
           transition={{ duration: 0.5 }}
           className="mb-10"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-none">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] tracking-tight leading-none">
             Redefining the<br />
-            <span className="text-sky-400">front desk baseline.</span>
+            <span className="text-emerald-400">front desk baseline.</span>
           </h2>
         </motion.div>
 
@@ -204,19 +204,13 @@ export default function FrontDeskComparison() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-xl border border-sky-500/10 bg-sky-500/[0.03]"
+          className="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-xl border border-[rgba(15,23,42,0.08)] bg-[#F8FAFC]"
         >
           <div>
-            <p className="text-[13px] font-semibold text-white/80">Ready to switch your front desk to AI?</p>
-            <p className="text-[12px] text-white/35 mt-0.5">Setup takes under 48 hours. No hardware required.</p>
+            <p className="text-[13px] font-semibold text-[#334155]">Ready to switch your front desk to AI?</p>
+            <p className="text-[12px] text-[#94A3B8] mt-0.5">Setup takes under 48 hours. No hardware required.</p>
           </div>
-          <button
-            className="shrink-0 px-5 py-2.5 rounded-lg text-[13px] font-semibold text-white transition-all duration-200 active:scale-[0.97]"
-            style={{
-              background: 'linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%)',
-              boxShadow: '0 0 20px rgba(14,165,233,0.25), inset 0 1px 0 rgba(255,255,255,0.1)',
-            }}
-          >
+          <button className="btn-primary shrink-0 px-5 py-2.5 rounded-lg text-[13px] font-semibold text-white active:scale-[0.97]">
             Book a Demo
           </button>
         </motion.div>
