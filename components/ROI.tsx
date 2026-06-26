@@ -159,7 +159,7 @@ export default function ROI() {
             </div>
 
             {/* Before/after mini stats */}
-            <div className="flex gap-2 shrink-0">
+            <div className="flex gap-2 shrink-0 flex-wrap sm:flex-nowrap">
               {testimonial.stats.map((s) => (
                 <div key={s.label}
                   className="min-w-[100px] p-3 rounded-xl bg-[#FFFFFF]/80 border border-[rgba(15,23,42,0.07)]">

@@ -114,7 +114,7 @@ function StatCard({
           boxShadow: '0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(16,185,129,0.06)',
         }}
       >
-        <div className="text-4xl lg:text-5xl font-black text-[#0F172A] tracking-tight leading-none">
+        <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0F172A] tracking-tight leading-none">
           {stat.prefix}
           <Counter to={stat.val} shouldStart={shouldStart} decimals={stat.decimals ?? 0} duration={1.6} />
           <span className="text-[#10B981]">{stat.suffix}</span>
@@ -180,7 +180,7 @@ function ComparisonCard({
 
             {/* Problem stat */}
             <div className="flex items-baseline gap-2 mb-1">
-              <span className="text-4xl lg:text-5xl font-black tracking-tight" style={{ color: 'rgba(239,68,68,0.75)' }}>
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight" style={{ color: 'rgba(239,68,68,0.75)' }}>
                 {data.problem.stat}
               </span>
             </div>
@@ -253,14 +253,14 @@ function ComparisonCard({
             <div className="flex items-baseline gap-1.5 mb-1">
               {data.fix.isText ? (
                 <span
-                  className="text-4xl lg:text-5xl font-black tracking-tight"
+                  className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight"
                   style={{ color: data.accentColor }}
                 >
                   {data.fix.textStat}
                 </span>
               ) : (
                 <span
-                  className="text-4xl lg:text-5xl font-black tracking-tight tabular-nums"
+                  className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight tabular-nums"
                   style={{ color: data.accentColor }}
                 >
                   {data.fix.prefix}

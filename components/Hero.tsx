@@ -108,10 +108,10 @@ export default function Hero() {
       {/* ═══ MAIN LAYOUT ═══ */}
       <div className="relative flex-1 flex flex-col" style={{ zIndex: 10 }}>
         <div className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[calc(100dvh-160px)]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[calc(100dvh-160px)] pb-16 lg:pb-0">
 
             {/* ═══ LEFT: PELMATECH MEGA TYPOGRAPHY ═══ */}
-            <motion.div style={{ y: textY }} className="flex flex-col justify-center order-2 lg:order-1">
+            <motion.div style={{ y: textY }} className="flex flex-col justify-center pt-8 md:pt-0">
 
               {/* Social proof — above fold, reduces skepticism */}
               <motion.div initial={{ opacity:0, y:16 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.5, ease:[0.32,0.72,0,1] }} className="flex items-center gap-3 mb-5">
@@ -196,44 +196,45 @@ export default function Hero() {
               initial={{ opacity:0, x:60 }}
               animate={{ opacity:1, x:0 }}
               transition={{ duration:1.0, delay:0.15, ease:[0.32,0.72,0,1] }}
-              className="relative flex items-center justify-center order-1 lg:order-2"
+              className="relative flex items-center justify-center mb-28 md:mb-0"
             >
-              {/* Voice wave rings — emanate from Casey */}
-              {[0, 1, 2, 3].map(i => (
-                <div
-                  key={i}
-                  className="absolute rounded-full pointer-events-none"
-                  style={{
-                    inset: -20 - i * 26,
-                    border: `${2.5 - i * 0.4}px solid rgba(16,185,129,${0.62 - i * 0.13})`,
-                    borderRadius: '9999px',
-                    animation: 'voice-ring 3s ease-out infinite',
-                    animationDelay: `${i * 0.75}s`,
-                    boxShadow: i === 0
-                      ? '0 0 18px rgba(16,185,129,0.35), inset 0 0 8px rgba(16,185,129,0.08)'
-                      : i === 1
-                      ? '0 0 10px rgba(16,185,129,0.18)'
-                      : 'none',
-                  }}
-                />
-              ))}
-
               {/* SVG connector lines */}
+              <div className="hidden md:block">
               <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{zIndex:1}} viewBox="0 0 440 480" preserveAspectRatio="xMidYMid meet">
                 <path d="M 70 70 Q 110 130 175 195"  stroke="rgba(16,185,129,0.18)"  strokeWidth="1" fill="none" strokeDasharray="4 5"/>
                 <path d="M 370 380 Q 330 340 290 300" stroke="rgba(52,211,153,0.15)" strokeWidth="1" fill="none" strokeDasharray="4 5"/>
                 <path d="M 380 90 Q 345 155 305 210"  stroke="rgba(5,150,105,0.12)"  strokeWidth="1" fill="none" strokeDasharray="4 5"/>
               </svg>
+              </div>
 
               {/* Main AI receptionist image — double bezel with cursor glow */}
               <div className="relative" style={{zIndex:2}}>
-                <div className="p-2 rounded-[2.5rem]" style={{
+                {/* Voice wave rings — emanate from Casey */}
+                {[0, 1, 2, 3].map(i => (
+                  <div
+                    key={i}
+                    className="hidden sm:block absolute rounded-full pointer-events-none"
+                    style={{
+                      inset: -(12 + i * 20),
+                      border: `${2.5 - i * 0.4}px solid rgba(16,185,129,${0.62 - i * 0.13})`,
+                      borderRadius: '9999px',
+                      animation: 'voice-ring 3s ease-out infinite',
+                      animationDelay: `${i * 0.75}s`,
+                      boxShadow: i === 0
+                        ? '0 0 18px rgba(16,185,129,0.35), inset 0 0 8px rgba(16,185,129,0.08)'
+                        : i === 1
+                        ? '0 0 10px rgba(16,185,129,0.18)'
+                        : 'none',
+                    }}
+                  />
+                ))}
+                <div className="w-full max-w-[250px] sm:max-w-[280px] md:max-w-[300px] mx-auto p-2 rounded-[2.5rem]" style={{
                   background: 'rgba(16,185,129,0.05)',
                   boxShadow: '0 0 0 1px rgba(16,185,129,0.18), 0 40px 80px rgba(16,185,129,0.12), 0 80px 160px rgba(0,0,0,0.5)',
                 }}>
                   <div
-                    className="relative rounded-[calc(2.5rem-8px)] overflow-hidden shadow-[inset_0_1px_1px_rgba(52,211,153,0.12)]"
-                    style={{width:300,height:380}}
+                    className="relative rounded-[1.5rem] sm:rounded-[calc(2.5rem-8px)] overflow-hidden shadow-[inset_0_1px_1px_rgba(52,211,153,0.12)]"
+                    style={{aspectRatio:'300/380', width:'100%'}}
                     onMouseMove={(e) => {
                       const rect = e.currentTarget.getBoundingClientRect()
                       setCursorPos({
@@ -301,8 +302,18 @@ export default function Hero() {
                 </div>
               </div>
 
+              {/* Mobile-only stats — visible below image on small screens */}
+              <div className="md:hidden mt-4 flex items-center justify-center gap-2 flex-wrap">
+                {[{v:'94%',l:'Answer rate'},{v:'< 2s',l:'Response'},{v:'24/7',l:'Always on'}].map((s,i)=>(
+                  <div key={i} className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white" style={{border:'1px solid rgba(16,185,129,0.18)',boxShadow:'0 2px 8px rgba(16,185,129,0.1)'}}>
+                    <span className="text-sm font-bold text-[#10B981]">{s.v}</span>
+                    <span className="text-[11px] text-[#64748B]">{s.l}</span>
+                  </div>
+                ))}
+              </div>
+
               {/* Decorative ring dial (top-left, dashboard-style) */}
-              <div className="absolute -top-12 left-20 lg:-top-8 lg:left-16 z-30" style={{animation:'float 4.5s ease-in-out infinite 0.4s'}}>
+              <div className="hidden md:block absolute -top-12 left-20 lg:-top-8 lg:left-16 z-30" style={{animation:'float 4.5s ease-in-out infinite 0.4s'}}>
                 <div className="float-ring-dial w-12 h-12 flex items-center justify-center relative">
                   <svg width="44" height="44" viewBox="0 0 44 44" className="absolute inset-0">
                     <circle cx="22" cy="22" r="18" fill="none" stroke="#E2E8F0" strokeWidth="3"/>
@@ -313,7 +324,7 @@ export default function Hero() {
               </div>
 
               {/* Floating card 1: Calls Handled (top-left, dashboard-style white card) */}
-              <div className="absolute -top-2 -left-2 lg:-left-14 z-20" style={{animation:'float 4s ease-in-out infinite'}}>
+              <div className="hidden md:block absolute -top-2 -left-2 lg:-left-14 z-20" style={{animation:'float 4s ease-in-out infinite'}}>
                 <div className="float-card-light p-4" style={{minWidth:188}}>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] font-bold text-[#64748B] uppercase tracking-wide">Calls Handled</span>
@@ -333,7 +344,7 @@ export default function Hero() {
               </div>
 
               {/* Floating card 2: AI Performance (top-right, dashboard-style accent card) */}
-              <div className="absolute -top-8 -right-2 lg:-right-14 z-20" style={{animation:'float 4.5s ease-in-out infinite 1.2s'}}>
+              <div className="hidden md:block absolute -top-8 -right-2 lg:-right-14 z-20" style={{animation:'float 4.5s ease-in-out infinite 1.2s'}}>
                 <div className="float-card-accent p-4" style={{minWidth:172}}>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-[10px] font-bold uppercase tracking-wide">AI Performance</span>
@@ -357,7 +368,7 @@ export default function Hero() {
               </div>
 
               {/* Mini-card: < 2s response */}
-              <div className="absolute -bottom-2 -right-2 lg:-right-10 z-20" style={{animation:'float 3.8s ease-in-out infinite 0.6s'}}>
+              <div className="hidden md:block absolute -bottom-2 -right-2 lg:-right-10 z-20" style={{animation:'float 3.8s ease-in-out infinite 0.6s'}}>
                 <div
                   className="float-card-light flex items-center gap-3 px-4 py-3"
                   style={{ minWidth: 164, borderRadius: '1.1rem' }}
@@ -380,7 +391,7 @@ export default function Hero() {
               </div>
 
               {/* Mini-card: 24/7 Active */}
-              <div className="absolute -bottom-4 -left-2 lg:-left-10 z-20" style={{animation:'float 5s ease-in-out infinite 2s'}}>
+              <div className="hidden md:block absolute -bottom-4 -left-2 lg:-left-10 z-20" style={{animation:'float 5s ease-in-out infinite 2s'}}>
                 <div
                   className="float-card-light flex items-center gap-3 px-4 py-3"
                   style={{ minWidth: 164, borderRadius: '1.1rem' }}
@@ -421,11 +432,11 @@ export default function Hero() {
           }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="flex flex-wrap items-center justify-center gap-2.5">
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 snap-x sm:flex-wrap sm:justify-center sm:overflow-visible scrollbar-none">
               {bottomFeatures.map((f,i)=>(
                 <div
                   key={i}
-                  className="group flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 cursor-default"
+                  className="group shrink-0 flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 cursor-default"
                   style={{
                     background: 'linear-gradient(135deg, rgba(16,185,129,0.09) 0%, rgba(5,150,105,0.05) 100%)',
                     border: '1px solid rgba(16,185,129,0.2)',

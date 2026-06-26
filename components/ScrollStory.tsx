@@ -412,7 +412,7 @@ export default function ScrollStory() {
                         transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
                         className="flex items-center gap-2 rounded-2xl cursor-pointer select-none"
                         style={{
-                          padding: '7px 13px 7px 9px',
+                          padding: orbitR < 150 ? '5px 8px 5px 7px' : '7px 13px 7px 9px',
                           background: isActive
                             ? `linear-gradient(135deg, ${step.color} 0%, #047857 100%)`
                             : 'rgba(255,255,255,0.95)',
@@ -420,7 +420,7 @@ export default function ScrollStory() {
                           boxShadow: isActive
                             ? `0 10px 28px ${step.glow}, 0 0 0 2px ${step.color}35, inset 0 1px 0 rgba(255,255,255,0.22)`
                             : '0 2px 10px rgba(0,0,0,0.07)',
-                          minWidth: 108,
+                          minWidth: orbitR < 150 ? 64 : 108,
                           backdropFilter: 'blur(10px)',
                         }}
                       >
@@ -437,12 +437,14 @@ export default function ScrollStory() {
                         {/* Icon */}
                         <StepIcon icon={step.icon} size="sm" />
                         {/* Label */}
-                        <span
-                          className="text-[11px] font-semibold leading-tight"
-                          style={{ color: isActive ? '#fff' : '#334155', whiteSpace: 'nowrap' }}
-                        >
-                          {step.shortLabel}
-                        </span>
+                        {orbitR >= 150 && (
+                          <span
+                            className="text-[11px] font-semibold leading-tight"
+                            style={{ color: isActive ? '#fff' : '#334155', whiteSpace: 'nowrap' }}
+                          >
+                            {step.shortLabel}
+                          </span>
+                        )}
                       </motion.div>
                     </button>
                   </div>
@@ -534,13 +536,13 @@ export default function ScrollStory() {
                   >
                     <StepIcon icon={active.icon} size="lg" />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0F172A] tracking-tight leading-tight">
+                  <h3 className="text-xl sm:text-2xl lg:text-4xl font-bold text-[#0F172A] tracking-tight leading-tight">
                     {active.title}
                   </h3>
                 </div>
 
                 {/* Description */}
-                <p className="text-base lg:text-lg text-[#475569] leading-relaxed mb-6 max-w-lg">
+                <p className="text-sm sm:text-base lg:text-lg text-[#475569] leading-relaxed mb-6 max-w-lg">
                   {active.desc}
                 </p>
 

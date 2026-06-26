@@ -410,6 +410,10 @@ body {
 }
 .blog-prose h2:first-child, .blog-prose h3:first-child { margin-top: 0; }
 
+/* Hide scrollbar for mobile horizontal strips */
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
 /* ═══════════════════════════════════════════════════════════
    MOBILE
    ═══════════════════════════════════════════════════════════ */
