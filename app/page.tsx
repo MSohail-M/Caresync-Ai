@@ -7,6 +7,7 @@ import FrontDeskComparison from '@/components/FrontDeskComparison'
 import EHRAutomation from '@/components/EHRAutomation'
 import ROI from '@/components/ROI'
 import Trust from '@/components/Trust'
+import ComplianceBar from '@/components/ComplianceBar'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 import StickyBar from '@/components/StickyBar'
@@ -23,6 +24,7 @@ export default function Home() {
       <EHRAutomation />
       <ROI />
       <Trust />
+      <ComplianceBar />
       <CTA />
       <Footer />
       <StickyBar />
