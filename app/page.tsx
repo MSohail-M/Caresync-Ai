@@ -20,11 +20,11 @@ export default function Home() {
       <EHRIntegrations />
       <ScrollStory />
       <Demo />
+      <Trust />
+      <ComplianceBar />
       <FrontDeskComparison />
       <EHRAutomation />
       <ROI />
-      <Trust />
-      <ComplianceBar />
       <CTA />
       <Footer />
       <StickyBar />

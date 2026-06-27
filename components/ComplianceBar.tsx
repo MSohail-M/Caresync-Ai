@@ -139,7 +139,7 @@ export default function ComplianceBar() {
   return (
     <section
       id="compliance"
-      className="relative overflow-hidden py-14 lg:py-18"
+      className="relative overflow-hidden py-8"
       style={{ background: 'linear-gradient(180deg, #F0FDF8 0%, #ECFDF5 100%)' }}
     >
       {/* Background treatments */}
@@ -163,34 +163,7 @@ export default function ComplianceBar() {
       </div>
 
       <div className="relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-          className="text-center mb-8 px-4"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(16,185,129,0.28)] bg-[rgba(16,185,129,0.08)] mb-4">
-            <span className="relative flex w-1.5 h-1.5">
-              <span className="absolute inset-0 rounded-full bg-[#10B981] animate-ping opacity-50" />
-              <span className="relative w-1.5 h-1.5 rounded-full bg-[#10B981]" />
-            </span>
-            <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#059669]">
-              Security &amp; Compliance
-            </span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] tracking-tight mb-3">
-            Built for healthcare-grade{' '}
-            <span className="font-serif italic text-gradient-blue">security</span>
-          </h2>
-          <p className="text-[14px] text-[#64748B] max-w-md mx-auto leading-relaxed">
-            Every layer of CareSync AI is designed around patient data protection — from encrypted channels to zero-retention policies.
-          </p>
-        </motion.div>
-
-        {/* Marquee */}
+        {/* Marquee only — no header, flows directly from Trust section */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
