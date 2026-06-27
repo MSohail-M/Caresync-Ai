@@ -131,23 +131,51 @@ export default function CTA() {
           </a>
         </motion.div>
 
-        {/* Trust chips */}
+        {/* ── Trust guarantee bar ── */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-wrap items-center justify-center gap-3 mb-10"
+          transition={{ duration: 0.55, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-10"
         >
-          {proofItems.map((p) => (
-            <div key={p.label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[rgba(15,23,42,0.08)] bg-white/80">
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                <circle cx="5" cy="5" r="4.5" stroke="#0D9488" strokeWidth="0.8"/>
-                <path d="M3 5l1.5 1.5L7 3.5" stroke="#0D9488" strokeWidth="0.9" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <span className="text-[12px] text-[#64748B]">{p.label}</span>
+          <div
+            className="relative overflow-hidden rounded-2xl py-5 px-4"
+            style={{
+              background: 'linear-gradient(135deg, rgba(16,185,129,0.07) 0%, rgba(5,150,105,0.04) 100%)',
+              border: '1px solid rgba(16,185,129,0.2)',
+              boxShadow: '0 4px 24px rgba(16,185,129,0.08), inset 0 1px 0 rgba(255,255,255,0.8)',
+            }}
+          >
+            {/* Subtle dot grid inside bar */}
+            <div
+              className="absolute inset-0 pointer-events-none opacity-40"
+              style={{ backgroundImage: 'radial-gradient(circle, rgba(16,185,129,0.12) 1px, transparent 1px)', backgroundSize: '24px 24px' }}
+            />
+            <div className="relative flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+              {proofItems.map((p, i) => (
+                <div
+                  key={p.label}
+                  className="flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-white"
+                  style={{
+                    border: '1px solid rgba(16,185,129,0.18)',
+                    boxShadow: '0 2px 8px rgba(16,185,129,0.1), inset 0 1px 0 rgba(255,255,255,0.9)',
+                  }}
+                >
+                  {/* Animated check circle */}
+                  <div
+                    className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                    style={{ background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)' }}
+                  >
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                      <path d="M2 5l2.5 2.5L8 2" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  <span className="text-[13px] font-semibold text-[#1E293B] whitespace-nowrap">{p.label}</span>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </motion.div>
 
         {/* Social proof avatars */}

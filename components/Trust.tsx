@@ -128,21 +128,37 @@ export default function Trust() {
             </h2>
           </motion.div>
 
-          {/* HIPAA disclaimer — right side */}
+          {/* HIPAA disclaimer — prominent card */}
           <motion.div
             initial={{ opacity: 0, x: 16 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-start gap-2 max-w-xs p-3 rounded-xl border border-amber-500/20 bg-amber-500/[0.04]"
+            className="flex items-start gap-4 p-5 rounded-2xl"
+            style={{
+              background: 'linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%)',
+              border: '1.5px solid rgba(245,158,11,0.35)',
+              boxShadow: '0 4px 20px rgba(245,158,11,0.12), inset 0 1px 0 rgba(255,255,255,0.9)',
+            }}
           >
-            <svg className="shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <circle cx="7" cy="7" r="6" stroke="#D97706" strokeWidth="1"/>
-              <path d="M7 4.5v3M7 9.5v.5" stroke="#D97706" strokeWidth="1.2" strokeLinecap="round"/>
-            </svg>
-            <p className="text-[11px] text-amber-400/80 leading-snug">
-              CareSync AI is designed with HIPAA-aware workflows. We do not claim formal HIPAA certification.
-            </p>
+            {/* Icon circle */}
+            <div
+              className="shrink-0 w-11 h-11 rounded-full flex items-center justify-center"
+              style={{ background: '#FEF3C7', border: '1.5px solid rgba(245,158,11,0.4)' }}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="9" stroke="#D97706" strokeWidth="1.5"/>
+                <path d="M10 6v5M10 13v1" stroke="#D97706" strokeWidth="1.8" strokeLinecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <p className="text-[13px] font-bold text-amber-700 mb-1 tracking-tight">
+                HIPAA-Aware Platform
+              </p>
+              <p className="text-[12px] text-amber-600/90 leading-relaxed">
+                CareSync AI is built with HIPAA-aware workflows — secure data handling, role-based access, and minimum necessary disclosure at every step. We do not claim formal HIPAA certification.
+              </p>
+            </div>
           </motion.div>
         </div>
 
@@ -175,25 +191,6 @@ export default function Trust() {
           ))}
         </motion.div>
 
-        {/* Compliance logos strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-10 flex flex-wrap items-center gap-6 pt-8 border-t border-[rgba(15,23,42,0.08)]"
-        >
-          <span className="text-[11px] text-[#94A3B8] uppercase tracking-widest">Compliance signals</span>
-          {['SOC 2 Aware', 'TLS 1.3 Encrypted', 'Data Minimization', 'Audit Logs', 'US-based Servers'].map((label) => (
-            <div key={label} className="flex items-center gap-1.5">
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                <circle cx="5" cy="5" r="4.5" stroke="#059669" strokeWidth="0.8"/>
-                <path d="M3 5l1.5 1.5L7 3.5" stroke="#059669" strokeWidth="0.9" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <span className="text-[11px] text-[#64748B]">{label}</span>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   )
