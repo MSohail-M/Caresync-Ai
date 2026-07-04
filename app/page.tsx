@@ -4,6 +4,9 @@ import ScrollStory from '@/components/ScrollStory'
 import EHRIntegrations from '@/components/EHRIntegrations'
 import Demo from '@/components/Demo'
 import FrontDeskComparison from '@/components/FrontDeskComparison'
+import WhySwitch from '@/components/WhySwitch'
+import ComparisonTable from '@/components/ComparisonTable'
+import FAQ from '@/components/FAQ'
 import EHRAutomation from '@/components/EHRAutomation'
 import ROI from '@/components/ROI'
 import Trust from '@/components/Trust'
@@ -23,6 +26,9 @@ export default function Home() {
       <Trust />
       <ComplianceBar />
       <FrontDeskComparison />
+      <WhySwitch />
+      <ComparisonTable />
+      <FAQ />
       <EHRAutomation />
       <ROI />
       <CTA />
