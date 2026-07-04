@@ -6,12 +6,11 @@ import Demo from '@/components/Demo'
 import FrontDeskComparison from '@/components/FrontDeskComparison'
 import WhySwitch from '@/components/WhySwitch'
 import ComparisonTable from '@/components/ComparisonTable'
-import FAQ from '@/components/FAQ'
 import EHRAutomation from '@/components/EHRAutomation'
 import ROI from '@/components/ROI'
 import Trust from '@/components/Trust'
 import ComplianceBar from '@/components/ComplianceBar'
-import CTA from '@/components/CTA'
+import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
 import StickyBar from '@/components/StickyBar'
 
@@ -28,10 +27,9 @@ export default function Home() {
       <FrontDeskComparison />
       <WhySwitch />
       <ComparisonTable />
-      <FAQ />
       <EHRAutomation />
       <ROI />
-      <CTA />
+      <FAQ />
       <Footer />
       <StickyBar />
     </main>

@@ -164,7 +164,7 @@ function EHRHub() {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.65, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
-      className="relative flex flex-col items-center justify-center h-full min-h-[280px] rounded-2xl border border-emerald-500/20 bg-[#060F22]"
+      className="relative flex flex-col items-center justify-center h-full min-h-[280px] rounded-2xl border border-emerald-500/25 bg-[#064E3B]"
       style={{
         boxShadow: `0 0 0 1px rgba(16,185,129,0.08), inset 0 1px 0 rgba(255,255,255,0.05), 0 0 60px rgba(16,185,129,0.12), 0 0 120px rgba(16,185,129,0.06)`,
       }}
@@ -222,7 +222,7 @@ function EHRHub() {
             { label: 'Accuracy', val: '99.3%' },
             { label: 'Uptime', val: '24/7' },
           ].map(({ label, val }) => (
-            <div key={label} className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.05]">
+            <div key={label} className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-white/[0.07] border border-white/[0.1]">
               <span className="text-[11px] text-[#64748B]">{label}</span>
               <span className="text-[11px] font-bold text-emerald-400">{val}</span>
             </div>
