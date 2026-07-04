@@ -257,18 +257,18 @@ export default function Demo() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
         >
-          <div className="p-1.5 rounded-[2rem]" style={{ background: 'rgba(16,185,129,0.04)', boxShadow: '0 0 0 1px rgba(16,185,129,0.15), 0 8px 60px rgba(16,185,129,0.08)' }}>
-            <div className="rounded-[calc(2rem-6px)] overflow-hidden" style={{ background: 'rgba(10,22,40,0.9)', boxShadow: 'inset 0 1px 1px rgba(52,211,153,0.08)' }}>
+          <div className="p-1.5 rounded-[2rem]" style={{ background: 'rgba(16,185,129,0.08)', boxShadow: '0 0 0 1px rgba(16,185,129,0.2), 0 8px 60px rgba(16,185,129,0.12)' }}>
+            <div className="rounded-[calc(2rem-6px)] overflow-hidden" style={{ background: '#F0FDF4', boxShadow: 'inset 0 1px 1px rgba(16,185,129,0.15)' }}>
 
               {/* Top bar */}
-              <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: '1px solid rgba(16,185,129,0.1)' }}>
+              <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: '1px solid rgba(16,185,129,0.15)' }}>
                 <div className="flex items-center gap-2">
-                  <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${isPlaying ? 'bg-[#10B981] animate-pulse' : 'bg-[rgba(255,255,255,0.15)]'}`} />
-                  <span className="text-xs font-semibold text-[#64748B] uppercase tracking-widest">
+                  <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${isPlaying ? 'bg-[#10B981] animate-pulse' : 'bg-[rgba(16,185,129,0.25)]'}`} />
+                  <span className="text-xs font-semibold text-[#059669] uppercase tracking-widest">
                     {isLoading ? 'Loading...' : isPlaying ? 'Now Playing' : showBooking ? 'Completed' : 'Ready'}
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5 text-xs text-[rgba(248,250,252,0.3)]">
+                <div className="flex items-center gap-1.5 text-xs text-[#94A3B8]">
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                     <path d="M6 1v10M3 3.5C3 3.5 1 5 1 6s2 2.5 2 2.5M9 3.5C9 3.5 11 5 11 6s-2 2.5-2 2.5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/>
                   </svg>
@@ -286,10 +286,10 @@ export default function Demo() {
                       style={{
                         height: `${bar.height * 48}px`,
                         background: aiSpeaking
-                          ? `rgba(16,185,129,${0.4 + bar.height * 0.6})`
+                          ? `rgba(5,150,105,${0.5 + bar.height * 0.5})`
                           : isPlaying
-                          ? `rgba(52,211,153,${0.2 + bar.height * 0.35})`
-                          : `rgba(255,255,255,${0.04 + bar.height * 0.06})`,
+                          ? `rgba(16,185,129,${0.3 + bar.height * 0.4})`
+                          : `rgba(16,185,129,${0.1 + bar.height * 0.12})`,
                         animation: isPlaying ? `waveform ${bar.duration} ease-in-out infinite ${bar.delay}` : 'none',
                         transformOrigin: 'center',
                         transition: 'background 0.4s ease',
@@ -306,7 +306,7 @@ export default function Demo() {
 
               {/* Transcript */}
               <div className="px-6 pb-4" style={{ minHeight: 260 }}>
-                <div className="text-[10px] text-[rgba(248,250,252,0.25)] uppercase tracking-widest mb-4 font-semibold">Live Transcript</div>
+                <div className="text-[10px] text-[#94A3B8] uppercase tracking-widest mb-4 font-semibold">Live Transcript</div>
                 <div className="space-y-3">
                   {conversation.slice(0, visibleLines).map((msg, i) => (
                     <motion.div
@@ -319,9 +319,9 @@ export default function Demo() {
                       <div
                         className="w-6 h-6 rounded-full shrink-0 flex items-center justify-center text-[10px] font-bold mt-0.5"
                         style={{
-                          background: msg.speaker === 'ai' ? 'rgba(16,185,129,0.12)' : 'rgba(255,255,255,0.06)',
-                          color: msg.speaker === 'ai' ? '#10B981' : 'rgba(248,250,252,0.5)',
-                          border: `1px solid ${msg.speaker === 'ai' ? 'rgba(16,185,129,0.25)' : 'rgba(255,255,255,0.1)'}`,
+                          background: msg.speaker === 'ai' ? 'rgba(16,185,129,0.15)' : 'rgba(15,23,42,0.06)',
+                          color: msg.speaker === 'ai' ? '#065F46' : '#475569',
+                          border: `1px solid ${msg.speaker === 'ai' ? 'rgba(16,185,129,0.3)' : 'rgba(15,23,42,0.12)'}`,
                         }}
                       >
                         {msg.speaker === 'ai' ? 'AI' : 'P'}
@@ -331,8 +331,8 @@ export default function Demo() {
                           msg.speaker === 'ai' ? 'rounded-tl-sm' : 'rounded-tr-sm'
                         }`}
                         style={msg.speaker === 'ai'
-                          ? { background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', color: '#34D399' }
-                          : { background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(248,250,252,0.75)' }
+                          ? { background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.25)', color: '#065F46' }
+                          : { background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.08)', color: '#334155' }
                         }
                       >
                         {msg.text}
@@ -344,7 +344,7 @@ export default function Demo() {
                   ))}
 
                   {visibleLines === 0 && !isPlaying && !showBooking && (
-                    <div className="flex flex-col items-center justify-center py-10 gap-3 text-[rgba(255,255,255,0.15)]">
+                    <div className="flex flex-col items-center justify-center py-10 gap-3 text-[rgba(16,185,129,0.4)]">
                       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <circle cx="16" cy="16" r="14" stroke="currentColor" strokeWidth="1.2"/>
                         <path d="M12 10.5L21.5 16L12 21.5V10.5Z" fill="currentColor"/>
@@ -365,7 +365,7 @@ export default function Demo() {
                     transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
                     className="mx-6 mb-6"
                   >
-                    <div className="p-4 rounded-2xl" style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)' }}>
+                    <div className="p-4 rounded-2xl" style={{ background: '#DCFCE7', border: '1px solid rgba(16,185,129,0.35)' }}>
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-5 h-5 rounded-full flex items-center justify-center" style={{ background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.25)' }}>
                           <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2.5" stroke="#10B981" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -387,7 +387,7 @@ export default function Demo() {
                         ))}
                       </div>
                       {/* Post-completion CTA — strike at peak engagement */}
-                      <div className="pt-3 border-t border-white/[0.07] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                      <div className="pt-3 border-t border-[rgba(16,185,129,0.2)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                         <p className="text-[11px] text-[#64748B] leading-snug max-w-[200px]">
                           This is what CareSync AI does for your clinic — every call.
                         </p>
@@ -428,7 +428,7 @@ export default function Demo() {
                   <button
                     onClick={handleReplay}
                     className="group flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
-                    style={{ background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.15)', color: 'rgba(248,250,252,0.6)' }}
+                    style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', color: '#059669' }}
                   >
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:rotate-180 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
                       <path d="M12 7A5 5 0 112 7M2 3v4h4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>

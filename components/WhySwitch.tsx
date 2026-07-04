@@ -77,13 +77,13 @@ export default function WhySwitch() {
   return (
     <section
       className="relative py-24 lg:py-32 px-4 overflow-hidden"
-      style={{ background: '#050B18' }}
+      style={{ background: '#F0FDF4' }}
     >
       {/* Background glows */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[700px] h-[500px]" style={{ background: 'radial-gradient(ellipse at 100% 0%, rgba(16,185,129,0.12) 0%, transparent 60%)' }} />
+        <div className="absolute top-0 right-0 w-[700px] h-[500px]" style={{ background: 'radial-gradient(ellipse at 100% 0%, rgba(16,185,129,0.14) 0%, transparent 60%)' }} />
         <div className="absolute bottom-0 left-0 w-[500px] h-[400px]" style={{ background: 'radial-gradient(ellipse at 0% 100%, rgba(13,148,136,0.1) 0%, transparent 60%)' }} />
-        <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, rgba(16,185,129,0.07) 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
+        <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, rgba(16,185,129,0.12) 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
       </div>
 
       <div className="relative z-10 max-w-[1200px] mx-auto">
@@ -101,12 +101,12 @@ export default function WhySwitch() {
             <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#10B981]">Why Teams Switch</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.08] mb-5">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0F172A] tracking-tight leading-[1.08] mb-5">
             Why Care Teams<br />
-            <span className="font-serif italic" style={{ color: '#10B981' }}>Choose CareSync AI</span>
+            <span className="font-serif italic text-gradient-blue">Choose CareSync AI</span>
           </h2>
 
-          <p className="text-[16px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.55)' }}>
+          <p className="text-[16px] leading-relaxed text-[#64748B]">
             From solo practices to multi-location hospital groups — CareSync replaces inefficient call handling with intelligent, always-on patient communication.
           </p>
         </motion.div>
@@ -124,20 +124,20 @@ export default function WhySwitch() {
               <div
                 className="group h-full p-6 rounded-2xl relative overflow-hidden transition-all duration-300 cursor-default"
                 style={{
-                  background: 'rgba(10,22,40,0.8)',
-                  border: '1px solid rgba(255,255,255,0.07)',
-                  backdropFilter: 'blur(12px)',
+                  background: '#FFFFFF',
+                  border: '1px solid rgba(16,185,129,0.15)',
+                  boxShadow: '0 2px 12px rgba(16,185,129,0.06)',
                 }}
                 onMouseEnter={e => {
                   const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = `${color}40`
-                  el.style.boxShadow = `0 0 0 1px ${color}25, 0 16px 48px ${color}12`
+                  el.style.borderColor = `${color}50`
+                  el.style.boxShadow = `0 0 0 1px ${color}30, 0 16px 48px ${color}14`
                   el.style.transform = 'translateY(-2px)'
                 }}
                 onMouseLeave={e => {
                   const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = 'rgba(255,255,255,0.07)'
-                  el.style.boxShadow = ''
+                  el.style.borderColor = 'rgba(16,185,129,0.15)'
+                  el.style.boxShadow = '0 2px 12px rgba(16,185,129,0.06)'
                   el.style.transform = ''
                 }}
               >
@@ -166,8 +166,8 @@ export default function WhySwitch() {
                   </div>
                 </div>
 
-                <p className="text-[14px] font-bold text-white mb-2 leading-snug">{title}</p>
-                <p className="text-[13px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>{desc}</p>
+                <p className="text-[14px] font-bold text-[#0F172A] mb-2 leading-snug">{title}</p>
+                <p className="text-[13px] leading-relaxed text-[#64748B]">{desc}</p>
               </div>
             </motion.div>
           ))}
