@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 
 const proofItems = [
-  { label: 'No setup fees' },
   { label: '14-day free trial' },
   { label: 'Cancel anytime' },
   { label: 'Setup in 48 hours' },

@@ -186,7 +186,7 @@ export default function WhySwitch() {
               <div>
                 <p className="text-white/60 text-[11px] font-semibold uppercase tracking-[0.18em] mb-2">Ready to start?</p>
                 <p className="text-[22px] font-bold text-white leading-snug mb-2">See it live in your clinic — free demo.</p>
-                <p className="text-white/65 text-[13px]">No setup fees. No long-term contracts. Live in 48 hours.</p>
+                <p className="text-white/65 text-[13px]">No long-term contracts. Live in 48 hours.</p>
               </div>
               <a
                 href="/calendar"

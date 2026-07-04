@@ -34,7 +34,7 @@ const faqs = [
   },
   {
     q: 'How quickly can we get started?',
-    a: 'Most practices are live within 48 hours of onboarding. There is no hardware to install, no long-term contract required, and no setup fees. Book a demo and we\'ll show you the exact go-live process for your clinic.',
+    a: 'Most practices are live within 48 hours of onboarding. There is no hardware to install and no long-term contract required. Book a demo and we\'ll show you the exact go-live process for your clinic.',
   },
 ]
 
