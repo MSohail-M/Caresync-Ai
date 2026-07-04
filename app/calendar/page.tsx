@@ -5,7 +5,7 @@ import Nav from '@/components/Nav'
 
 export default function CalendarPage() {
   return (
-    <main className="relative min-h-[100dvh]" style={{ background: 'linear-gradient(175deg, #FFFFFF 0%, #060E22 60%, #FFFFFF 100%)' }}>
+    <main className="relative min-h-[100dvh]" style={{ background: 'linear-gradient(175deg, #F0FDF4 0%, #ECFDF5 50%, #F0FDF4 100%)' }}>
       <Nav />
 
       <section className="relative pt-32 pb-16 px-4 sm:px-6 lg:px-8">
@@ -17,7 +17,7 @@ export default function CalendarPage() {
         <div className="relative max-w-4xl mx-auto" style={{ zIndex: 1 }}>
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(16,185,129,0.2)] bg-[rgba(16,185,129,0.06)] mb-5">
-              <span className="text-[11px] uppercase tracking-[0.22em] font-semibold text-[rgba(52,211,153,0.8)]">Book a Demo</span>
+              <span className="text-[11px] uppercase tracking-[0.22em] font-semibold text-[#059669]">Book a Demo</span>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.05] tracking-tight mb-3 text-[#0F172A]">
               Schedule Your <span className="font-serif italic text-gradient-blue">CareSync AI</span> Demo
@@ -28,8 +28,8 @@ export default function CalendarPage() {
           </div>
 
           <div className="p-2 rounded-[1.75rem]" style={{
-            background: 'rgba(16,185,129,0.05)',
-            boxShadow: '0 0 0 1px rgba(16,185,129,0.18), 0 40px 80px rgba(16,185,129,0.1), 0 60px 120px rgba(0,0,0,0.5)',
+            background: 'rgba(16,185,129,0.06)',
+            boxShadow: '0 0 0 1px rgba(16,185,129,0.2), 0 20px 60px rgba(16,185,129,0.12), 0 4px 16px rgba(0,0,0,0.06)',
           }}>
             <div className="rounded-[calc(1.75rem-8px)] overflow-hidden bg-white" style={{ minHeight: 720 }}>
               <iframe

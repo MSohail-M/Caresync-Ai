@@ -2,14 +2,22 @@
 
 import { motion } from 'framer-motion'
 
-const footerLinks = {
-  Product: ['Features', 'How It Works', 'Pricing', 'Demo'],
-  Company: ['About', 'Blog', 'Careers', 'Contact'],
-  Legal: ['Privacy Policy', 'Terms of Service', 'HIPAA Notice'],
-}
-
-const linkHrefOverrides: Record<string, string> = {
-  Blog: '/blog',
+const footerLinks: Record<string, { label: string; href: string }[]> = {
+  Product: [
+    { label: 'How It Works', href: '/#how-it-works' },
+    { label: 'Live Demo',    href: '/#demo' },
+    { label: 'Results',      href: '/#results' },
+    { label: 'Book a Demo',  href: '/calendar' },
+  ],
+  Company: [
+    { label: 'Blog',    href: '/blog' },
+    { label: 'Contact', href: '/calendar' },
+  ],
+  Legal: [
+    { label: 'Privacy Policy',   href: '#' },
+    { label: 'Terms of Service', href: '#' },
+    { label: 'HIPAA Notice',     href: '#' },
+  ],
 }
 
 export default function Footer() {
@@ -41,13 +49,13 @@ export default function Footer() {
             <div key={category}>
               <h4 className="text-xs font-semibold text-[#64748B] uppercase tracking-[0.15em] mb-4">{category}</h4>
               <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link}>
+                {links.map(({ label, href }) => (
+                  <li key={label}>
                     <a
-                      href={linkHrefOverrides[link] ?? '#'}
-                      className="text-sm text-[#475569] hover:text-[#0F172A] transition-colors duration-300"
+                      href={href}
+                      className="text-sm text-[#475569] hover:text-[#059669] transition-colors duration-300"
                     >
-                      {link}
+                      {label}
                     </a>
                   </li>
                 ))}
@@ -70,7 +78,7 @@ export default function Footer() {
               className="w-8 h-8 rounded-full border border-[rgba(15,23,42,0.1)] bg-[rgba(15,23,42,0.03)] flex items-center justify-center hover:bg-[rgba(15,23,42,0.06)] hover:border-[rgba(15,23,42,0.15)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
             >
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                <path d="M9.916.5h2.069L7.69 5.62 13 12.5H8.558L5.165 8.07 1.27 12.5H-.8l4.62-5.483L-1 .5h4.55l3.067 4.054L9.916.5zm-.727 10.8h1.146L3.871 1.672H2.64L9.19 11.3z" fill="rgba(248,250,252,0.5)"/>
+                <path d="M9.916.5h2.069L7.69 5.62 13 12.5H8.558L5.165 8.07 1.27 12.5H-.8l4.62-5.483L-1 .5h4.55l3.067 4.054L9.916.5zm-.727 10.8h1.146L3.871 1.672H2.64L9.19 11.3z" fill="#94A3B8"/>
               </svg>
             </a>
 
@@ -81,11 +89,11 @@ export default function Footer() {
               className="w-8 h-8 rounded-full border border-[rgba(15,23,42,0.1)] bg-[rgba(15,23,42,0.03)] flex items-center justify-center hover:bg-[rgba(15,23,42,0.06)] hover:border-[rgba(15,23,42,0.15)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
             >
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                <rect x="1" y="1" width="11" height="11" rx="2" stroke="rgba(248,250,252,0.5)" strokeWidth="1"/>
-                <path d="M3 5.5V10" stroke="rgba(248,250,252,0.5)" strokeWidth="1" strokeLinecap="round"/>
-                <circle cx="3" cy="3.5" r="0.7" fill="rgba(248,250,252,0.5)"/>
-                <path d="M6 10V7.5c0-1.1.9-2 2-2s2 .9 2 2V10" stroke="rgba(248,250,252,0.5)" strokeWidth="1" strokeLinecap="round"/>
-                <path d="M6 5.5V10" stroke="rgba(248,250,252,0.5)" strokeWidth="1" strokeLinecap="round"/>
+                <rect x="1" y="1" width="11" height="11" rx="2" stroke="#94A3B8" strokeWidth="1"/>
+                <path d="M3 5.5V10" stroke="#94A3B8" strokeWidth="1" strokeLinecap="round"/>
+                <circle cx="3" cy="3.5" r="0.7" fill="#94A3B8"/>
+                <path d="M6 10V7.5c0-1.1.9-2 2-2s2 .9 2 2V10" stroke="#94A3B8" strokeWidth="1" strokeLinecap="round"/>
+                <path d="M6 5.5V10" stroke="#94A3B8" strokeWidth="1" strokeLinecap="round"/>
               </svg>
             </a>
           </div>
