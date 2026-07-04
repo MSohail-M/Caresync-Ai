@@ -239,15 +239,13 @@ export default function Demo() {
               )}
             </button>
 
-            {useElevenLabs && (
-              <div className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full border border-[rgba(16,185,129,0.2)] bg-[rgba(16,185,129,0.06)] text-xs text-[rgba(248,250,252,0.6)]">
-                <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-                  <circle cx="5.5" cy="5.5" r="4.5" stroke="#10B981" strokeWidth="1"/>
-                  <path d="M3.5 5.5c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z" fill="#10B981"/>
-                </svg>
-                ElevenLabs · Sarah (AI) + Adam (Patient)
-              </div>
-            )}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[rgba(16,185,129,0.25)] bg-[rgba(16,185,129,0.08)]">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+              <span className="text-[12px] font-semibold text-[#059669]">HIPAA Compliant Agents</span>
+            </div>
           </motion.div>
         </div>
 
