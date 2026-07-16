@@ -102,12 +102,13 @@ export default function WhySwitch() {
           </div>
 
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0F172A] tracking-tight leading-[1.08] mb-5">
-            Why Care Teams<br />
-            <span className="font-serif italic text-gradient-blue">Choose CareSync AI</span>
+            More Bookings.<br />
+            Less Burnout.<br />
+            <span className="font-serif italic text-gradient-blue">Zero Missed Calls.</span>
           </h2>
 
           <p className="text-[16px] leading-relaxed text-[#64748B]">
-            From solo practices to multi-location hospital groups — CareSync replaces inefficient call handling with intelligent, always-on patient communication.
+            Clinics that deploy Alice stop losing patients to voicemail, cut front-desk overtime, and see appointment volume increase within the first week.
           </p>
         </motion.div>
 

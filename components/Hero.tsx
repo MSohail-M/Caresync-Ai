@@ -141,9 +141,9 @@ export default function Hero() {
                 transition={{ duration:0.95, delay:0.08, ease:[0.32,0.72,0,1] }}
                 className="text-5xl sm:text-6xl lg:text-7xl xl:text-[80px] font-bold leading-[1.0] tracking-tight mb-5 text-[#0F172A]"
               >
-                Front Desk AI<br />
-                System for<br />
-                <span className="font-serif italic text-gradient-blue">Healthcare 24/7</span>
+                Every Patient Call<br />
+                Answered. Every<br />
+                <span className="font-serif italic text-gradient-blue">Appointment Booked.</span>
               </motion.h1>
 
               <motion.p
@@ -152,7 +152,7 @@ export default function Hero() {
                 transition={{ duration:0.7, delay:0.18, ease:[0.32,0.72,0,1] }}
                 className="text-base text-[#64748B] leading-relaxed mb-8 max-w-[440px]"
               >
-                CareSync AI answers every clinic call, verifies patients, books appointments, and sends SMS confirmations — automatically, day and night.
+                Alice — your HIPAA-compliant AI receptionist — answers every call in under 2 seconds, books directly into eClinicalWorks, and sends SMS confirmations. Your front desk, running 24/7.
               </motion.p>
 
               {/* CTAs */}

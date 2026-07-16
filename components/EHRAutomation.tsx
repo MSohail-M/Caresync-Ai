@@ -259,11 +259,11 @@ export default function EHRAutomation() {
             <span className="text-[11px] font-semibold text-emerald-400 tracking-widest uppercase">eClinicalWorks Native</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-none mb-3">
-            Six capabilities.<br />
-            <span className="text-emerald-400">One connection.</span>
+            One call handled.<br />
+            <span className="text-emerald-400">Six tasks done. Zero manual work.</span>
           </h2>
           <p className="text-base text-[#64748B] max-w-md leading-relaxed">
-            Every patient interaction flows directly into eClinicalWorks — no middleware, no manual entry, no lag.
+            Alice completes scheduling, insurance capture, refill routing, and chart updates — all written directly into eClinicalWorks before the call ends.
           </p>
         </motion.div>
 
