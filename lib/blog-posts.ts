@@ -11,6 +11,108 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'ai-answering-service-for-medical-practices',
+    title: 'AI Answering Service for Medical Practices: The Complete 2026 Guide',
+    description:
+      'What an AI answering service is, how it compares to human answering services on cost and outcomes, HIPAA requirements, EHR integration, and the 7 questions to ask any vendor.',
+    category: 'Guides',
+    date: '2026-07-16',
+    readTime: '9 min read',
+    keywords: [
+      'AI answering service for medical practices',
+      'healthcare AI answering service',
+      'medical answering service',
+      'AI phone answering for doctors office',
+      'HIPAA compliant answering service',
+    ],
+    faqs: [
+      {
+        q: 'How is an AI answering service different from a traditional medical answering service?',
+        a: 'A traditional answering service uses human operators who take messages for staff to handle later. An AI answering service resolves calls in real time — it checks live schedule availability, books or reschedules the appointment during the call, answers administrative questions, and only passes messages for things that genuinely need staff review.',
+      },
+      {
+        q: 'How much does an AI answering service cost for a medical practice?',
+        a: 'Most healthcare AI answering services charge a flat monthly fee with a bundle of included minutes, rather than per-call or per-minute rates. Total cost typically lands well below a full-time front desk hire and below high-volume human answering service bills, while covering all 168 hours of the week.',
+      },
+      {
+        q: 'Is an AI answering service HIPAA compliant?',
+        a: 'It can be — but only if the vendor signs a Business Associate Agreement, encrypts call data in transit and at rest, controls access to transcripts, and has BAAs covering every subprocessor that touches PHI (the voice AI platform, telephony carrier, and hosting). Always verify the full chain, not just the vendor.',
+      },
+      {
+        q: 'Can an AI answering service book appointments directly into my EHR?',
+        a: 'Yes, if it integrates with your EHR or practice management system via API or FHIR — for example eClinicalWorks, Dentrix, Open Dental, or Jane App. Without integration, the AI can only take messages, which eliminates most of the value. Ask vendors to demonstrate a live booking into your specific system.',
+      },
+    ],
+  },
+  {
+    slug: 'ai-receptionist-vs-call-center-outsourcing',
+    title: 'AI Receptionist vs. Call Center Outsourcing: Which Should Your Practice Choose?',
+    description:
+      'An honest comparison of AI receptionists and outsourced medical call centers — cost per appointment booked, patient experience, after-hours coverage, and where humans still win.',
+    category: 'Comparisons',
+    date: '2026-07-16',
+    readTime: '8 min read',
+    keywords: [
+      'AI receptionist vs call center',
+      'medical call center outsourcing',
+      'AI receptionist for medical practice',
+      'outsourced answering service alternative',
+      'cost per appointment booked',
+    ],
+    faqs: [
+      {
+        q: 'Is an AI receptionist cheaper than outsourcing to a call center?',
+        a: 'Usually, yes — and the gap widens with volume. Call centers bill per minute or per call, so busy months cost more, and after-hours coverage carries premium rates. AI receptionists charge a flat monthly rate and handle unlimited simultaneous calls, so cost stays predictable as volume grows.',
+      },
+      {
+        q: 'Do patients prefer talking to a human or an AI?',
+        a: 'Patients prefer whoever solves their problem fastest. Surveys of healthcare callers show frustration is driven by hold times, phone tag, and unresolved requests — not by whether the voice is human. An AI that answers instantly and books the appointment beats a human operator who takes a message.',
+      },
+      {
+        q: 'Can I use both an AI receptionist and a human answering service?',
+        a: 'Yes, and many practices do. The AI answers first and resolves routine scheduling and questions, then warm-transfers complex or sensitive calls to humans — either in-house staff during the day or a small outsourced team after hours. This cuts the human minutes billed dramatically.',
+      },
+      {
+        q: 'What happens to complex calls a call center handles well today?',
+        a: 'A properly scoped AI receptionist recognizes calls outside its lane — billing disputes, distressed callers, clinical questions — and transfers them to your staff immediately rather than attempting them. You keep human judgment where it matters while automating the repetitive majority.',
+      },
+    ],
+  },
+  {
+    slug: 'after-hours-answering-service-for-medical-offices',
+    title: 'After-Hours Answering for Medical Offices: Stop Losing Patients to Voicemail',
+    description:
+      'How an after-hours AI answering service captures the 123 hours a week your office is closed — booking patients overnight, escalating real emergencies, and ending on-call burnout.',
+    category: 'Guides',
+    date: '2026-07-16',
+    readTime: '8 min read',
+    keywords: [
+      'after hours answering service medical office',
+      'after hours medical answering service',
+      '24/7 answering service for doctors',
+      'overnight appointment booking',
+      'on-call answering service alternative',
+    ],
+    faqs: [
+      {
+        q: 'How does the AI handle medical emergencies after hours?',
+        a: 'It never attempts triage or clinical advice. Explicit escalation rules trigger an immediate handoff when urgency is detected — transferring to the on-call provider or nurse line, or instructing the caller to hang up and dial 911. Every escalation is logged and auditable.',
+      },
+      {
+        q: 'Do I need to change my phone number to add after-hours AI answering?',
+        a: 'No. Practices use conditional call forwarding on their existing line: calls forward to the AI only after N rings, when lines are busy, or outside business hours. Your front desk keeps answering normally during the day.',
+      },
+      {
+        q: 'How many calls actually come in after hours?',
+        a: 'Practices adding 24/7 answering typically find 15–30% of bookable calls arrive outside business hours — largely working patients calling after their own workday. Nearly all of these previously went to voicemail, and most voicemail callers never leave a message.',
+      },
+      {
+        q: 'Can the AI actually book appointments at night, or just take messages?',
+        a: 'If it is integrated with your calendar or practice management system, it books directly using live availability — the appointment is confirmed before the caller hangs up. Message-only setups exist but recreate the morning callback pile that makes voicemail fail.',
+      },
+    ],
+  },
+  {
     slug: 'ai-voice-agents-for-healthcare',
     title: 'AI Voice Agents for Healthcare: How They Answer Every Call and Book Appointments 24/7',
     description:

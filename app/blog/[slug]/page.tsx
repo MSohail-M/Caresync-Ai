@@ -5,6 +5,7 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import { blogPosts, getPostBySlug } from '@/lib/blog-posts'
 import { postContent } from '@/components/blog/postContent'
+import { SITE_URL } from '@/lib/site'
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }))
@@ -19,7 +20,7 @@ export async function generateMetadata({
   const post = getPostBySlug(slug)
   if (!post) return {}
 
-  const url = `https://caresynai.com/blog/${post.slug}`
+  const url = `${SITE_URL}/blog/${post.slug}`
   return {
     title: `${post.title} | CareSync AI Blog`,
     description: post.description,
@@ -59,6 +60,19 @@ export default async function BlogPostPage({
       name: faq.q,
       acceptedAnswer: { '@type': 'Answer', text: faq.a },
     })),
+  }
+
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { '@type': 'Organization', name: 'CareSync AI', url: SITE_URL },
+    publisher: { '@type': 'Organization', name: 'CareSync AI', url: SITE_URL },
+    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+    keywords: post.keywords.join(', '),
   }
 
   const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
@@ -145,6 +159,10 @@ export default async function BlogPostPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
     </>
   )

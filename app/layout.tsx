@@ -2,8 +2,10 @@ import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import './globals.css'
 import SmoothScroll from '@/components/SmoothScroll'
+import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'CareSync AI — AI Front Desk for Dental & Primary Care Clinics',
   description:
     'AI voice agent that answers calls, books appointments, and follows up with patients 24/7. Reduce missed calls and staff workload.',
@@ -22,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://caresynai.com',
+    url: SITE_URL,
     title: 'CareSync AI — AI Front Desk for Dental & Primary Care Clinics',
     description:
       'AI voice agent that answers calls, books appointments, and follows up with patients 24/7.',
@@ -84,6 +86,20 @@ export default function RootLayout({
           `}
         </Script>
         <SmoothScroll>{children}</SmoothScroll>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'CareSync AI',
+              url: SITE_URL,
+              logo: `${SITE_URL}/logo1.jpeg`,
+              description:
+                'AI front desk for dental and primary care clinics — voice agents and chatbots that answer every call, book appointments, and follow up with patients 24/7.',
+            }),
+          }}
+        />
       </body>
     </html>
   )
