@@ -72,7 +72,7 @@ export default function RootLayout({
       </head>
       <body className="bg-white text-[#0F172A] antialiased overflow-x-hidden">
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-VNX8RQTXY1"
+          src="https://www.googletagmanager.com/gtag/js?id=G-9S3J3YR9F0"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -80,7 +80,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-VNX8RQTXY1');
+            gtag('config', 'G-9S3J3YR9F0');
           `}
         </Script>
         <SmoothScroll>{children}</SmoothScroll>
