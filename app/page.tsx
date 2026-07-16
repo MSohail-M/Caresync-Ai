@@ -1,5 +1,6 @@
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
+import MeetAlice from '@/components/MeetAlice'
 import ScrollStory from '@/components/ScrollStory'
 import EHRIntegrations from '@/components/EHRIntegrations'
 import Demo from '@/components/Demo'
@@ -19,6 +20,7 @@ export default function Home() {
     <main>
       <Nav />
       <Hero />
+      <MeetAlice />
       <EHRIntegrations />
       <ScrollStory />
       <Demo />
