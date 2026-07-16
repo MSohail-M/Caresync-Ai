@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next'
-import Script from 'next/script'
 import './globals.css'
 import SmoothScroll from '@/components/SmoothScroll'
 import { SITE_URL } from '@/lib/site'
@@ -71,20 +70,20 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap"
           rel="stylesheet"
         />
-      </head>
-      <body className="bg-white text-[#0F172A] antialiased overflow-x-hidden">
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-9S3J3YR9F0"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
+        {/* gtag must live in <head>: Search Console GA-based ownership verification rejects body placement */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9S3J3YR9F0" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-9S3J3YR9F0');
-          `}
-        </Script>
+          `,
+          }}
+        />
+      </head>
+      <body className="bg-white text-[#0F172A] antialiased overflow-x-hidden">
         <SmoothScroll>{children}</SmoothScroll>
         <script
           type="application/ld+json"
