@@ -8,7 +8,7 @@ export default function CalendarPage() {
     <main className="relative min-h-[100dvh]" style={{ background: 'linear-gradient(175deg, #F0FDF4 0%, #ECFDF5 50%, #F0FDF4 100%)' }}>
       <Nav />
 
-      <section className="relative pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="ray-layer-a opacity-50" />
           <div className="spotlight-glow opacity-40" />
