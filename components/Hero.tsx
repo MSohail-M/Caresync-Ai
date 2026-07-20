@@ -247,7 +247,7 @@ export default function Hero() {
                   >
                     <img
                       src="/Gemini_Generated_Image_a1e9r2a1e9r2a1e9.png"
-                      alt="CareSync AI Voice Agent"
+                      alt="TelVyn Voice Agent"
                       className="w-full h-full object-cover object-top"
                       onError={e => {
                         const el = e.currentTarget.parentElement
@@ -333,7 +333,7 @@ export default function Hero() {
                   <div className="text-[34px] font-extrabold leading-none mb-3 tracking-tight text-[#0A1628]">1,204</div>
                   <div className="flex items-center gap-2 pt-2.5 border-t border-[#E2E8F0]">
                     <div className="w-7 h-7 rounded-full overflow-hidden shrink-0" style={{ border: '1.5px solid rgba(16,185,129,0.3)' }}>
-                      <img src="/Gemini_Generated_Image_a1e9r2a1e9r2a1e9.png" alt="CareSync AI" className="w-full h-full object-cover object-top" />
+                      <img src="/Gemini_Generated_Image_a1e9r2a1e9r2a1e9.png" alt="TelVyn" className="w-full h-full object-cover object-top" />
                     </div>
                     <div>
                       <div className="text-[11px] font-bold text-[#0A1628]">This Month</div>
@@ -376,7 +376,7 @@ export default function Hero() {
                   {/* Model photo avatar with green ring */}
                   <div className="relative shrink-0">
                     <div className="w-10 h-10 rounded-full overflow-hidden" style={{ border: '2px solid rgba(16,185,129,0.25)' }}>
-                      <img src="/Gemini_Generated_Image_a1e9r2a1e9r2a1e9.png" alt="CareSync AI" className="w-full h-full object-cover object-top" />
+                      <img src="/Gemini_Generated_Image_a1e9r2a1e9r2a1e9.png" alt="TelVyn" className="w-full h-full object-cover object-top" />
                     </div>
                     {/* Green check badge */}
                     <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#10B981] border-2 border-white flex items-center justify-center">
@@ -399,7 +399,7 @@ export default function Hero() {
                   {/* Model photo avatar with live dot */}
                   <div className="relative shrink-0">
                     <div className="w-10 h-10 rounded-full overflow-hidden" style={{ border: '2px solid rgba(16,185,129,0.25)' }}>
-                      <img src="/Gemini_Generated_Image_a1e9r2a1e9r2a1e9.png" alt="CareSync AI" className="w-full h-full object-cover object-top" />
+                      <img src="/Gemini_Generated_Image_a1e9r2a1e9r2a1e9.png" alt="TelVyn" className="w-full h-full object-cover object-top" />
                     </div>
                     {/* Live pulse dot */}
                     <span className="absolute -bottom-0.5 -right-0.5 flex w-4 h-4">

@@ -162,7 +162,7 @@ export default function Trust() {
             </h2>
 
             <p className="text-[16px] text-[#64748B] leading-relaxed max-w-lg">
-              Every architectural decision in CareSync AI starts with one question: <em>how do we protect patient data?</em> Here's how we answer it.
+              Every architectural decision in TelVyn starts with one question: <em>how do we protect patient data?</em> Here's how we answer it.
             </p>
           </motion.div>
 
@@ -194,7 +194,7 @@ export default function Trust() {
               <div>
                 <p className="text-[14px] font-bold text-amber-800 mb-1.5">HIPAA-Aware Platform</p>
                 <p className="text-[12px] text-amber-700/85 leading-relaxed">
-                  CareSync AI is designed with HIPAA-aware workflows — secure data handling, role-based access, and minimum necessary disclosure at every touchpoint. We do not claim formal HIPAA certification.
+                  TelVyn is designed with HIPAA-aware workflows — secure data handling, role-based access, and minimum necessary disclosure at every touchpoint. We do not claim formal HIPAA certification.
                 </p>
               </div>
             </div>

@@ -34,7 +34,7 @@ export default function Footer() {
                 <span className="absolute inset-0 rounded-full bg-[#16A34A]" />
                 <span className="absolute inset-0 rounded-full bg-[#16A34A] animate-pulse" />
               </div>
-              <span className="text-base font-bold text-[#0F172A]">CareSync AI</span>
+              <span className="text-base font-bold text-[#0F172A]">TelVyn</span>
             </div>
             <p className="text-sm text-[#64748B] leading-relaxed mb-6">
               AI Front Desk for Modern Clinics
@@ -67,14 +67,14 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-[rgba(15,23,42,0.08)] flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-[#94A3B8]">
-            © 2026 CareSync AI. All rights reserved.
+            © 2026 TelVyn. All rights reserved.
           </p>
 
           <div className="flex items-center gap-4">
             {/* Twitter/X */}
             <a
               href="#"
-              aria-label="CareSync AI on X / Twitter"
+              aria-label="TelVyn on X / Twitter"
               className="w-8 h-8 rounded-full border border-[rgba(15,23,42,0.1)] bg-[rgba(15,23,42,0.03)] flex items-center justify-center hover:bg-[rgba(15,23,42,0.06)] hover:border-[rgba(15,23,42,0.15)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
             >
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
@@ -85,7 +85,7 @@ export default function Footer() {
             {/* LinkedIn */}
             <a
               href="#"
-              aria-label="CareSync AI on LinkedIn"
+              aria-label="TelVyn on LinkedIn"
               className="w-8 h-8 rounded-full border border-[rgba(15,23,42,0.1)] bg-[rgba(15,23,42,0.03)] flex items-center justify-center hover:bg-[rgba(15,23,42,0.06)] hover:border-[rgba(15,23,42,0.15)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
             >
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none">

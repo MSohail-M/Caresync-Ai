@@ -25,7 +25,7 @@ const nodes = [
       </svg>
     ),
     label: 'AI Voice Agent',
-    desc: 'CareSync AI answers, verifies, books',
+    desc: 'TelVyn answers, verifies, books',
     color: '#10B981',
     bg: '#F0FDF4',
     border: '#BBF7D0',

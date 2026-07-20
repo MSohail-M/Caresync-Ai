@@ -22,7 +22,7 @@ export async function generateMetadata({
 
   const url = `${SITE_URL}/blog/${post.slug}`
   return {
-    title: `${post.title} | CareSync AI Blog`,
+    title: `${post.title} | TelVyn Blog`,
     description: post.description,
     keywords: post.keywords,
     alternates: { canonical: url },
@@ -31,7 +31,7 @@ export async function generateMetadata({
       url,
       title: post.title,
       description: post.description,
-      siteName: 'CareSync AI',
+      siteName: 'TelVyn',
     },
     twitter: {
       card: 'summary_large_image',
@@ -69,8 +69,8 @@ export default async function BlogPostPage({
     description: post.description,
     datePublished: post.date,
     dateModified: post.date,
-    author: { '@type': 'Organization', name: 'CareSync AI', url: SITE_URL },
-    publisher: { '@type': 'Organization', name: 'CareSync AI', url: SITE_URL },
+    author: { '@type': 'Organization', name: 'TelVyn', url: SITE_URL },
+    publisher: { '@type': 'Organization', name: 'TelVyn', url: SITE_URL },
     mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
     keywords: post.keywords.join(', '),
   }

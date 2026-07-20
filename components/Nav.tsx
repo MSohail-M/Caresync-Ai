@@ -46,20 +46,14 @@ export default function Nav() {
           <div className="flex items-center justify-between h-16">
 
             {/* ── Logo ── */}
-            <Link href="/" className="flex items-center gap-2 shrink-0">
+            <Link href="/" className="flex items-center shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/caresync-logo.png"
-                alt="CareSync AI"
+                src="/telvyn-logo.svg"
+                alt="TelVyn"
                 className="h-10 w-auto"
-                style={{ maxWidth: 160 }}
+                style={{ maxWidth: 180 }}
               />
-              <span
-                className="text-[10px] font-black tracking-[0.22em] uppercase px-1.5 py-0.5 rounded"
-                style={{ background: 'rgba(16,185,129,0.1)', color: '#059669', letterSpacing: '0.2em' }}
-              >
-                AI
-              </span>
             </Link>
 
             {/* ── Desktop nav links (center) ── */}

@@ -10,7 +10,7 @@ const benefits = [
       </svg>
     ),
     title: 'Zero Hold Times',
-    desc: 'CareSync AI answers every patient call in under 2 seconds — warm, natural, and clinic-trained. No queues, no missed calls, no frustrated patients.',
+    desc: 'TelVyn answers every patient call in under 2 seconds — warm, natural, and clinic-trained. No queues, no missed calls, no frustrated patients.',
     stat: '< 2s',
     statLabel: 'answer time',
     color: '#10B981',
@@ -22,7 +22,7 @@ const benefits = [
       </svg>
     ),
     title: 'Real World Impact',
-    desc: 'Clinics using CareSync report measurable results — higher patient satisfaction, fewer dropped calls, and up to 50% fewer no-shows and cancellations.',
+    desc: 'Clinics using TelVyn report measurable results — higher patient satisfaction, fewer dropped calls, and up to 50% fewer no-shows and cancellations.',
     stat: '97%',
     statLabel: 'satisfaction rate',
     color: '#059669',

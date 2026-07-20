@@ -140,7 +140,7 @@ export default function Solution() {
             transition={{ duration: 0.6, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
             className="mt-4 text-lg text-[#64748B] max-w-2xl mx-auto"
           >
-            CareSync AI handles the full patient communication lifecycle so your staff can focus on care.
+            TelVyn handles the full patient communication lifecycle so your staff can focus on care.
           </motion.p>
         </div>
 

@@ -92,7 +92,7 @@ export default function UseCases() {
                       <div className="text-4xl mb-4">🦷</div>
                       <h3 className="text-2xl font-bold text-[#0F172A] mb-3">Dental Office Front Desk</h3>
                       <p className="text-[#475569] mb-8 leading-relaxed">
-                        New patient calls for a cleaning appointment or emergency dental visit. CareSync handles it start to finish.
+                        New patient calls for a cleaning appointment or emergency dental visit. TelVyn handles it start to finish.
                       </p>
                       <div className="space-y-3">
                         {dentalSteps.map((step, i) => (

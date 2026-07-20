@@ -6,17 +6,17 @@ import { blogPosts } from '@/lib/blog-posts'
 import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Blog — AI Automation for Healthcare & Dental Practices | CareSync AI',
+  title: 'Blog — AI Automation for Healthcare & Dental Practices | TelVyn',
   description:
     'Guides on AI voice agents, chatbots, HIPAA-compliant automation, and EMR/EHR integration for dental and medical practices.',
   alternates: { canonical: `${SITE_URL}/blog` },
   openGraph: {
     type: 'website',
     url: `${SITE_URL}/blog`,
-    title: 'Blog — AI Automation for Healthcare & Dental Practices | CareSync AI',
+    title: 'Blog — AI Automation for Healthcare & Dental Practices | TelVyn',
     description:
       'Guides on AI voice agents, chatbots, HIPAA-compliant automation, and EMR/EHR integration for dental and medical practices.',
-    siteName: 'CareSync AI',
+    siteName: 'TelVyn',
   },
 }
 
