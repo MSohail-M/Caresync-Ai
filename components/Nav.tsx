@@ -43,7 +43,7 @@ export default function Nav() {
         }
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-24">
 
             {/* ── Logo ── */}
             <Link href="/" className="flex items-center shrink-0">
@@ -51,8 +51,8 @@ export default function Nav() {
               <img
                 src="/telvyn-logo.png"
                 alt="TelVyn"
-                className="h-14 w-auto"
-                style={{ maxWidth: 64 }}
+                className="w-auto"
+                style={{ height: 72 }}
               />
             </Link>
 
