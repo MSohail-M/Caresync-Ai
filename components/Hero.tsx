@@ -107,7 +107,7 @@ export default function Hero() {
 
       {/* ═══ MAIN LAYOUT ═══ */}
       <div className="relative flex-1 flex flex-col" style={{ zIndex: 10 }}>
-        <div className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-4">
+        <div className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[calc(100dvh-160px)] pb-16 lg:pb-0">
 
             {/* ═══ LEFT: PELMATECH MEGA TYPOGRAPHY ═══ */}
