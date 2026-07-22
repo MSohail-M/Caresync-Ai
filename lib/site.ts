@@ -1,2 +1,2 @@
-export const SITE_URL = 'https://telvyn.ai'
-export const SITE_NAME = 'TelVyn'
+export const SITE_URL = 'https://vocryn.ai'
+export const SITE_NAME = 'Vocryn AI'

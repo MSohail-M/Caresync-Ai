@@ -91,8 +91,8 @@ export default function ChatbotPage() {
         strategy="afterInteractive"
         data-public-key="public_key_1d9409f2614fc5ca5358d"
         data-agent-id="agent_e5d6b6f3ee5f047d5c4c851084"
-        data-title="TelVyn"
-        data-bot-name="TelVyn"
+        data-title="Vocryn AI"
+        data-bot-name="Vocryn AI"
         data-color="#3B8EF0"
         data-theme-color="#10B981"
         data-component-color="#F8FAFC"
@@ -125,7 +125,7 @@ export default function ChatbotPage() {
         Pointer-events: none so the close button (right side) still works.
         Positioned dynamically via the effect above.
       */}
-      {/* Branding overlay — covers Retell logo, shows TelVyn logo instead */}
+      {/* Branding overlay — covers Retell logo, shows Vocryn AI logo instead */}
       <div
         ref={overlayRef}
         style={{
@@ -141,7 +141,7 @@ export default function ChatbotPage() {
           userSelect: 'none',
         }}
       >
-        {/* TelVyn infinity logo SVG */}
+        {/* Vocryn AI infinity logo SVG */}
         <svg width="30" height="20" viewBox="0 0 70 44" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="csG" x1="0" y1="0" x2="70" y2="44" gradientUnits="userSpaceOnUse">
@@ -158,7 +158,7 @@ export default function ChatbotPage() {
           <path d="M35 22 C39 14 47 8 53 8 C61 8 66 14 66 22 C66 30 61 36 53 36 C47 36 39 30 35 22 Z" stroke="url(#csG)" strokeWidth="4.5" fill="none"/>
         </svg>
         <span style={{ color: '#F8FAFC', fontWeight: 700, fontSize: 14, fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: '-0.01em' }}>
-          TelVyn
+          Vocryn AI
         </span>
       </div>
 
@@ -189,7 +189,7 @@ export default function ChatbotPage() {
             </div>
             <h1 className="text-2xl sm:text-3xl font-bold text-[#0F172A] leading-tight tracking-tight">
               Chat with{' '}
-              <span className="font-serif italic text-gradient-blue">TelVyn</span>
+              <span className="font-serif italic text-gradient-blue">Vocryn AI</span>
             </h1>
           </motion.div>
         </div>

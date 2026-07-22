@@ -61,7 +61,7 @@ export default function CTA() {
               transition={{ duration: 1.8, repeat: Infinity }}
             />
             <span className="text-[12px] font-semibold text-emerald-400 tracking-wide">
-              500+ clinics already live on TelVyn
+              500+ clinics already live on Vocryn AI
             </span>
           </div>
         </motion.div>
@@ -86,7 +86,7 @@ export default function CTA() {
           transition={{ duration: 0.5, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
           className="text-[16px] text-[#64748B] leading-relaxed max-w-xl mx-auto mb-10"
         >
-          TelVyn answers every call in under 2 seconds, books directly into your calendar, and logs everything — automatically.
+          Vocryn AI answers every call in under 2 seconds, books directly into your calendar, and logs everything — automatically.
         </motion.p>
 
         {/* CTA buttons */}

@@ -20,10 +20,10 @@ export default function CalendarPage() {
               <span className="text-[11px] uppercase tracking-[0.22em] font-semibold text-[#059669]">Book a Demo</span>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.05] tracking-tight mb-3 text-[#0F172A]">
-              Schedule Your <span className="font-serif italic text-gradient-blue">TelVyn</span> Demo
+              Schedule Your <span className="font-serif italic text-gradient-blue">Vocryn AI</span> Demo
             </h1>
             <p className="text-base text-[#64748B] max-w-xl mx-auto">
-              Pick a time that works for you and we&apos;ll walk you through how TelVyn can answer every call, book appointments, and free up your front desk.
+              Pick a time that works for you and we&apos;ll walk you through how Vocryn AI can answer every call, book appointments, and free up your front desk.
             </p>
           </div>
 

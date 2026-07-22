@@ -43,8 +43,8 @@ export default function Demo() {
 
   useEffect(() => {
     const handler = () => triggerDemo()
-    window.addEventListener('telvyn:play-demo', handler)
-    return () => window.removeEventListener('telvyn:play-demo', handler)
+    window.addEventListener('vocryn:play-demo', handler)
+    return () => window.removeEventListener('vocryn:play-demo', handler)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [useElevenLabs])
 
@@ -206,7 +206,7 @@ export default function Demo() {
             transition={{ duration: 0.7, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-[#0F172A]"
           >
-            Listen to TelVyn Handle{' '}
+            Listen to Vocryn AI Handle{' '}
             <span className="font-serif italic text-gradient-blue">a Real Booking</span>
           </motion.h2>
 
@@ -387,7 +387,7 @@ export default function Demo() {
                       {/* Post-completion CTA — strike at peak engagement */}
                       <div className="pt-3 border-t border-[rgba(16,185,129,0.2)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                         <p className="text-[11px] text-[#64748B] leading-snug max-w-[200px]">
-                          This is what TelVyn does for your clinic — every call.
+                          This is what Vocryn AI does for your clinic — every call.
                         </p>
                         <a
                           href="/calendar"

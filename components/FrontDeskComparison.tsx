@@ -38,7 +38,7 @@ const comparisons = [
     },
     fix: {
       prefix: '<', stat: 2, suffix: 's', label: 'average response time',
-      text: 'TelVyn picks up in under 2 seconds — warm, natural, and clinic-trained. Every single call, 24/7.',
+      text: 'Vocryn AI picks up in under 2 seconds — warm, natural, and clinic-trained. Every single call, 24/7.',
       countTo: 2, decimals: 0, isText: false,
     },
   },
@@ -68,7 +68,7 @@ const comparisons = [
     },
     fix: {
       prefix: '', stat: 0, suffix: '', label: 'routine calls reach your staff',
-      text: 'TelVyn handles FAQs, booking, and verification. Your team focuses entirely on patients in the building.',
+      text: 'Vocryn AI handles FAQs, booking, and verification. Your team focuses entirely on patients in the building.',
       countTo: 0, decimals: 0, isText: false,
     },
   },
@@ -83,7 +83,7 @@ const comparisons = [
     },
     fix: {
       prefix: '', stat: 0, suffix: '', label: 'zero turnover. zero retraining.',
-      text: 'TelVyn never quits, never calls in sick, never needs retraining. One fixed monthly cost.',
+      text: 'Vocryn AI never quits, never calls in sick, never needs retraining. One fixed monthly cost.',
       countTo: 0, decimals: 0, isText: true, textStat: 'Fixed',
     },
   },
@@ -245,7 +245,7 @@ function ComparisonCard({
             >
               <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: data.accentColor }} />
               <span className="text-[10px] font-bold uppercase tracking-[0.12em]" style={{ color: data.accentColor }}>
-                With TelVyn
+                With Vocryn AI
               </span>
             </div>
 
@@ -351,7 +351,7 @@ export default function FrontDeskComparison() {
             transition={{ duration: 0.6, delay: 0.14, ease: [0.32, 0.72, 0, 1] }}
             className="text-[16px] text-[#64748B] leading-relaxed"
           >
-            Every clinic loses patients to hold times, data errors, and missed calls — every single day. TelVyn eliminates all of it at once.
+            Every clinic loses patients to hold times, data errors, and missed calls — every single day. Vocryn AI eliminates all of it at once.
           </motion.p>
         </div>
 

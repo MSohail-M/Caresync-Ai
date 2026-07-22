@@ -167,7 +167,7 @@ export default function MeetAlice() {
                   <p className="text-[12px] font-semibold text-[#0F172A]">Alice</p>
                   <div className="flex items-center gap-1">
                     <motion.div className="w-1.5 h-1.5 rounded-full bg-[#10B981]" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.6, repeat: Infinity }} />
-                    <p className="text-[10px] text-[#059669]">Active · TelVyn Primary Care</p>
+                    <p className="text-[10px] text-[#059669]">Active · Vocryn AI Primary Care</p>
                   </div>
                 </div>
               </div>

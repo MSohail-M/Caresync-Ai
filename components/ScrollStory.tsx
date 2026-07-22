@@ -19,7 +19,7 @@ const steps = [
     icon: '🤖',
     shortLabel: 'AI Answers',
     title: 'AI Answers Naturally',
-    desc: "TelVyn picks up within 2 rings with a warm, clinic-trained voice. Patients cannot tell the difference.",
+    desc: "Vocryn AI picks up within 2 rings with a warm, clinic-trained voice. Patients cannot tell the difference.",
     color: '#059669',
     glow: 'rgba(5,150,105,0.22)',
   },
@@ -37,7 +37,7 @@ const steps = [
     icon: '📅',
     shortLabel: 'Booked',
     title: 'Appointment Booked',
-    desc: 'TelVyn checks real-time calendar availability and books the appointment directly — no staff needed.',
+    desc: 'Vocryn AI checks real-time calendar availability and books the appointment directly — no staff needed.',
     color: '#10B981',
     glow: 'rgba(16,185,129,0.22)',
   },
@@ -83,7 +83,7 @@ const phonePanels: Record<string, React.ReactNode> = {
     <div className="flex flex-col items-center pt-5 px-3">
       <div className="text-[9px] text-[#10B981] uppercase tracking-widest font-bold mb-3">AI Answering</div>
       <div className="w-12 h-12 rounded-full overflow-hidden mb-3 shrink-0" style={{ border: '1.5px solid rgba(16,185,129,0.25)', boxShadow: '0 4px 12px rgba(16,185,129,0.15)' }}>
-        <img src="/Gemini_Generated_Image_a1e9r2a1e9r2a1e9.png" alt="TelVyn" className="w-full h-full object-cover object-top" />
+        <img src="/Gemini_Generated_Image_a1e9r2a1e9r2a1e9.png" alt="Vocryn AI" className="w-full h-full object-cover object-top" />
       </div>
       <div className="flex items-center gap-0.5 h-8 mb-2">
         {[0.4, 0.8, 1, 0.7, 0.5, 0.9, 0.6, 0.8, 0.4].map((h, i) => (
@@ -171,7 +171,7 @@ function StepIcon({ icon, size }: { icon: string; size: 'sm' | 'md' | 'lg' }) {
           boxShadow: '0 2px 8px rgba(16,185,129,0.18)',
         }}
       >
-        <img src={MODEL_IMG} alt="TelVyn" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+        <img src={MODEL_IMG} alt="Vocryn AI" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
       </div>
     )
   }

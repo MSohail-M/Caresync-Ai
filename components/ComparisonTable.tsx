@@ -5,55 +5,55 @@ import { motion } from 'framer-motion'
 const rows = [
   {
     feature: 'Hold Times',
-    telvyn: 'Zero — instant answer',
+    vocryn: 'Zero — instant answer',
     traditional: 'Long wait queues',
     level: 'win',
   },
   {
     feature: 'Availability',
-    telvyn: '24/7, no downtime',
+    vocryn: '24/7, no downtime',
     traditional: 'Limited by staff hours',
     level: 'win',
   },
   {
     feature: 'Call Efficiency',
-    telvyn: 'Handles 100× more calls/day',
+    vocryn: 'Handles 100× more calls/day',
     traditional: 'Staffing bottlenecks',
     level: 'win',
   },
   {
     feature: 'Cost',
-    telvyn: '80% lower than staff',
+    vocryn: '80% lower than staff',
     traditional: 'Rises with call volume',
     level: 'win',
   },
   {
     feature: 'EHR / PMS Integration',
-    telvyn: '40+ deep EHR integrations',
+    vocryn: '40+ deep EHR integrations',
     traditional: 'Often manual or none',
     level: 'critical',
   },
   {
     feature: 'Accuracy',
-    telvyn: '99.9% data accuracy',
+    vocryn: '99.9% data accuracy',
     traditional: 'Prone to human error',
     level: 'win',
   },
   {
     feature: 'Consistency',
-    telvyn: 'Always natural, reliable',
+    vocryn: 'Always natural, reliable',
     traditional: 'Dependent on agent skill',
     level: 'win',
   },
   {
     feature: 'Analytics',
-    telvyn: 'Real-time dashboards',
+    vocryn: 'Real-time dashboards',
     traditional: 'Manual QA samples only',
     level: 'win',
   },
   {
     feature: 'Scope',
-    telvyn: 'Full workflow automation',
+    vocryn: 'Full workflow automation',
     traditional: 'Call handling only',
     level: 'win',
   },
@@ -107,12 +107,12 @@ export default function ComparisonTable() {
           </div>
 
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0F172A] tracking-tight leading-[1.08] mb-5">
-            TelVyn vs<br />
+            Vocryn AI vs<br />
             <span className="font-serif italic text-gradient-blue">Traditional Call Center</span>
           </h2>
 
           <p className="text-[16px] text-[#64748B] leading-relaxed">
-            See exactly why healthcare practices are replacing human call centers with TelVyn.
+            See exactly why healthcare practices are replacing human call centers with Vocryn AI.
           </p>
         </motion.div>
 
@@ -141,7 +141,7 @@ export default function ComparisonTable() {
               >
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-                  <span className="text-[13px] font-bold text-[#059669]">TelVyn</span>
+                  <span className="text-[13px] font-bold text-[#059669]">Vocryn AI</span>
                 </div>
               </div>
               <div className="px-6 py-4 bg-[#F8FAFC] border-b border-[rgba(15,23,42,0.07)]">
@@ -167,7 +167,7 @@ export default function ComparisonTable() {
                   <span className="text-[13px] font-semibold text-[#0F172A]">{row.feature}</span>
                 </div>
 
-                {/* TelVyn cell */}
+                {/* Vocryn AI cell */}
                 <div
                   className="px-6 py-4 flex items-start gap-2.5 border-b border-r border-[rgba(15,23,42,0.06)] group-hover:bg-[rgba(16,185,129,0.04)] transition-colors"
                   style={{
@@ -177,7 +177,7 @@ export default function ComparisonTable() {
                 >
                   <CheckIcon color={row.level === 'critical' ? '#10B981' : '#059669'} />
                   <span className="text-[13px] font-medium" style={{ color: row.level === 'critical' ? '#059669' : '#047857' }}>
-                    {row.telvyn}
+                    {row.vocryn}
                   </span>
                 </div>
 
@@ -204,7 +204,7 @@ export default function ComparisonTable() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-center text-[12px] text-[#94A3B8] mt-6"
         >
-          Based on aggregate data from healthcare practices using TelVyn. Results may vary by clinic size and specialty.
+          Based on aggregate data from healthcare practices using Vocryn AI. Results may vary by clinic size and specialty.
         </motion.p>
 
       </div>

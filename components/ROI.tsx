@@ -14,7 +14,7 @@ const bigMetrics = [
   {
     value: '3.2×',
     label: 'More appointments booked',
-    desc: 'Compared to pre-TelVyn baseline',
+    desc: 'Compared to pre-Vocryn AI baseline',
     color: '#2DD4BF',
     glow: 'rgba(45,212,191,0.10)',
     span: 'lg:col-span-1',
@@ -29,7 +29,7 @@ const smallMetrics = [
 ]
 
 const testimonial = {
-  quote: "We used to miss 8–10 calls per day. With TelVyn, every patient gets answered immediately — even at 7pm. Our bookings are up 41% in the first month.",
+  quote: "We used to miss 8–10 calls per day. With Vocryn AI, every patient gets answered immediately — even at 7pm. Our bookings are up 41% in the first month.",
   name: 'Dr. Priya Mehta',
   clinic: 'Lakeview Primary Care, Chicago',
   initials: 'PM',

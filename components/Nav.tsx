@@ -49,8 +49,8 @@ export default function Nav() {
             <Link href="/" className="flex items-center shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/telvyn-logo.png"
-                alt="TelVyn"
+                src="/vocryn-logo.png"
+                alt="Vocryn AI"
                 className="w-auto"
                 style={{ height: 72 }}
               />

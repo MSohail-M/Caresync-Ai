@@ -193,7 +193,7 @@ export default function EHRIntegrations() {
 
           {/* Subtext */}
           <p className="text-[15px] text-[#64748B] max-w-xl mx-auto leading-relaxed">
-            TelVyn reads availability, writes bookings, and syncs call data directly into
+            Vocryn AI reads availability, writes bookings, and syncs call data directly into
             your existing EHR — no third-party middleware, no manual entry.
           </p>
 
@@ -285,7 +285,7 @@ export default function EHRIntegrations() {
               <path d="M7.5 5v3.5M7.5 10v.5" stroke="#10B981" strokeWidth="1.3" strokeLinecap="round"/>
             </svg>
             <span className="text-[12px] text-[#475569] font-medium">
-              Don't see yours? TelVyn integrates with any EHR via open API — setup in under 48 hours.
+              Don't see yours? Vocryn AI integrates with any EHR via open API — setup in under 48 hours.
             </span>
           </div>
         </motion.div>

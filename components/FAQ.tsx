@@ -5,20 +5,20 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const faqs = [
   {
-    q: 'What are the operating hours of TelVyn?',
-    a: 'TelVyn is available 24 hours a day, 7 days a week, 365 days a year — including weekends, holidays, and after hours. Every patient call is answered instantly, no matter when they call.',
+    q: 'What are the operating hours of Vocryn AI?',
+    a: 'Vocryn AI is available 24 hours a day, 7 days a week, 365 days a year — including weekends, holidays, and after hours. Every patient call is answered instantly, no matter when they call.',
   },
   {
-    q: "What happens when TelVyn doesn't know the answer?",
-    a: 'TelVyn is trained on your clinic\'s specific protocols and FAQs. For anything outside its knowledge — clinical questions, complaints, or emergencies — it escalates immediately to the appropriate staff member or on-call provider in under 2 seconds. No dead ends, ever.',
+    q: "What happens when Vocryn AI doesn't know the answer?",
+    a: 'Vocryn AI is trained on your clinic\'s specific protocols and FAQs. For anything outside its knowledge — clinical questions, complaints, or emergencies — it escalates immediately to the appropriate staff member or on-call provider in under 2 seconds. No dead ends, ever.',
   },
   {
-    q: 'Can TelVyn support different languages like Spanish, Mandarin, and others?',
-    a: 'Yes. TelVyn currently supports more than 20 popular languages and accents. We can also configure support for any additional language or regional accent to match your patient population.',
+    q: 'Can Vocryn AI support different languages like Spanish, Mandarin, and others?',
+    a: 'Yes. Vocryn AI currently supports more than 20 popular languages and accents. We can also configure support for any additional language or regional accent to match your patient population.',
   },
   {
     q: 'Can we customize the workflows to suit our practice needs?',
-    a: 'Absolutely. TelVyn is built around your clinic\'s specific workflows — appointment types, provider schedules, insurance rules, recall protocols, and more. Our onboarding team configures everything before go-live, and you can update workflows at any time.',
+    a: 'Absolutely. Vocryn AI is built around your clinic\'s specific workflows — appointment types, provider schedules, insurance rules, recall protocols, and more. Our onboarding team configures everything before go-live, and you can update workflows at any time.',
   },
   {
     q: 'Can we access call and message transcripts for quality analysis?',
@@ -26,11 +26,11 @@ const faqs = [
   },
   {
     q: 'Is it compulsory to have recorded calls for you to implement?',
-    a: 'No, recorded calls are not required to get started. TelVyn can be configured and go live using your practice protocols, scheduling rules, and intake forms. Existing call recordings are helpful for fine-tuning but never a prerequisite.',
+    a: 'No, recorded calls are not required to get started. Vocryn AI can be configured and go live using your practice protocols, scheduling rules, and intake forms. Existing call recordings are helpful for fine-tuning but never a prerequisite.',
   },
   {
-    q: 'Does TelVyn provide medical advice?',
-    a: 'No. TelVyn handles administrative tasks — scheduling, eligibility, FAQs, refill routing, recalls, and more. For any clinical question or urgent medical concern, it immediately transfers the patient to a qualified staff member or provider.',
+    q: 'Does Vocryn AI provide medical advice?',
+    a: 'No. Vocryn AI handles administrative tasks — scheduling, eligibility, FAQs, refill routing, recalls, and more. For any clinical question or urgent medical concern, it immediately transfers the patient to a qualified staff member or provider.',
   },
   {
     q: 'How quickly can we get started?',
@@ -130,7 +130,7 @@ export default function FAQ() {
           </div>
 
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0F172A] tracking-tight leading-[1.08] mb-4">
-            How TelVyn<br />
+            How Vocryn AI<br />
             <span className="font-serif italic text-gradient-blue">AI Works</span>
           </h2>
 
