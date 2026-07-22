@@ -46,7 +46,7 @@ export default function Nav() {
           <div className="flex items-center justify-between h-24">
 
             {/* ── Logo ── */}
-            <Link href="/" className="flex items-center shrink-0">
+            <Link href="/" className="flex items-center gap-1 shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/vocryn-logo.png"
@@ -54,6 +54,7 @@ export default function Nav() {
                 className="w-auto"
                 style={{ height: 72 }}
               />
+              <span className="text-lg font-black tracking-wide text-[#059669]">Ai</span>
             </Link>
 
             {/* ── Desktop nav links (center) ── */}
