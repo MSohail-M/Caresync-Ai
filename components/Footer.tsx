@@ -4,9 +4,9 @@ import { motion } from 'framer-motion'
 
 const footerLinks: Record<string, { label: string; href: string }[]> = {
   Product: [
+    { label: 'Services',     href: '/services' },
     { label: 'How It Works', href: '/#how-it-works' },
     { label: 'Live Demo',    href: '/#demo' },
-    { label: 'Results',      href: '/#results' },
     { label: 'Book a Demo',  href: '/calendar' },
   ],
   Company: [

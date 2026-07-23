@@ -6,10 +6,10 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const links = [
-  { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Live Demo',    href: '#demo' },
-  { label: 'Results',      href: '#results' },
-  { label: 'Contact Us',   href: '/calendar' },
+  { label: 'Services',     href: '/services' },
+  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'Live Demo',    href: '/#demo' },
+  { label: 'Results',      href: '/#results' },
 ]
 
 export default function Nav() {
