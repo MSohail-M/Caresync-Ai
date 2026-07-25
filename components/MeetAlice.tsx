@@ -37,14 +37,6 @@ export default function MeetAlice() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(16,185,129,0.2)] bg-[rgba(16,185,129,0.07)] mb-4">
-            <motion.div
-              className="w-1.5 h-1.5 rounded-full bg-[#10B981]"
-              animate={{ opacity: [1, 0.3, 1] }}
-              transition={{ duration: 1.8, repeat: Infinity }}
-            />
-            <span className="text-[11px] font-semibold text-[#059669] uppercase tracking-[0.2em]">Your AI Receptionist</span>
-          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] tracking-tight leading-none">
             Meet <span className="font-serif italic text-gradient-blue">Alice</span>
           </h2>

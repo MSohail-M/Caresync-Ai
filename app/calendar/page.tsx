@@ -16,9 +16,6 @@ export default function CalendarPage() {
 
         <div className="relative max-w-4xl mx-auto" style={{ zIndex: 1 }}>
           <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(16,185,129,0.2)] bg-[rgba(16,185,129,0.06)] mb-5">
-              <span className="text-[11px] uppercase tracking-[0.22em] font-semibold text-[#059669]">Book a Demo</span>
-            </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.05] tracking-tight mb-3 text-[#0F172A]">
               Schedule Your <span className="font-serif italic text-gradient-blue">Vocryn AI</span> Demo
             </h1>

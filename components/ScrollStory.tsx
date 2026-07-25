@@ -253,10 +253,6 @@ export default function ScrollStory() {
           transition={{ duration: 0.7 }}
           className="text-center mb-10 lg:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(16,185,129,0.25)] bg-[rgba(16,185,129,0.08)] mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
-            <span className="text-[10px] uppercase tracking-[0.22em] font-bold text-[#059669]">How It Works</span>
-          </div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0F172A] tracking-tight leading-tight">
             From First Ring to{' '}
             <span className="font-serif italic text-gradient-blue">Booked Appointment</span>

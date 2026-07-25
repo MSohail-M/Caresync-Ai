@@ -327,10 +327,7 @@ export default function FrontDeskComparison() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(16,185,129,0.2)] bg-[rgba(16,185,129,0.07)] mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
-              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#059669]">The Real Cost</span>
-            </div>
+            <p className="text-sm font-semibold text-[#059669] mb-4">The real cost of a missed call</p>
           </motion.div>
 
           <motion.h2

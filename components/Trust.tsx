@@ -148,13 +148,6 @@ export default function Trust() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-xl"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 mb-5">
-              <span className="relative flex w-1.5 h-1.5">
-                <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-50" />
-                <span className="relative w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              </span>
-              <span className="text-[11px] font-bold text-emerald-600 tracking-[0.18em] uppercase">Built for Healthcare</span>
-            </div>
 
             <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#0F172A] tracking-tight leading-[1.0] mb-4">
               Patient privacy<br />

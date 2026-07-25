@@ -101,11 +101,6 @@ export default function ComparisonTable() {
           transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
           className="text-center max-w-2xl mx-auto mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(16,185,129,0.2)] bg-[rgba(16,185,129,0.06)] mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
-            <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#059669]">Head to Head</span>
-          </div>
-
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0F172A] tracking-tight leading-[1.08] mb-5">
             Vocryn AI vs<br />
             <span className="font-serif italic text-gradient-blue">Traditional Call Center</span>

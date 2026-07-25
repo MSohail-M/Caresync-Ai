@@ -195,9 +195,6 @@ export default function Demo() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(16,185,129,0.2)] bg-[rgba(16,185,129,0.06)] mb-6">
-              <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#059669]">Hear It Live</span>
-            </div>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 24 }}

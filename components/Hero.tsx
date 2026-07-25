@@ -125,12 +125,12 @@ export default function Hero() {
 
               {/* Eyebrow */}
               <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.05, ease:[0.32,0.72,0,1] }}>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(16,185,129,0.2)] bg-[rgba(16,185,129,0.06)] mb-5">
-                  <span className="relative flex w-1.5 h-1.5">
-                    <span className="absolute inset-0 rounded-full bg-[#10B981] animate-ping opacity-60" />
-                    <span className="relative rounded-full bg-[#10B981] w-1.5 h-1.5" />
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="relative flex w-2 h-2">
+                    <span className="absolute inset-0 rounded-full bg-[#10B981] animate-ping opacity-50" />
+                    <span className="relative rounded-full bg-[#10B981] w-2 h-2" />
                   </span>
-                  <span className="text-[11px] uppercase tracking-[0.22em] font-semibold text-[#059669]">AI Voice Agent for Clinics</span>
+                  <span className="text-sm font-medium text-[#059669]">AI Voice Agent for Healthcare Clinics</span>
                 </div>
               </motion.div>
 

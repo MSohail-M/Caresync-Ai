@@ -174,17 +174,6 @@ export default function EHRIntegrations() {
           transition={{ duration: 0.65, ease: [0.32, 0.72, 0, 1] }}
           className="text-center mb-12 px-4"
         >
-          {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(16,185,129,0.25)] bg-[rgba(16,185,129,0.08)] mb-5">
-            <span className="relative flex w-1.5 h-1.5">
-              <span className="absolute inset-0 rounded-full bg-[#10B981] animate-ping opacity-50" />
-              <span className="relative w-1.5 h-1.5 rounded-full bg-[#10B981]" />
-            </span>
-            <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#059669]">
-              Native EHR + Practice Management Integration
-            </span>
-          </div>
-
           {/* Headline */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0F172A] tracking-tight leading-tight mb-4">
             Works with the platform{' '}

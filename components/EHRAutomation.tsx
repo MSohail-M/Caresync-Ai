@@ -254,10 +254,6 @@ export default function EHRAutomation() {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-4">
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            <span className="text-[11px] font-semibold text-emerald-400 tracking-widest uppercase">eClinicalWorks Native</span>
-          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight leading-none mb-3">
             One call handled.<br />
             <span className="text-emerald-400">Six tasks done. Zero manual work.</span>

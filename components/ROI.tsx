@@ -68,10 +68,6 @@ export default function ROI() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-4">
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            <span className="text-[11px] font-semibold text-emerald-400 tracking-widest uppercase">Real Results</span>
-          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] tracking-tight leading-none">
             What clinics see<br />
             <span className="text-emerald-400">in the first 30 days.</span>

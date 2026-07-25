@@ -124,14 +124,9 @@ export default function FAQ() {
           transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[rgba(16,185,129,0.2)] bg-[rgba(16,185,129,0.07)] mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
-            <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#059669]">Common Questions</span>
-          </div>
-
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0F172A] tracking-tight leading-[1.08] mb-4">
-            How Vocryn AI<br />
-            <span className="font-serif italic text-gradient-blue">AI Works</span>
+            Questions we get<br />
+            <span className="font-serif italic text-gradient-blue">all the time</span>
           </h2>
 
           <p className="text-[16px] text-[#64748B] leading-relaxed">
