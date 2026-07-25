@@ -99,12 +99,13 @@ export default function Footer() {
 
             {/* X / Twitter */}
             <a
-              href="#"
-              aria-label="Vocryn AI on X (coming soon)"
-              className="w-8 h-8 rounded-lg border border-[rgba(15,23,42,0.1)] bg-[rgba(15,23,42,0.03)] flex items-center justify-center opacity-50 cursor-not-allowed transition-all duration-300"
-              onClick={e => e.preventDefault()}
+              href="https://x.com/Vocrynai"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Vocryn AI on X"
+              className="w-8 h-8 rounded-lg border border-[rgba(15,23,42,0.1)] bg-[rgba(15,23,42,0.03)] flex items-center justify-center hover:opacity-80 transition-all duration-300 hover:scale-105"
             >
-              <svg width="12" height="12" viewBox="0 0 13 13" fill="#94A3B8">
+              <svg width="12" height="12" viewBox="0 0 13 13" fill="#0F172A">
                 <path d="M9.916.5h2.069L7.69 5.62 13 12.5H8.558L5.165 8.07 1.27 12.5H-.8l4.62-5.483L-1 .5h4.55l3.067 4.054L9.916.5zm-.727 10.8h1.146L3.871 1.672H2.64L9.19 11.3z"/>
               </svg>
             </a>

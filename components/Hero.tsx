@@ -306,13 +306,14 @@ export default function Hero() {
                   <span className="text-[11px] font-semibold text-[#334155] group-hover:text-[#CC0000] transition-colors">YouTube</span>
                 </a>
 
-                {/* X / Twitter placeholder */}
+                {/* X / Twitter */}
                 <a
-                  href="#"
-                  className="group flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all duration-300 hover:scale-105 active:scale-95 cursor-not-allowed opacity-60"
+                  href="https://x.com/Vocrynai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all duration-300 hover:scale-105 active:scale-95"
                   style={{ borderColor:'rgba(15,23,42,0.1)', background:'rgba(15,23,42,0.03)' }}
-                  title="X (coming soon)"
-                  onClick={e => e.preventDefault()}
+                  title="Follow us on X"
                 >
                   <svg width="12" height="12" viewBox="0 0 13 13" fill="currentColor" className="text-[#0F172A]">
                     <path d="M9.916.5h2.069L7.69 5.62 13 12.5H8.558L5.165 8.07 1.27 12.5H-.8l4.62-5.483L-1 .5h4.55l3.067 4.054L9.916.5zm-.727 10.8h1.146L3.871 1.672H2.64L9.19 11.3z"/>
