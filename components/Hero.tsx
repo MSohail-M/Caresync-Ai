@@ -178,6 +178,79 @@ export default function Hero() {
                 </MagneticButton>
               </motion.div>
 
+              {/* Social links */}
+              <motion.div
+                initial={{ opacity:0, y:12 }}
+                animate={{ opacity:1, y:0 }}
+                transition={{ duration:0.6, delay:0.32, ease:[0.32,0.72,0,1] }}
+                className="flex items-center gap-2 mb-8"
+              >
+                <span className="text-[11px] font-semibold text-[#94A3B8] uppercase tracking-[0.15em] mr-1">Follow</span>
+
+                {/* TikTok */}
+                <a
+                  href="https://www.tiktok.com/@vocrynai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all duration-300 hover:scale-105 active:scale-95"
+                  style={{ borderColor:'rgba(15,23,42,0.1)', background:'rgba(15,23,42,0.03)' }}
+                  onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.borderColor='rgba(0,0,0,0.25)';(e.currentTarget as HTMLElement).style.background='rgba(0,0,0,0.06)'}}
+                  onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.borderColor='rgba(15,23,42,0.1)';(e.currentTarget as HTMLElement).style.background='rgba(15,23,42,0.03)'}}
+                  title="TikTok @vocrynai"
+                >
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" className="text-[#0F172A] group-hover:text-black transition-colors">
+                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.72a4.85 4.85 0 01-1.01-.03z"/>
+                  </svg>
+                  <span className="text-[11px] font-semibold text-[#334155] group-hover:text-[#0F172A] transition-colors">TikTok</span>
+                </a>
+
+                {/* YouTube */}
+                <a
+                  href="https://www.youtube.com/@Vocrynai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all duration-300 hover:scale-105 active:scale-95"
+                  style={{ borderColor:'rgba(15,23,42,0.1)', background:'rgba(15,23,42,0.03)' }}
+                  onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.borderColor='rgba(255,0,0,0.25)';(e.currentTarget as HTMLElement).style.background='rgba(255,0,0,0.04)'}}
+                  onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.borderColor='rgba(15,23,42,0.1)';(e.currentTarget as HTMLElement).style.background='rgba(15,23,42,0.03)'}}
+                  title="YouTube @Vocrynai"
+                >
+                  <svg width="14" height="10" viewBox="0 0 24 17" fill="none" className="transition-colors">
+                    <path d="M23.5 2.7S23.2 1 22.5.3C21.7-.5 20.8-.5 20.4-.5 17 .7 12 .7 12 .7s-5 0-8.4-.2C3.2.5 2.3.5 1.5 1.3.8 2 .5 2.7.5 2.7S0 4.8 0 6.8v1.9c0 2 .5 4 .5 4S.8 14.5 1.5 15.2c.8.8 1.9.8 2.4.9C5.5 16.3 12 16.3 12 16.3s5 0 8.4-.2c.4 0 1.3 0 2.1-.8.7-.7 1-1.5 1-1.5s.5-2 .5-4V6.8c0-2-.5-4.1-.5-4.1zm-14 8.1V3.7l6.5 3.5-6.5 3.6z" fill="#FF0000"/>
+                  </svg>
+                  <span className="text-[11px] font-semibold text-[#334155] group-hover:text-[#CC0000] transition-colors">YouTube</span>
+                </a>
+
+                {/* X / Twitter placeholder */}
+                <a
+                  href="#"
+                  className="group flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all duration-300 hover:scale-105 active:scale-95 cursor-not-allowed opacity-60"
+                  style={{ borderColor:'rgba(15,23,42,0.1)', background:'rgba(15,23,42,0.03)' }}
+                  title="X (coming soon)"
+                  onClick={e => e.preventDefault()}
+                >
+                  <svg width="12" height="12" viewBox="0 0 13 13" fill="currentColor" className="text-[#0F172A]">
+                    <path d="M9.916.5h2.069L7.69 5.62 13 12.5H8.558L5.165 8.07 1.27 12.5H-.8l4.62-5.483L-1 .5h4.55l3.067 4.054L9.916.5zm-.727 10.8h1.146L3.871 1.672H2.64L9.19 11.3z"/>
+                  </svg>
+                  <span className="text-[11px] font-semibold text-[#334155]">X</span>
+                </a>
+
+                {/* Reddit placeholder */}
+                <a
+                  href="#"
+                  className="group flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all duration-300 hover:scale-105 active:scale-95 cursor-not-allowed opacity-60"
+                  style={{ borderColor:'rgba(15,23,42,0.1)', background:'rgba(15,23,42,0.03)' }}
+                  title="Reddit (coming soon)"
+                  onClick={e => e.preventDefault()}
+                >
+                  <svg width="13" height="13" viewBox="0 0 20 20" fill="#FF4500">
+                    <circle cx="10" cy="10" r="10"/>
+                    <path d="M16.67 10a1.46 1.46 0 00-2.47-1 7.12 7.12 0 00-3.85-1.23l.65-3.08 2.13.45a1 1 0 101 1 1 1 0 00-1-.88l-2.38-.5a.27.27 0 00-.32.2l-.73 3.43a7.14 7.14 0 00-3.89 1.23 1.46 1.46 0 10-1.61 2.39 2.87 2.87 0 000 .44c0 2.24 2.61 4.06 5.83 4.06s5.83-1.82 5.83-4.06a2.87 2.87 0 000-.44 1.46 1.46 0 00.71-1.01zM7.27 11a1 1 0 111 1 1 1 0 01-1-1zm5.58 2.71a3.58 3.58 0 01-2.85.86 3.58 3.58 0 01-2.85-.86.22.22 0 01.31-.31 3.17 3.17 0 002.54.71 3.17 3.17 0 002.54-.71.22.22 0 01.31.31zm-.17-1.71a1 1 0 111-1 1 1 0 01-1 1z" fill="white"/>
+                  </svg>
+                  <span className="text-[11px] font-semibold text-[#334155]">Reddit</span>
+                </a>
+              </motion.div>
+
               {/* Stats */}
               <motion.div initial={{ opacity:0 }} animate={{ opacity:1 }} transition={{ duration:0.6, delay:0.36 }} className="flex flex-wrap gap-x-6 gap-y-2">
                 {[{ v:'94%', l:'calls answered' },{ v:'3×', l:'more bookings' },{ v:'< 2s', l:'response' }].map((s,i)=>(
