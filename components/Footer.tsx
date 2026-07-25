@@ -36,12 +36,52 @@ export default function Footer() {
               </div>
               <span className="text-base font-bold text-[#0F172A]">Vocryn AI</span>
             </div>
-            <p className="text-sm text-[#64748B] leading-relaxed mb-6">
+            <p className="text-sm text-[#64748B] leading-relaxed mb-5">
               AI Front Desk for Modern Clinics
             </p>
-            <p className="text-xs text-[#94A3B8] leading-relaxed">
+            <p className="text-xs text-[#94A3B8] leading-relaxed mb-6">
               Helping dental and primary care clinics answer every call, book more appointments, and deliver better patient experiences.
             </p>
+
+            {/* Contact buttons */}
+            <div className="flex flex-col gap-2">
+              <a
+                href="tel:+15717034510"
+                className="group flex items-center gap-2.5 px-4 py-2.5 rounded-xl border transition-all duration-300 hover:scale-[1.02]"
+                style={{ borderColor: 'rgba(15,23,42,0.1)', background: 'rgba(15,23,42,0.03)' }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(15,23,42,0.2)'; (e.currentTarget as HTMLElement).style.background = 'rgba(15,23,42,0.06)' }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(15,23,42,0.1)'; (e.currentTarget as HTMLElement).style.background = 'rgba(15,23,42,0.03)' }}
+              >
+                <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(15,23,42,0.07)' }}>
+                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                    <path d="M3.5 1.5h2l1.2 3.2-1.4 1.4a8 8 0 004.6 4.6l1.4-1.4 3.2 1.2v2c0 .8-.7 1.5-1.5 1.5C7.5 14 2 8.5 2 3c0-.8.7-1.5 1.5-1.5z" stroke="#475569" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-[10px] text-[#94A3B8] font-medium leading-none mb-0.5">Call us</p>
+                  <p className="text-[13px] font-semibold text-[#334155]">1-571-703-4510</p>
+                </div>
+              </a>
+
+              <a
+                href="mailto:care@vocryn.com"
+                className="group flex items-center gap-2.5 px-4 py-2.5 rounded-xl border transition-all duration-300 hover:scale-[1.02]"
+                style={{ borderColor: 'rgba(16,185,129,0.2)', background: 'rgba(16,185,129,0.04)' }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(16,185,129,0.4)'; (e.currentTarget as HTMLElement).style.background = 'rgba(16,185,129,0.09)' }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(16,185,129,0.2)'; (e.currentTarget as HTMLElement).style.background = 'rgba(16,185,129,0.04)' }}
+              >
+                <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(16,185,129,0.12)' }}>
+                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                    <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="#059669" strokeWidth="1.2"/>
+                    <path d="M1 5l7 5 7-5" stroke="#059669" strokeWidth="1.2" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-[10px] text-[#059669] font-medium leading-none mb-0.5 opacity-70">Email us</p>
+                  <p className="text-[13px] font-semibold text-[#059669]">care@vocryn.com</p>
+                </div>
+              </a>
+            </div>
           </div>
 
           {/* Links */}

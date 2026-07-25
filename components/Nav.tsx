@@ -72,16 +72,26 @@ export default function Nav() {
               </nav>
             )}
 
-            {/* ── Right: phone + CTA ── */}
-            <div className="hidden md:flex items-center gap-3">
+            {/* ── Right: phone + email + CTA ── */}
+            <div className="hidden md:flex items-center gap-2">
               <a
                 href="tel:+15717034510"
-                className="flex items-center gap-1.5 text-[14px] font-medium text-[#64748B] hover:text-[#0F172A] transition-colors duration-300"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[rgba(15,23,42,0.1)] bg-[rgba(15,23,42,0.03)] text-[13px] font-medium text-[#475569] hover:text-[#0F172A] hover:border-[rgba(15,23,42,0.2)] hover:bg-[rgba(15,23,42,0.06)] transition-all duration-300"
               >
-                <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                   <path d="M3.5 1.5h2l1.2 3.2-1.4 1.4a8 8 0 004.6 4.6l1.4-1.4 3.2 1.2v2c0 .8-.7 1.5-1.5 1.5C7.5 14 2 8.5 2 3c0-.8.7-1.5 1.5-1.5z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 1-571-703-4510
+              </a>
+              <a
+                href="mailto:care@vocryn.com"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[rgba(16,185,129,0.2)] bg-[rgba(16,185,129,0.05)] text-[13px] font-medium text-[#059669] hover:border-[rgba(16,185,129,0.4)] hover:bg-[rgba(16,185,129,0.1)] transition-all duration-300"
+              >
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.2"/>
+                  <path d="M1 5l7 5 7-5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+                </svg>
+                care@vocryn.com
               </a>
 
               {!isChatbot && (
