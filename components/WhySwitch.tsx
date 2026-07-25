@@ -103,7 +103,7 @@ export default function WhySwitch() {
           </h2>
 
           <p className="text-[16px] leading-relaxed text-[#64748B]">
-            Clinics that deploy Alice stop losing patients to voicemail, cut front-desk overtime, and see appointment volume increase within the first week.
+            Clinics that deploy Casey stop losing patients to voicemail, cut front-desk overtime, and see appointment volume increase within the first week.
           </p>
         </motion.div>
 

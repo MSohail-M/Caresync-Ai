@@ -237,7 +237,7 @@ export default function Hero() {
                 transition={{ duration:0.7, delay:0.18, ease:[0.32,0.72,0,1] }}
                 className="text-base text-[#64748B] leading-relaxed mb-8 max-w-[440px]"
               >
-                Alice — your HIPAA-compliant AI receptionist — answers every call in under 2 seconds, books directly into eClinicalWorks, and sends SMS confirmations. Your front desk, running 24/7.
+                Casey — your HIPAA-compliant AI receptionist — answers every call in under 2 seconds, books directly into eClinicalWorks, and sends SMS confirmations. Your front desk, running 24/7.
               </motion.p>
 
               {/* CTAs */}

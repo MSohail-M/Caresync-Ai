@@ -259,7 +259,7 @@ export default function EHRAutomation() {
             <span className="text-emerald-400">Six tasks done. Zero manual work.</span>
           </h2>
           <p className="text-base text-[#64748B] max-w-md leading-relaxed">
-            Alice completes scheduling, insurance capture, refill routing, and chart updates — all written directly into eClinicalWorks before the call ends.
+            Casey completes scheduling, insurance capture, refill routing, and chart updates — all written directly into eClinicalWorks before the call ends.
           </p>
         </motion.div>
 

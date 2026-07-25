@@ -13,7 +13,7 @@ const services = [
     kicker: 'AI Front Desk',
     heading: 'The AI receptionist your clinic deserves.',
     description:
-      'Alice answers every inbound call in under 2 seconds — no hold music, no missed calls. She books appointments directly into your EHR, verifies insurance in real time, and handles reschedules and cancellations without involving your staff.',
+      'Casey answers every inbound call in under 2 seconds — no hold music, no missed calls. She books appointments directly into your EHR, verifies insurance in real time, and handles reschedules and cancellations without involving your staff.',
     features: [
       { label: 'Answers every call 24/7', detail: 'No voicemail, no missed revenue. Every patient gets a live response.' },
       { label: 'Books directly in eClinicalWorks', detail: 'Slots created in real time — no double-booking, no manual entry.' },
@@ -45,7 +45,7 @@ const services = [
     kicker: 'Outbound Agent',
     heading: 'Proactive outreach. Zero staff time.',
     description:
-      'Alice dials patients automatically for appointment reminders, recall campaigns, care gap outreach, and follow-ups after visits. She speaks naturally, handles responses, and updates your EHR — no human needed.',
+      'Casey dials patients automatically for appointment reminders, recall campaigns, care gap outreach, and follow-ups after visits. She speaks naturally, handles responses, and updates your EHR — no human needed.',
     features: [
       { label: 'Appointment reminders', detail: 'Reduces no-shows with automated calls 48h and 2h before.' },
       { label: 'Recall & reactivation', detail: 'Brings back patients due for annual exams or preventive care.' },
@@ -117,7 +117,7 @@ function VoiceVisual() {
             <svg width="18" height="18" fill="none" stroke="white" strokeWidth="1.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.003 1.19 2 2 0 012 .003h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </div>
           <div>
-            <div className="text-sm font-bold text-white">Alice — AI Front Desk</div>
+            <div className="text-sm font-bold text-white">Casey — AI Front Desk</div>
             <div className="text-xs text-white/40">Primary Care Clinic</div>
           </div>
           <div className="ml-auto flex items-center gap-1.5 text-[11px] font-bold text-[#4FBE78]">
@@ -143,9 +143,9 @@ function VoiceVisual() {
         <div className="rounded-xl p-4 space-y-3" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)' }}>
           {[
             { who: 'Patient', text: "Hi, I need to book an appointment for next week.", patient: true },
-            { who: 'Alice', text: "Of course! Are you a new or existing patient?", patient: false },
+            { who: "Casey", text: "Of course! Are you a new or existing patient?", patient: false },
             { who: 'Patient', text: "Existing patient — it's Sarah Miller.", patient: true },
-            { who: 'Alice', text: "Found you, Sarah. I have Tuesday at 10 AM — shall I book it?", patient: false },
+            { who: "Casey", text: "Found you, Sarah. I have Tuesday at 10 AM — shall I book it?", patient: false },
           ].map((line, i) => (
             <div key={i} className="flex gap-2">
               <span className="text-[10px] font-bold uppercase tracking-wider w-12 shrink-0 pt-0.5" style={{ color: line.patient ? 'rgba(255,255,255,0.3)' : '#4FBE78' }}>{line.who}</span>
