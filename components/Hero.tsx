@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform, useSpring } from 'framer-motion'
 import ParticleField from './ParticleField'
 import MagneticButton from './MagneticButton'
@@ -22,6 +22,109 @@ const bottomFeatures = [
   { label: 'EMR/EHR Integrated', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg> },
   { label: '24/7 Coverage', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> },
 ]
+
+/* ─── Live metrics ticker ─────────────────────────────── */
+const RECENT = ['just now', '8s ago', '22s ago', '41s ago', '1m ago', '14s ago', '5s ago', '33s ago']
+
+function AnimatedNumber({ value }: { value: number }) {
+  const [display, setDisplay] = useState(value)
+  const [flash, setFlash] = useState(false)
+  useEffect(() => {
+    if (value !== display) {
+      setDisplay(value)
+      setFlash(true)
+      const t = setTimeout(() => setFlash(false), 500)
+      return () => clearTimeout(t)
+    }
+  }, [value])
+  return (
+    <span
+      className="font-bold tabular-nums transition-all duration-300"
+      style={{ color: flash ? '#059669' : '#0F172A', transform: flash ? 'scale(1.08)' : 'scale(1)', display: 'inline-block' }}
+    >
+      {display.toLocaleString()}
+    </span>
+  )
+}
+
+function LiveMetricsTicker() {
+  const [calls,    setCalls]    = useState(24847)
+  const [bookings, setBookings] = useState(18203)
+  const [positive, setPositive] = useState(94.2)
+  const [recentIdx, setRecentIdx] = useState(0)
+
+  useEffect(() => {
+    const c = setInterval(() => setCalls(n => n + 1), 3800)
+    const b = setInterval(() => setBookings(n => n + 1), 8500)
+    const p = setInterval(() => setPositive(n => Math.min(99.9, +(n + 0.1).toFixed(1))), 22000)
+    const r = setInterval(() => setRecentIdx(i => (i + 1) % RECENT.length), 5000)
+    return () => { clearInterval(c); clearInterval(b); clearInterval(p); clearInterval(r) }
+  }, [])
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+      className="mb-6"
+    >
+      <div
+        className="inline-flex items-stretch rounded-xl overflow-hidden"
+        style={{
+          border: '1px solid rgba(16,185,129,0.18)',
+          background: 'rgba(255,255,255,0.82)',
+          backdropFilter: 'blur(12px)',
+          boxShadow: '0 2px 16px rgba(16,185,129,0.08)',
+          maxWidth: 500,
+        }}
+      >
+        {/* LIVE badge */}
+        <div className="flex items-center gap-1.5 px-3 py-2.5 border-r border-[rgba(16,185,129,0.15)]" style={{ background: 'rgba(16,185,129,0.06)' }}>
+          <span className="relative flex w-1.5 h-1.5 shrink-0">
+            <span className="absolute inset-0 rounded-full bg-[#10B981] animate-ping opacity-60" />
+            <span className="relative rounded-full bg-[#10B981] w-1.5 h-1.5" />
+          </span>
+          <span className="text-[10px] font-black text-[#059669] uppercase tracking-[0.18em]">Live</span>
+        </div>
+
+        {/* Metric: calls answered */}
+        <div className="flex flex-col items-center justify-center px-4 py-2 border-r border-[rgba(16,185,129,0.1)] min-w-[90px]">
+          <span className="text-[15px] leading-none"><AnimatedNumber value={calls} /></span>
+          <span className="text-[9px] text-[#94A3B8] font-medium mt-0.5 uppercase tracking-wider whitespace-nowrap">calls answered</span>
+        </div>
+
+        {/* Metric: bookings */}
+        <div className="flex flex-col items-center justify-center px-4 py-2 border-r border-[rgba(16,185,129,0.1)] min-w-[80px]">
+          <span className="text-[15px] leading-none"><AnimatedNumber value={bookings} /></span>
+          <span className="text-[9px] text-[#94A3B8] font-medium mt-0.5 uppercase tracking-wider whitespace-nowrap">bookings</span>
+        </div>
+
+        {/* Metric: positive rate */}
+        <div className="flex flex-col items-center justify-center px-4 py-2 border-r border-[rgba(16,185,129,0.1)] min-w-[64px]">
+          <span className="text-[15px] font-bold leading-none text-[#0F172A]">{positive}%</span>
+          <span className="text-[9px] text-[#94A3B8] font-medium mt-0.5 uppercase tracking-wider whitespace-nowrap">positive</span>
+        </div>
+
+        {/* Last booking */}
+        <div className="flex flex-col items-center justify-center px-4 py-2 min-w-[80px]">
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={recentIdx}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.3 }}
+              className="text-[13px] font-bold text-[#059669] leading-none"
+            >
+              {RECENT[recentIdx]}
+            </motion.span>
+          </AnimatePresence>
+          <span className="text-[9px] text-[#94A3B8] font-medium mt-0.5 uppercase tracking-wider whitespace-nowrap">last booking</span>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
 
 export default function Hero() {
   const [phoneState, setPhoneState]     = useState<PhoneState>('ringing')
@@ -113,26 +216,8 @@ export default function Hero() {
             {/* ═══ LEFT: PELMATECH MEGA TYPOGRAPHY ═══ */}
             <motion.div style={{ y: textY }} className="flex flex-col justify-center pt-8 md:pt-0">
 
-              {/* Social proof — above fold, reduces skepticism */}
-              <motion.div initial={{ opacity:0, y:16 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.5, ease:[0.32,0.72,0,1] }} className="flex items-center gap-3 mb-5">
-                <div className="flex -space-x-2">
-                  {['#059669','#047857','#10B981','#34D399'].map((bg, i) => (
-                    <div key={i} className="w-6 h-6 rounded-full border-2 border-white flex items-center justify-center text-[8px] font-bold text-white" style={{ background: bg }}>{['PM','RK','JT','SL'][i]}</div>
-                  ))}
-                </div>
-                <span className="text-[12px] text-[#64748B]">Trusted by <span className="text-[#334155] font-semibold">500+ clinic teams</span> across the US</span>
-              </motion.div>
-
-              {/* Eyebrow */}
-              <motion.div initial={{ opacity:0, y:20 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6, delay:0.05, ease:[0.32,0.72,0,1] }}>
-                <div className="flex items-center gap-2 mb-5">
-                  <span className="relative flex w-2 h-2">
-                    <span className="absolute inset-0 rounded-full bg-[#10B981] animate-ping opacity-50" />
-                    <span className="relative rounded-full bg-[#10B981] w-2 h-2" />
-                  </span>
-                  <span className="text-sm font-medium text-[#059669]">AI Voice Agent for Healthcare Clinics</span>
-                </div>
-              </motion.div>
+              {/* Live metrics ticker */}
+              <LiveMetricsTicker />
 
               {/* MEGA headline — Pelmatech style: huge, left-aligned, 3 lines */}
               <motion.h1
