@@ -1,30 +1,168 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { useRef, useState, useEffect, useCallback } from 'react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
 
-const capabilities = [
-  { text: 'Answers every inbound call in under 2 seconds' },
-  { text: 'Books & reschedules appointments directly in eCW' },
-  { text: 'Verifies insurance eligibility in real time' },
-  { text: 'Routes prescription refill requests to provider' },
-  { text: 'Sends appointment reminders & recall messages' },
+const SLIDE_DURATION = 5000
+
+const slides = [
+  {
+    id: 'booking',
+    label: 'Book Appointment',
+    color: '#059669',
+    bg: 'rgba(5,150,105,0.07)',
+    border: 'rgba(5,150,105,0.22)',
+    icon: (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/>
+      </svg>
+    ),
+    messages: [
+      { from: 'patient', text: "Hi, I need to see Dr. Patel this week." },
+      { from: 'casey',   text: "Of course! I have Thursday at 2 PM available. Shall I book it?" },
+      { from: 'patient', text: "Yes, please." },
+      { from: 'casey',   text: "Done! You're booked for Thursday July 24th at 2:00 PM with Dr. Patel." },
+    ],
+    outcome: {
+      label: 'Appointment Confirmed',
+      color: '#059669',
+      bg: '#DCFCE7',
+      border: 'rgba(5,150,105,0.3)',
+      icon: (c: string) => (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      ),
+      rows: ['Thu Jul 24 · 2:00 PM', 'Dr. Patel · Primary Care', 'SMS confirmation sent ✓'],
+    },
+  },
+  {
+    id: 'insurance',
+    label: 'Insurance Verification',
+    color: '#0D9488',
+    bg: 'rgba(13,148,136,0.07)',
+    border: 'rgba(13,148,136,0.22)',
+    icon: (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+      </svg>
+    ),
+    messages: [
+      { from: 'patient', text: "Do you accept Blue Cross Blue Shield?" },
+      { from: 'casey',   text: "Let me verify your coverage right now — one moment." },
+      { from: 'patient', text: "Sure, my member ID is BCB4829301." },
+      { from: 'casey',   text: "You're covered! Active BCBS plan, $30 copay, deductible met." },
+    ],
+    outcome: {
+      label: 'Eligibility Verified',
+      color: '#0D9488',
+      bg: '#CCFBF1',
+      border: 'rgba(13,148,136,0.3)',
+      icon: (c: string) => (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+        </svg>
+      ),
+      rows: ['BCBS · Member Active', 'Copay: $30 · Deductible met', 'In-network provider ✓'],
+    },
+  },
+  {
+    id: 'refill',
+    label: 'Rx Refill Request',
+    color: '#7C3AED',
+    bg: 'rgba(124,58,237,0.07)',
+    border: 'rgba(124,58,237,0.22)',
+    icon: (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
+      </svg>
+    ),
+    messages: [
+      { from: 'patient', text: "I need a refill on my metformin 500mg." },
+      { from: 'casey',   text: "Got it. Which pharmacy do you prefer?" },
+      { from: 'patient', text: "CVS on Main Street." },
+      { from: 'casey',   text: "Refill request sent to Dr. Patel. Expect confirmation within 24 hours." },
+    ],
+    outcome: {
+      label: 'Refill Request Routed',
+      color: '#7C3AED',
+      bg: '#EDE9FE',
+      border: 'rgba(124,58,237,0.3)',
+      icon: (c: string) => (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      ),
+      rows: ['Metformin 500mg · Dr. Patel', 'CVS · Main Street', 'ETA: within 24 hours'],
+    },
+  },
+  {
+    id: 'reschedule',
+    label: 'Reschedule & Cancel',
+    color: '#EA580C',
+    bg: 'rgba(234,88,12,0.07)',
+    border: 'rgba(234,88,12,0.22)',
+    icon: (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+      </svg>
+    ),
+    messages: [
+      { from: 'patient', text: "I need to cancel my appointment tomorrow." },
+      { from: 'casey',   text: "No problem. Would you like to reschedule or just cancel?" },
+      { from: 'patient', text: "Reschedule — Friday morning if possible." },
+      { from: 'casey',   text: "Done! Moved to Friday July 26th at 9:00 AM. Slot released." },
+    ],
+    outcome: {
+      label: 'Appointment Rescheduled',
+      color: '#EA580C',
+      bg: '#FFF7ED',
+      border: 'rgba(234,88,12,0.3)',
+      icon: (c: string) => (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+        </svg>
+      ),
+      rows: ['Fri Jul 26 · 9:00 AM', 'Previous slot released', 'SMS update sent ✓'],
+    },
+  },
+  {
+    id: 'reminder',
+    label: 'Reminders & Recalls',
+    color: '#2563EB',
+    bg: 'rgba(37,99,235,0.07)',
+    border: 'rgba(37,99,235,0.22)',
+    icon: (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/>
+      </svg>
+    ),
+    messages: [
+      { from: 'casey',   text: "Hi Sarah! Casey from Vocryn Care — you're due for your annual checkup." },
+      { from: 'patient', text: "Oh yes, I've been meaning to book that." },
+      { from: 'casey',   text: "I can schedule it right now. Morning or afternoon?" },
+      { from: 'patient', text: "Morning works great." },
+    ],
+    outcome: {
+      label: 'Recall Successful',
+      color: '#2563EB',
+      bg: '#EFF6FF',
+      border: 'rgba(37,99,235,0.3)',
+      icon: (c: string) => (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      ),
+      rows: ['Annual checkup booked', 'Tue Aug 5 · 9:00 AM', 'Care gap closed ✓'],
+    },
+  },
 ]
 
-const conversation = [
-  { role: 'patient', name: 'Patient', text: "Hi, I need to reschedule my appointment with Dr. Patel for next week." },
-  { role: 'casey',   name: 'Casey',   text: "Of course! I can see your appointment is on Tuesday the 22nd at 2 PM. Would Thursday the 24th at 10 AM work for you?" },
-  { role: 'patient', name: 'Patient', text: "Yes, Thursday morning is perfect." },
-  { role: 'casey',   name: 'Casey',   text: "Done! I've updated your appointment to Thursday July 24th at 10:00 AM with Dr. Patel. You'll receive a confirmation text shortly." },
-]
-
-function TypingDots() {
+function TypingDots({ color }: { color: string }) {
   return (
-    <div className="flex items-center gap-1 px-3.5 py-2.5 rounded-2xl w-fit bg-[rgba(16,185,129,0.08)] border border-[rgba(16,185,129,0.18)]">
+    <div className="flex items-center gap-1 px-3.5 py-2.5 rounded-2xl w-fit" style={{ background: `${color}12`, border: `1px solid ${color}22` }}>
       {[0, 1, 2].map(i => (
-        <motion.div
-          key={i}
-          className="w-1.5 h-1.5 rounded-full bg-[#10B981]"
+        <motion.div key={i} className="w-1.5 h-1.5 rounded-full" style={{ background: color }}
           animate={{ y: [0, -4, 0], opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 0.9, delay: i * 0.18, repeat: Infinity }}
         />
@@ -33,48 +171,184 @@ function TypingDots() {
   )
 }
 
-export default function MeetAlice() {
-  const ref = useRef<HTMLElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
-  const [showTyping, setShowTyping] = useState(false)
+function SlideDemo({ slide, active }: { slide: typeof slides[0]; active: boolean }) {
   const [visibleLines, setVisibleLines] = useState(0)
+  const [showTyping, setShowTyping] = useState(false)
+  const [showOutcome, setShowOutcome] = useState(false)
 
   useEffect(() => {
-    if (!inView) return
+    if (!active) { setVisibleLines(0); setShowTyping(false); setShowOutcome(false); return }
     let current = 0
-    const show = () => {
-      if (current >= conversation.length) return
-      if (conversation[current].role === 'casey') {
+    let cancelled = false
+
+    const next = () => {
+      if (cancelled || current >= slide.messages.length) {
+        if (!cancelled) setTimeout(() => !cancelled && setShowOutcome(true), 400)
+        return
+      }
+      const msg = slide.messages[current]
+      if (msg.from === 'casey') {
         setShowTyping(true)
         setTimeout(() => {
+          if (cancelled) return
           setShowTyping(false)
           setVisibleLines(current + 1)
           current++
-          setTimeout(show, 650)
-        }, 1100)
+          setTimeout(next, 600)
+        }, 900)
       } else {
         setVisibleLines(current + 1)
         current++
-        setTimeout(show, 750)
+        setTimeout(next, 700)
       }
     }
-    const t = setTimeout(show, 500)
-    return () => clearTimeout(t)
-  }, [inView])
+    const t = setTimeout(next, 300)
+    return () => { cancelled = true; clearTimeout(t) }
+  }, [active, slide])
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 h-full">
+      {/* Chat transcript */}
+      <div className="rounded-2xl bg-white border border-[rgba(15,23,42,0.08)] overflow-hidden flex flex-col" style={{ boxShadow: '0 2px 20px rgba(0,0,0,0.05)' }}>
+        {/* Chat header */}
+        <div className="flex items-center gap-2.5 px-4 py-3 border-b border-[rgba(15,23,42,0.07)]" style={{ background: `${slide.color}08` }}>
+          <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ background: `${slide.color}15` }}>
+            <svg width="12" height="12" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="14" r="7" fill={slide.color} opacity="0.9"/>
+              <path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke={slide.color} strokeWidth="3" strokeLinecap="round" opacity="0.9"/>
+            </svg>
+          </div>
+          <div>
+            <p className="text-[12px] font-semibold text-[#0F172A]">Casey</p>
+            <div className="flex items-center gap-1">
+              <motion.div className="w-1.5 h-1.5 rounded-full" style={{ background: slide.color }} animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.6, repeat: Infinity }} />
+              <p className="text-[10px] font-medium" style={{ color: slide.color }}>Active now</p>
+            </div>
+          </div>
+          <div className="ml-auto flex items-center gap-1 px-2 py-0.5 rounded-full" style={{ background: `${slide.color}10`, border: `1px solid ${slide.color}25` }}>
+            <div className="text-[9px] font-bold" style={{ color: slide.color }}>{slide.label}</div>
+          </div>
+        </div>
+
+        {/* Messages */}
+        <div className="flex-1 p-4 space-y-3 min-h-[200px]">
+          <AnimatePresence>
+            {slide.messages.slice(0, visibleLines).map(({ from, text }, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.28 }}
+                className={`flex gap-2 ${from === 'patient' ? 'flex-row-reverse' : ''}`}>
+                <div className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold mt-0.5 ${
+                  from === 'casey' ? '' : 'bg-[rgba(15,23,42,0.06)] text-[#475569]'
+                }`} style={from === 'casey' ? { background: `${slide.color}15`, color: slide.color } : {}}>
+                  {from === 'casey' ? 'AI' : 'P'}
+                </div>
+                <div className={`max-w-[78%] ${from === 'patient' ? 'flex flex-col items-end' : ''}`}>
+                  <p className="text-[9px] font-semibold mb-1" style={{ color: from === 'casey' ? slide.color : '#94A3B8' }}>
+                    {from === 'casey' ? 'Casey' : 'Patient'}
+                  </p>
+                  <div className="px-3 py-2 text-[12px] leading-relaxed"
+                    style={from === 'casey'
+                      ? { background: `${slide.color}0D`, border: `1px solid ${slide.color}20`, color: '#1E293B', borderRadius: '4px 14px 14px 14px' }
+                      : { background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.07)', color: '#334155', borderRadius: '14px 4px 14px 14px' }
+                    }>{text}</div>
+                </div>
+              </motion.div>
+            ))}
+            {showTyping && (
+              <motion.div key="typing" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex gap-2">
+                <div className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold" style={{ background: `${slide.color}15`, color: slide.color }}>AI</div>
+                <TypingDots color={slide.color} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Outcome card */}
+      <AnimatePresence>
+        {showOutcome && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.88, y: 12 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="md:w-[190px] rounded-2xl p-4 flex flex-col gap-3 border self-start"
+            style={{ background: slide.outcome.bg, borderColor: slide.outcome.border, boxShadow: `0 8px 32px ${slide.color}18` }}
+          >
+            {/* Icon */}
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${slide.color}18` }}>
+              {slide.outcome.icon(slide.color)}
+            </div>
+
+            <div>
+              <p className="text-[13px] font-bold mb-2.5" style={{ color: slide.outcome.color }}>{slide.outcome.label}</p>
+              <div className="space-y-2">
+                {slide.outcome.rows.map((row, i) => (
+                  <motion.div key={row} initial={{ opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 + i * 0.08 }}
+                    className="flex items-start gap-1.5">
+                    <div className="w-1 h-1 rounded-full mt-1.5 shrink-0" style={{ background: slide.color }} />
+                    <p className="text-[11px] leading-snug" style={{ color: slide.color, opacity: 0.85 }}>{row}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Casey badge */}
+            <div className="mt-auto pt-2 border-t" style={{ borderColor: `${slide.color}20` }}>
+              <p className="text-[10px] font-semibold" style={{ color: slide.color, opacity: 0.7 }}>Handled by Casey · AI</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
+
+export default function MeetAlice() {
+  const ref = useRef<HTMLElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-60px' })
+  const [active, setActive] = useState(0)
+  const [progress, setProgress] = useState(0)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const progressRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const goTo = useCallback((idx: number) => {
+    setActive(idx)
+    setProgress(0)
+    if (timerRef.current) clearInterval(timerRef.current)
+    if (progressRef.current) clearInterval(progressRef.current)
+    timerRef.current = setInterval(() => {
+      setActive(i => (i + 1) % slides.length)
+      setProgress(0)
+    }, SLIDE_DURATION)
+    progressRef.current = setInterval(() => {
+      setProgress(p => Math.min(100, p + (100 / (SLIDE_DURATION / 50))))
+    }, 50)
+  }, [])
+
+  useEffect(() => {
+    if (!inView) return
+    goTo(0)
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+      if (progressRef.current) clearInterval(progressRef.current)
+    }
+  }, [inView, goTo])
+
+  const current = slides[active]
 
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden py-16"
+      className="relative overflow-hidden py-20"
       style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 50%, #ECFDF5 100%)' }}
     >
-      {/* Subtle bg glow */}
+      {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden>
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full opacity-25"
-          style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.14) 0%, transparent 70%)' }} />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px]"
+          style={{ background: 'radial-gradient(ellipse, rgba(16,185,129,0.08) 0%, transparent 70%)' }} />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Heading */}
         <motion.div
@@ -83,197 +357,119 @@ export default function MeetAlice() {
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] tracking-tight leading-none">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] tracking-tight leading-none mb-4">
             Meet <span className="font-serif italic text-gradient-blue">Casey</span>
           </h2>
-          <p className="mt-3 text-base text-[#64748B] max-w-lg mx-auto leading-relaxed">
-            A HIPAA-compliant AI agent that handles your front desk 24/7 — so your staff can focus on patients, not phone calls.
+          <p className="text-base text-[#64748B] max-w-xl mx-auto leading-relaxed">
+            Your AI receptionist handles every patient interaction — from booking to billing — so your staff focuses on care, not calls.
           </p>
         </motion.div>
 
-        {/* 2-col: capabilities card | chat */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+        {/* Capability tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex flex-wrap justify-center gap-2 mb-8"
+        >
+          {slides.map((s, i) => (
+            <button
+              key={s.id}
+              onClick={() => goTo(i)}
+              className="relative flex items-center gap-2 px-4 py-2 rounded-xl text-[13px] font-semibold transition-all duration-300 overflow-hidden"
+              style={active === i
+                ? { background: s.color, color: '#fff', boxShadow: `0 4px 16px ${s.color}35` }
+                : { background: 'rgba(255,255,255,0.8)', color: '#64748B', border: '1px solid rgba(15,23,42,0.1)' }
+              }
+            >
+              <span style={{ color: active === i ? '#fff' : s.color }}>{s.icon}</span>
+              {s.label}
+              {/* Progress bar on active */}
+              {active === i && (
+                <span className="absolute bottom-0 left-0 h-[2px] rounded-full" style={{ width: `${progress}%`, background: 'rgba(255,255,255,0.5)', transition: 'width 50ms linear' }} />
+              )}
+            </button>
+          ))}
+        </motion.div>
 
-          {/* ── LEFT: identity + capabilities card ── */}
-          <motion.div
-            initial={{ opacity: 0, x: -28 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.65, delay: 0.12, ease: [0.32, 0.72, 0, 1] }}
-            className="rounded-3xl border border-[rgba(16,185,129,0.15)] bg-white p-7 pb-6 self-center"
-            style={{ boxShadow: '0 4px 40px rgba(16,185,129,0.07), 0 1px 4px rgba(0,0,0,0.04)' }}
-          >
-            {/* HIPAA pill — top right */}
-            <div className="flex items-center justify-between mb-7">
-              <div className="flex items-center gap-2.5">
-                {/* Status dot */}
-                <div className="relative w-3 h-3">
-                  <motion.div className="absolute inset-0 rounded-full bg-[#10B981] opacity-40" animate={{ scale: [1, 1.8, 1], opacity: [0.4, 0, 0.4] }} transition={{ duration: 2, repeat: Infinity }} />
-                  <div className="relative w-3 h-3 rounded-full bg-[#10B981]" />
-                </div>
-                <span className="text-sm font-semibold text-[#059669]">Casey is online</span>
-              </div>
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-[rgba(16,185,129,0.25)] bg-[rgba(16,185,129,0.06)]">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
-                </svg>
-                <span className="text-[10px] font-semibold text-[#059669]">HIPAA</span>
-              </div>
+        {/* Demo area */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="rounded-3xl border p-5 md:p-6 transition-all duration-500"
+          style={{
+            background: current.bg,
+            borderColor: current.border,
+            boxShadow: `0 8px 48px ${current.color}10, 0 2px 8px rgba(0,0,0,0.04)`,
+          }}
+        >
+          {/* Slide label row */}
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: `${current.color}15`, color: current.color }}>
+              {current.icon}
             </div>
-
-            {/* Name + role */}
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold text-[#0F172A]">Casey</h3>
-              <p className="text-sm text-[#059669] font-medium mt-0.5">AI Healthcare Receptionist · eCW Native</p>
-            </div>
-
-            {/* Capabilities */}
-            <p className="text-[10px] font-bold text-[#94A3B8] uppercase tracking-[0.2em] mb-4">What Casey handles</p>
-            <div className="space-y-3 mb-7">
-              {capabilities.map(({ text }, i) => (
-                <motion.div
-                  key={text}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.4, delay: 0.28 + i * 0.07 }}
-                  className="flex items-start gap-2.5"
-                >
-                  <div className="shrink-0 mt-0.5 w-4.5 h-4.5 flex items-center justify-center">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <circle cx="7" cy="7" r="7" fill="rgba(16,185,129,0.12)"/>
-                      <path d="M4 7l2 2 4-4" stroke="#059669" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                  <span className="text-[13px] text-[#334155] leading-snug">{text}</span>
-                </motion.div>
+            <p className="text-[13px] font-bold" style={{ color: current.color }}>{current.label}</p>
+            <div className="ml-auto flex gap-1.5">
+              {slides.map((_, i) => (
+                <button key={i} onClick={() => goTo(i)}
+                  className="h-1.5 rounded-full transition-all duration-300"
+                  style={{ width: active === i ? 20 : 6, background: active === i ? current.color : 'rgba(15,23,42,0.15)' }}
+                />
               ))}
             </div>
+          </div>
 
-            {/* CTA */}
-            <a
-              href="/calendar"
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold text-white transition-all duration-300 hover:opacity-90 active:scale-[0.98]"
-              style={{ background: 'linear-gradient(135deg, #059669 0%, #10B981 60%, #0D9488 100%)', boxShadow: '0 4px 16px rgba(16,185,129,0.25)' }}
-            >
-              Meet Casey — Book a Demo
-              <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-                <path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
-          </motion.div>
-
-          {/* ── RIGHT: live chat panel ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 28 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.65, delay: 0.18, ease: [0.32, 0.72, 0, 1] }}
-            className="rounded-3xl border border-[rgba(16,185,129,0.15)] bg-white overflow-hidden self-center"
-            style={{ boxShadow: '0 4px 40px rgba(16,185,129,0.07), 0 1px 4px rgba(0,0,0,0.04)' }}
-          >
-            {/* Chat header */}
-            <div className="flex items-center justify-between px-5 py-3.5 border-b border-[rgba(16,185,129,0.1)]" style={{ background: 'rgba(16,185,129,0.04)' }}>
-              <div className="flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, rgba(5,150,105,0.15), rgba(13,148,136,0.15))' }}>
-                  <svg width="13" height="13" viewBox="0 0 40 40" fill="none">
-                    <circle cx="20" cy="14" r="7" fill="#059669" opacity="0.9"/>
-                    <path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="#059669" strokeWidth="3" strokeLinecap="round" opacity="0.9"/>
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-[12px] font-semibold text-[#0F172A]">Casey</p>
-                  <div className="flex items-center gap-1">
-                    <motion.div className="w-1.5 h-1.5 rounded-full bg-[#10B981]" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.6, repeat: Infinity }} />
-                    <p className="text-[10px] text-[#059669]">Active · Vocryn AI Primary Care</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-1 px-2 py-1 rounded-full" style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)' }}>
-                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
-                </svg>
-                <span className="text-[9px] font-bold text-[#059669] tracking-wide">HIPAA</span>
-              </div>
-            </div>
-
-            {/* Messages */}
-            <div className="p-5 space-y-3 min-h-[230px]">
-              <AnimatePresence>
-                {conversation.slice(0, visibleLines).map(({ role, name, text }, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className={`flex gap-2.5 ${role === 'casey' ? '' : 'flex-row-reverse'}`}
-                  >
-                    <div className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold mt-0.5 ${
-                      role === 'casey' ? 'bg-[rgba(16,185,129,0.12)] text-[#065F46]' : 'bg-[rgba(15,23,42,0.06)] text-[#475569]'
-                    }`}>
-                      {role === 'casey' ? 'AI' : 'P'}
-                    </div>
-                    <div className={`max-w-[80%] ${role === 'patient' ? 'flex flex-col items-end' : ''}`}>
-                      <p className={`text-[9px] font-semibold mb-1 ${role === 'casey' ? 'text-[#059669]' : 'text-[#94A3B8]'}`}>{name}</p>
-                      <div
-                        className="px-3.5 py-2.5 text-[12px] leading-relaxed"
-                        style={role === 'casey'
-                          ? { background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.18)', color: '#065F46', borderRadius: '4px 14px 14px 14px' }
-                          : { background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.07)', color: '#334155', borderRadius: '14px 4px 14px 14px' }
-                        }
-                      >
-                        {text}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-
-                {showTyping && (
-                  <motion.div key="typing" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex gap-2.5">
-                    <div className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold bg-[rgba(16,185,129,0.12)] text-[#065F46]">AI</div>
-                    <TypingDots />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Booking confirmation */}
+          <AnimatePresence mode="wait">
             <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 1.0 }}
-              className="mx-5 mb-4 rounded-xl p-3.5 border"
-              style={{ background: '#DCFCE7', borderColor: 'rgba(16,185,129,0.3)' }}
+              key={active}
+              initial={{ opacity: 0, x: 16 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -16 }}
+              transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
             >
-              <div className="flex items-start gap-2.5">
-                <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(16,185,129,0.2)' }}>
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/>
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-[11px] font-bold text-[#065F46]">Appointment Rescheduled</p>
-                  <p className="text-[10px] text-[#059669] mt-0.5">Thu Jul 24 · 10:00 AM · Dr. Patel</p>
-                  <p className="text-[10px] text-[#34D399] mt-0.5">✓ Updated in eClinicalWorks · SMS sent</p>
-                </div>
-              </div>
+              <SlideDemo slide={current} active={true} />
             </motion.div>
+          </AnimatePresence>
+        </motion.div>
 
-            {/* Stats */}
-            <div className="px-5 pb-5 grid grid-cols-3 gap-2">
-              {[{ val: '< 2s', label: 'Answer time' }, { val: '99.3%', label: 'Accuracy' }, { val: '24/7', label: 'Availability' }].map(({ val, label }) => (
-                <motion.div
-                  key={label}
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.4, delay: 1.1 }}
-                  className="rounded-xl px-2 py-2.5 text-center border border-[rgba(16,185,129,0.15)]"
-                  style={{ background: 'rgba(16,185,129,0.05)' }}
-                >
-                  <p className="text-[14px] font-bold text-[#059669]">{val}</p>
-                  <p className="text-[9px] text-[#94A3B8] mt-0.5">{label}</p>
-                </motion.div>
-              ))}
+        {/* Stats bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3"
+        >
+          {[
+            { val: '< 2s',  label: 'Answer time',   color: '#059669' },
+            { val: '24/7',  label: 'Availability',  color: '#0D9488' },
+            { val: '99.3%', label: 'Accuracy',       color: '#7C3AED' },
+            { val: '0',     label: 'Calls missed',   color: '#2563EB' },
+          ].map(({ val, label, color }) => (
+            <div key={label} className="rounded-2xl bg-white border border-[rgba(15,23,42,0.07)] px-5 py-4 text-center" style={{ boxShadow: '0 1px 6px rgba(0,0,0,0.04)' }}>
+              <p className="text-2xl font-bold leading-none" style={{ color }}>{val}</p>
+              <p className="text-[11px] text-[#94A3B8] mt-1.5 font-medium">{label}</p>
             </div>
-          </motion.div>
-        </div>
+          ))}
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-6 text-center"
+        >
+          <a href="/calendar"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-xl text-[14px] font-bold text-white transition-all duration-300 hover:opacity-90 active:scale-[0.98]"
+            style={{ background: 'linear-gradient(135deg, #059669 0%, #10B981 60%, #0D9488 100%)', boxShadow: '0 4px 20px rgba(16,185,129,0.3)' }}
+          >
+            See Casey in Action — Book a Free Demo
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+              <path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </motion.div>
       </div>
     </section>
   )
