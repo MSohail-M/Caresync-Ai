@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState, useEffect, useCallback } from 'react'
+import Link from 'next/link'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 
 const SLIDE_DURATION = 5000
@@ -8,7 +9,10 @@ const SLIDE_DURATION = 5000
 const slides = [
   {
     id: 'booking',
+    slug: 'appointment-booking',
     label: 'Book Appointment',
+    heading: 'Appointment Booking',
+    blurb: 'Casey books appointments directly into your EHR in real time — offering open slots, confirming details, and texting a confirmation without any staff involvement.',
     color: '#059669',
     bg: 'rgba(5,150,105,0.07)',
     border: 'rgba(5,150,105,0.22)',
@@ -38,7 +42,10 @@ const slides = [
   },
   {
     id: 'insurance',
+    slug: 'insurance-verification',
     label: 'Insurance Verification',
+    heading: 'Insurance Verification',
+    blurb: 'Casey checks eligibility live during the call — confirming active coverage, copays, and deductibles before the visit so your front desk never chases benefits again.',
     color: '#0D9488',
     bg: 'rgba(13,148,136,0.07)',
     border: 'rgba(13,148,136,0.22)',
@@ -68,7 +75,10 @@ const slides = [
   },
   {
     id: 'refill',
+    slug: 'prescription-refills',
     label: 'Rx Refill Request',
+    heading: 'Prescription Refills',
+    blurb: 'Patients request refills by voice or text. Casey captures the medication and pharmacy, then routes the request straight to the provider queue.',
     color: '#7C3AED',
     bg: 'rgba(124,58,237,0.07)',
     border: 'rgba(124,58,237,0.22)',
@@ -98,7 +108,10 @@ const slides = [
   },
   {
     id: 'reschedule',
+    slug: 'reschedule-cancel',
     label: 'Reschedule & Cancel',
+    heading: 'Reschedule & Cancel',
+    blurb: 'Casey lets patients move or cancel appointments on their own — releasing the old slot, booking the new one, and texting an updated confirmation.',
     color: '#EA580C',
     bg: 'rgba(234,88,12,0.07)',
     border: 'rgba(234,88,12,0.22)',
@@ -128,7 +141,10 @@ const slides = [
   },
   {
     id: 'reminder',
+    slug: 'reminders-recalls',
     label: 'Reminders & Recalls',
+    heading: 'Reminders & Recalls',
+    blurb: 'Casey proactively reaches out for annual visits and care gaps, then books the appointment on the spot — closing recalls without a single staff call.',
     color: '#2563EB',
     bg: 'rgba(37,99,235,0.07)',
     border: 'rgba(37,99,235,0.22)',
@@ -339,7 +355,8 @@ export default function MeetAlice() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden py-20"
+      id="meet-casey"
+      className="relative overflow-hidden py-20 scroll-mt-24"
       style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 50%, #ECFDF5 100%)' }}
     >
       {/* Background glow */}
@@ -365,72 +382,122 @@ export default function MeetAlice() {
           </p>
         </motion.div>
 
-        {/* Capability tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-wrap justify-center gap-2 mb-8"
-        >
-          {slides.map((s, i) => (
-            <button
-              key={s.id}
-              onClick={() => goTo(i)}
-              className="relative flex items-center gap-2 px-4 py-2 rounded-xl text-[13px] font-semibold transition-all duration-300 overflow-hidden"
-              style={active === i
-                ? { background: s.color, color: '#fff', boxShadow: `0 4px 16px ${s.color}35` }
-                : { background: 'rgba(255,255,255,0.8)', color: '#64748B', border: '1px solid rgba(15,23,42,0.1)' }
-              }
-            >
-              <span style={{ color: active === i ? '#fff' : s.color }}>{s.icon}</span>
-              {s.label}
-              {/* Progress bar on active */}
-              {active === i && (
-                <span className="absolute bottom-0 left-0 h-[2px] rounded-full" style={{ width: `${progress}%`, background: 'rgba(255,255,255,0.5)', transition: 'width 50ms linear' }} />
-              )}
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Demo area */}
+        {/* Two-column: vertical use-case nav (left) + live demo panel (right) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="rounded-3xl border p-5 md:p-6 transition-all duration-500"
-          style={{
-            background: current.bg,
-            borderColor: current.border,
-            boxShadow: `0 8px 48px ${current.color}10, 0 2px 8px rgba(0,0,0,0.04)`,
-          }}
+          className="grid grid-cols-1 lg:grid-cols-[290px_1fr] gap-5 lg:gap-7 items-start"
         >
-          {/* Slide label row */}
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: `${current.color}15`, color: current.color }}>
-              {current.icon}
-            </div>
-            <p className="text-[13px] font-bold" style={{ color: current.color }}>{current.label}</p>
-            <div className="ml-auto flex gap-1.5">
-              {slides.map((_, i) => (
-                <button key={i} onClick={() => goTo(i)}
-                  className="h-1.5 rounded-full transition-all duration-300"
-                  style={{ width: active === i ? 20 : 6, background: active === i ? current.color : 'rgba(15,23,42,0.15)' }}
-                />
-              ))}
-            </div>
+          {/* ── Left: vertical capability list ─────────────── */}
+          <div
+            className="rounded-3xl bg-white/70 backdrop-blur-sm border border-[rgba(15,23,42,0.08)] p-2"
+            style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.05)' }}
+          >
+            {slides.map((s, i) => (
+              <button
+                key={s.id}
+                onClick={() => goTo(i)}
+                className="group relative w-full flex items-center gap-3 text-left px-3.5 py-3.5 rounded-2xl transition-all duration-300"
+                style={active === i ? { background: s.bg } : {}}
+                onMouseEnter={e => { if (active !== i) e.currentTarget.style.background = 'rgba(15,23,42,0.03)' }}
+                onMouseLeave={e => { if (active !== i) e.currentTarget.style.background = 'transparent' }}
+              >
+                {/* active left accent bar */}
+                {active === i && (
+                  <motion.span
+                    layoutId="usecase-accent"
+                    className="absolute left-0 top-2.5 bottom-2.5 w-[3px] rounded-full"
+                    style={{ background: s.color }}
+                    transition={{ type: 'spring', stiffness: 500, damping: 40 }}
+                  />
+                )}
+                <span
+                  className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300"
+                  style={active === i
+                    ? { background: `${s.color}18`, color: s.color }
+                    : { background: 'rgba(15,23,42,0.04)', color: '#94A3B8' }}
+                >
+                  {s.icon}
+                </span>
+                <span
+                  className="flex-1 min-w-0 text-[13.5px] font-semibold truncate transition-colors duration-300"
+                  style={{ color: active === i ? s.color : '#334155' }}
+                >
+                  {s.label}
+                </span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                  stroke={active === i ? s.color : '#CBD5E1'} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"
+                  className="shrink-0 transition-all duration-300"
+                  style={{ transform: active === i ? 'translateX(0)' : 'translateX(-2px)' }}>
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+                {/* auto-advance progress bar */}
+                {active === i && (
+                  <span className="absolute bottom-1 left-3.5 right-3.5 h-[2px] rounded-full overflow-hidden" style={{ background: `${s.color}18` }}>
+                    <span className="block h-full rounded-full" style={{ width: `${progress}%`, background: s.color, transition: 'width 50ms linear' }} />
+                  </span>
+                )}
+              </button>
+            ))}
           </div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              initial={{ opacity: 0, x: 16 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -16 }}
-              transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
-            >
-              <SlideDemo slide={current} active={true} />
-            </motion.div>
-          </AnimatePresence>
+          {/* ── Right: live demo panel ─────────────────────── */}
+          <div
+            className="rounded-3xl border p-5 md:p-7 transition-all duration-500"
+            style={{
+              background: current.bg,
+              borderColor: current.border,
+              boxShadow: `0 12px 48px ${current.color}12, 0 2px 8px rgba(0,0,0,0.04)`,
+            }}
+          >
+            {/* header row: label + supported badges */}
+            <div className="flex items-center gap-2.5 mb-5">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${current.color}15`, color: current.color }}>
+                {current.icon}
+              </div>
+              <p className="text-[14px] font-bold" style={{ color: current.color }}>{current.label}</p>
+              <div className="ml-auto hidden sm:flex items-center gap-1.5">
+                {['Voice', 'Texting'].map(cap => (
+                  <span key={cap} className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-semibold"
+                    style={{ background: `${current.color}0F`, color: current.color, border: `1px solid ${current.color}22` }}>
+                    <span className="w-1.5 h-1.5 rounded-full" style={{ background: current.color }} />
+                    {cap} supported
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -16 }}
+                transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+              >
+                <SlideDemo slide={current} active={true} />
+
+                {/* description + read more */}
+                <div className="mt-6 pt-5 border-t flex flex-col sm:flex-row sm:items-end gap-4" style={{ borderColor: `${current.color}20` }}>
+                  <div className="flex-1">
+                    <h3 className="text-[19px] font-bold text-[#0F172A] mb-1.5">{current.heading}</h3>
+                    <p className="text-[13.5px] leading-relaxed text-[#64748B] max-w-xl">{current.blurb}</p>
+                  </div>
+                  <Link
+                    href={`/use-cases/${current.slug}`}
+                    className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-[13px] font-bold text-white transition-all duration-300 hover:opacity-90 active:scale-[0.98] self-start sm:self-auto"
+                    style={{ background: current.color, boxShadow: `0 4px 16px ${current.color}35` }}
+                  >
+                    Read more
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                      <path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Link>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </motion.div>
 
         {/* Stats bar */}

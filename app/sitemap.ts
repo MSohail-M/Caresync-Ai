@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { blogPosts } from '@/lib/blog-posts'
+import { useCases } from '@/lib/useCases'
 import { SITE_URL } from '@/lib/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -8,6 +9,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.date),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
+  }))
+
+  const cases = useCases.map((uc) => ({
+    url: `${SITE_URL}/use-cases/${uc.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
   }))
 
   return [
@@ -35,6 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
+    ...cases,
     ...posts,
   ]
 }
